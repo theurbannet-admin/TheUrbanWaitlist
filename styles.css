@@ -1,0 +1,59 @@
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh; 
+  background: linear-gradient(90deg, #E87E44 0%, #DF5B2E 100%);
+}
+
+.navbar {
+    border-bottom: 1px solid #363636; /* Subtle border for separation */
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    position: static;
+}
+
+.nav-content {
+    width: 90%; 
+    padding: 10px 40px;
+    display: flex; 
+    justify-content: space-between; /* Pushes Logo left, button right */
+    align-items: center; /*vertical centering */
+}
+
+.navbar .logo {
+  padding: 14px 20px;
+  display: block; 
+  align-items: center;
+  color: black;
+  gap: 10px;
+  width: auto;
+  height: 200px;
+  align-items: center; 
+}
+
+/* The High-Contrast Button */
+.cta-button {
+  background: white; 
+  color: #DF5B2E;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.2s ease;
+  align-items: center;
+}
+
+.cta-button:hover {
+  transform: scale(1.05); /* Subtle pop effect */
+}
