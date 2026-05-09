@@ -1,0 +1,114 @@
+
+/* Addition of custom fonts using @font-face */
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Regular.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Bold.ttf') format('truetype');
+    font-weight: 700; 
+    font-style: normal;
+}
+
+/* background: linear-gradient(90deg, #E87E44 0%, #DF5B2E 100%); */ 
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Manrope, sans-serif;
+}
+
+body{
+    background-color: #F9F9F9;
+}
+
+nav{
+    background-color: #FFFFFF;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px; 
+}
+
+.logo{
+    height: 200px; 
+}
+
+.logo svg{
+    height: 100%; 
+    width: 100px; /*prevents distortion of the logo image*/
+} 
+
+.cta-button button{
+    background: #DF5B2E;
+    color: #FFFFFF; 
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 15px;
+    border: none;
+    font-weight: bold;
+}
+
+/* Remeber to style navigation links */
+
+.hero {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 70px;
+}
+
+.content h1 {
+    font-size: 65px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 22px;
+    color: black;
+    margin-bottom: 40px;
+}
+
+.customer-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    background: #DF5B2E;
+    color: #FFFFFF; 
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    margin-bottom: 100px;
+}
+
+.business-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    background: #DF5B2E;
+    color: #FFFFFF; 
+    border-radius: 5px;
+    border: none;
+    margin-left: 50px; 
+    text-decoration: none;
+}
+
+.hero-image {
+    width: 92%; 
+    margin: 100px auto 0;
+    border-radius: 50px;
+    overflow: hidden; /* Ensures the image is contained within the rounded corners */   
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block; 
+    border-radius: 50px;
+}
+
+
