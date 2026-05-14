@@ -108,7 +108,93 @@ nav{
     width: 100%;
     height: auto;
     display: block; 
-    border-radius: 50px;
+    border-radius: 24px;
+}
+
+.mission {
+    width: 92%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 100px;
+    background: linear-gradient(90deg, #DF5B2E 0%, #793119  100%);
+    margin: 80px auto 100px; /* Centers the mission section and adds vertical spacing */
+    border-radius: 24px;
+}
+
+.mission p {
+    font-size: 22px; 
+    width: 70%; 
+}
+
+/* Put uvp image and uvp points side by side */
+.uvp-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 80px 100px;
+    max-width: 1400px;
+    margin: 0 auto; /* Centers the container */
+}
+
+.uvp-image {
+    flex: 1; /* Allows the image to take up available space while maintaining its aspect ratio */
+    height:500px;
+}
+
+.uvp-image img {
+    width: 100%; 
+    border-radius: 24px;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
+/* Style the UVP points */
+.uvp-grid {
+    flex: 1; /* Allows the points to take up 50% of the space */
+    display:grid;
+    grid-template-columns: 1fr 1fr; /* Creates 2 equal columns */
+    gap: 20px; /* Adds space between the points */
+}
+
+/* Style individual UVP cards */
+.uvp-card {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Style the icons within the UVP cards */
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #DF5B2E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.icon-circle img {
+    width: 24px;
 }
 
 
+.main-content {
+    flex: 1;
+}
+
+.footer {
+    background-color: #FFFFFF;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:auto;
+}
