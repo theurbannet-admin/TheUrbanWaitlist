@@ -25,6 +25,10 @@
 
 body{
     background-color: #F9F9F9;
+    margin: 0; /* Removes default margin around the body to ensure the background color covers the entire viewport */
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column;;
 }
 
 nav{
@@ -75,7 +79,7 @@ nav{
     margin-bottom: 40px;
 }
 
-.customer-btn {
+/* .customer-btn {
     font-size: 18px;
     padding: 10px 20px;
     background: #DF5B2E;
@@ -95,7 +99,7 @@ nav{
     border: none;
     margin-left: 50px; 
     text-decoration: none;
-}
+} */
 
 .hero-image {
     width: 92%; 
@@ -190,11 +194,80 @@ nav{
     flex: 1;
 }
 
-.footer {
-    background-color: #FFFFFF;
-    padding: 20px 100px;
+.main-footer {
+    background-color: #1D0D02;
+    color: #FFFFFF;
+    padding: 60px 100px 30px;
+}
+
+.footer-top {
+    margin-bottom: 40px;
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom:20px;
+}
+
+.contact-header h3 {
+    color: #FFFFFF;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+.arrow-circle {
+    width: 45px;
+    height: 45px;
+    background-color: #DF5B2E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    color:#FFFFFF;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;  
+}
+
+.social-links a {
+    color: white; 
+    text-decoration: none;
+    display: flex; /* Helps align the SVG perfectly */
+}
+
+.social-links svg{
+    width: 23px; 
+    height: 23px; 
+    fill: white;
+    transition: fill 0.3s ease;
+}
+
+.social-links a:hover svg {
+    fill: #DF5B2E; /* Changes the icon color on hover */
+}
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #333333;
+    margin-bottom: 20px;
+}
+
+.footer-bottom {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top:auto;
+    font-size: 14px;
+}
+
+.legal-links {
+    display: flex;
+    gap: 20px;
+}
+
+.legal-links a {
+    color: #FFFFFF;
+    text-decoration: none;
 }
