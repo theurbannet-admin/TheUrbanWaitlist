@@ -1,0 +1,185 @@
+/* Addition of custom fonts using @font-face */
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Regular.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Bold.ttf') format('truetype');
+    font-weight: 700; 
+    font-style: normal;
+}
+
+/* background: linear-gradient(90deg, #E87E44 0%, #DF5B2E 100%); */ 
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Manrope, sans-serif;
+}
+
+body{
+    background-color: #F9F9F9;
+    margin: 0; /* Removes default margin around the body to ensure the background color covers the entire viewport */
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column;;
+}
+
+nav{
+    background-color: #FFFFFF;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px; 
+}
+
+.logo{
+    height: 200px; 
+}
+
+.logo svg{
+    height: 100%; 
+    width: 100px; /*prevents distortion of the logo image*/
+} 
+
+.cta-button button{
+    background: #DF5B2E;
+    color: #FFFFFF; 
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 15px;
+    border: none;
+    font-weight: bold;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.back-button button {
+    background: #DF5B2E;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    border: none;
+    text-decoration: none;
+}
+
+.content h3 {
+    font-size: 28px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 30px;
+}
+
+.customer-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    background: #DF5B2E;
+    color: #FFFFFF; 
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    margin-bottom: 100px;
+}
+
+.business-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    background: #DF5B2E;
+    color: #FFFFFF; 
+    border-radius: 5px;
+    border: none;
+    margin-left: 50px; 
+    text-decoration: none;
+} 
+
+.main-footer {
+    background-color: #1D0D02;
+    color: #FFFFFF;
+    padding: 60px 100px 30px;
+}
+
+.footer-top {
+    margin-bottom: 40px;
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom:20px;
+}
+
+.contact-header h3 {
+    color: #FFFFFF;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+.arrow-circle {
+    width: 45px;
+    height: 45px;
+    background-color: #DF5B2E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    color:#FFFFFF;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;  
+}
+
+.social-links a {
+    color: white; 
+    text-decoration: none;
+    display: flex; /* Helps align the SVG perfectly */
+}
+
+.social-links svg{
+    width: 23px; 
+    height: 23px; 
+    fill: white;
+    transition: fill 0.3s ease;
+}
+
+.social-links a:hover svg {
+    fill: #DF5B2E; /* Changes the icon color on hover */
+}
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #333333;
+    margin-bottom: 20px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.legal-links {
+    display: flex;
+    gap: 20px;
+}
+
+.legal-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
