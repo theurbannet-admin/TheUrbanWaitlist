@@ -1,0 +1,29 @@
+{
+  "name": "theurbanwaitlist",
+  "version": "1.0.0",
+  "description": "A waitlist landing page for TheUrbanNet to collect early user interest and service demand data.",
+  "main": "script.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbarure/TheUrbanWaitlist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mbarure/TheUrbanWaitlist/issues"
+  },
+  "homepage": "https://github.com/mbarure/TheUrbanWaitlist#readme",
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "vite": "^8.0.14"
+  }
+}
