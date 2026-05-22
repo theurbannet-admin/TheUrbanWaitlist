@@ -35,3 +35,6 @@
 5. Set up a launch shortcut ("scripts")
     - Added this shortcut in package.json by adding 
     "dev": "vite" which means that Instead of typing out complex backend paths to find the Vite compiler engine every single time,i just type a clean, simple command npm run dev.
+
+
+learnt about css masking

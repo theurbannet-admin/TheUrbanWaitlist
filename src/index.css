@@ -26,7 +26,7 @@
 }
 
 body{
-    background-color: #F9F9F9;
+    background-color: #F7EFE6;
     margin: 0; /* Removes default margin around the body to ensure the background color covers the entire viewport */
     min-height: 100vh;
     display: flex; 
@@ -34,12 +34,13 @@ body{
 }
 
 nav{
-    background-color: #FFFFFF;
+    background-color: #f9f9f9;
     padding: 20px 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: var(--nav-height); 
+    margin-bottom: 50px;
 }
 
 .logo{
@@ -65,23 +66,41 @@ nav{
 /* Remeber to style navigation links */
 
 .hero {
-    text-align: center;
+    text-align: left;
     position: relative; /* Allows the hero image to be positioned absolutely within this section */
-    padding: 50px 0 50px;
+    padding: 0px 100px;
     overflow:hidden;
     height: calc(100vh - var(--nav-height)); /* Ensures the hero section takes up the remaining viewport height */
+    align-items: center;
 }
 
-.content h1 {
+.hero-content {
+    z-index: 10;
+    position: relative;
+}
+
+.hero-highlight1 {
+    color:#DF5B2E
+}
+
+.hero-highlight2 {
+    color:#DF5B2E
+}
+
+
+.hero-content h1 {
     font-size: 65px;
     color: black;
-    margin-bottom: 10px;
+    line-height: 1.15;
+    font-weight: 800;
+    margin-bottom: 20px;
 }
 
-.content p {
+.hero-content p {
     font-size: 22px;
     color: black;
-    margin-bottom: 40px;
+    line-height: 1.5;
+    margin-bottom: 0px;
 }
 
 
@@ -95,38 +114,62 @@ nav{
 
 .hero-image img {
     width: 100%;
-    height: 38vw;
+    height: 45vw;
     display: block; 
     object-fit: cover; /* Ensures the image covers the container without distortion */
     object-position: top;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0) 100%);
 }
 
-.mission {
+.mission-section {
     text-align : center;
     margin: 0 auto; /* Centers the mission section and adds vertical spacing */
     color: black;
     padding: 60px 5%;
+    margin-top: 70px;
     /*background: linear-gradient(90deg, #DF5B2E 0%, #793119  100%);*/
 }
 
-.mission h2 {
+.section-label {
+    font-size: 18px;
+    color: #595959;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.mission-section h3 {
     font-size: 42px;
     font-weight: bold;
+    margin-top: 30px;
     margin-bottom: 20px;
 }
 
-.mission p {
-    font-size: 20px; 
+.mission-section p {
+    font-size: 18px; 
     width: 100%; 
     margin: 0 auto; 
     line-height: 1.6; /* Improves readability by increasing line spacing */
     max-width: 1100px;;
 }
 
+.mission-description {
+    color: #1d1d1b;
+}
+
+.highlight1 {
+    color: #df5b2e; 
+}
+
+.highlight2 {
+    color: #df5b2e;
+}
 
 .main-content {
     flex: 1;
 }
+
+
 
 .uvp-header {
     text-align: center;
@@ -151,11 +194,12 @@ nav{
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 .card{
     width: 325px;
-    background-color: #f0f0f0;
+    background-color: white;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -174,6 +218,7 @@ nav{
 
 .card-content{
     padding: 16px;
+    color: #DF5B2E
 }
 
 .card-content h3{
@@ -183,7 +228,7 @@ nav{
 
 .card-content p{
     font-size: 15px;
-    color: #666;
+    color: black;
     line-height: 1.3;
 }
 
@@ -210,7 +255,7 @@ nav{
     font-weight: normal;
 }
 
-.arrow-circle {
+/*.arrow-circle {
     width: 45px;
     height: 45px;
     background-color: #DF5B2E;
@@ -218,7 +263,7 @@ nav{
     display: flex;
     align-items: center;
     color:#FFFFFF;
-}
+}*/
 
 .social-links {
     display: flex;
@@ -229,6 +274,7 @@ nav{
 .social-links a {
     color: white; 
     text-decoration: none;
+    font-size: 23px;
     display: flex; /* Helps align the SVG perfectly */
 }
 
@@ -239,8 +285,8 @@ nav{
     transition: fill 0.3s ease;
 }
 
-.social-links a:hover svg {
-    fill: #DF5B2E; /* Changes the icon color on hover */
+.social-links a:hover {
+    color: #DF5B2E; 
 }
 
 .footer-divider {
@@ -255,12 +301,12 @@ nav{
     font-size: 14px;
 }
 
-.legal-links {
+.footer-links {
     display: flex;
     gap: 20px;
 }
 
-.legal-links a {
+.footer-links a {
     color: #FFFFFF;
     text-decoration: none;
 }
