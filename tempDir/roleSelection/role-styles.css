@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@700&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --heading-font: 'Space-Grotesk';
+    --alternative-font: 'Manrope'; /*400 for p, 600 navbar, 500 for h2*/
+
+}
+
+
+body{
+    background-color: #F9F9F9;
+    margin: 0; /* Removes default margin around the body to ensure the background color covers the entire viewport */
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column;;
+}
+
+nav{
+    background-color: #ffffff;
+    font-family: var(--alternative-font);
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 auto;
+    padding:20px 0px;
+    display: flex;
+    height: 75px;
+    display:flex;
+    justify-content: flex-start;
+    position: sticky;
+    top: 0;
+
+
+    .logo{
+        height: 100%;
+        display: flex;
+        margin-right: 700px;
+        
+        
+    }
+    
+    .logo svg{
+        height: 50px; 
+        width: auto;
+    
+        } 
+
+    /* ul {
+        list-style: none;
+        display: flex;
+        gap: 40px;
+
+        li a {
+            font-size: 18px;
+            color: black;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    }
+
+    button {
+        background: #DF5B2E; 
+        background: #fff;
+        color: black; 
+        padding: 12px 24px;
+        border-radius: 15px;
+        font-family: var(--alternative-font);
+        font-size: 15px;
+        font-weight: 400;
+        border: 1px solid #DF5B2E;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: #DF5B2E;
+        color: white;
+        border: 1px solid #DF5B2E;
+    } */
+}
+
+.main-content {
+    flex: 1;
+}
+
+
+/* Centers the card on the whole screen */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9f9f9; 
+  padding: 20px;
+}
+
+/* The actual box container */
+.role-card {
+  background: #ffffff;
+  max-width: 900px; 
+  width: 100%;
+  padding: 60px;   
+  border: 1px solid #ffccbc; /* Thin orange-tinted border */
+  border-radius: 40px;      
+  /*box-shadow: 0 10px 30px rgba(0,0,0,0.05);  Subtle shadow */
+  position: relative;
+}
+
+.back-button button {
+    background: #DF5B2E;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    border: none;
+    text-decoration: none;
+}
+
+.content h3 {
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 18px;
+    color: grey;
+    margin-bottom: 30px;
+}
+
+
+/* Styling the role buttons inside */
+.role-options {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.role-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 30px;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.role-box:hover {
+  border-color: #DF5B2E; /* Your signature orange */
+  background-color: #fffaf9;
+}
+
+.main-footer {
+    background-color: #1D0D02;
+    color: #FFFFFF;
+    padding: 60px 100px 30px;
+}
+
+.footer-top {
+    margin-bottom: 40px;
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom:20px;
+}
+
+.contact-header h3 {
+    color: #FFFFFF;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+.arrow-circle {
+    width: 45px;
+    height: 45px;
+    background-color: #DF5B2E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    color:#FFFFFF;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;  
+}
+
+.social-links a {
+    color: white; 
+    text-decoration: none;
+    display: flex; /* Helps align the SVG perfectly */
+}
+
+.social-links svg{
+    width: 23px; 
+    height: 23px; 
+    fill: white;
+    transition: fill 0.3s ease;
+}
+
+.social-links a:hover svg {
+    fill: #DF5B2E; /* Changes the icon color on hover */
+}
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #333333;
+    margin-bottom: 20px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.legal-links {
+    display: flex;
+    gap: 20px;
+}
+
+.legal-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
