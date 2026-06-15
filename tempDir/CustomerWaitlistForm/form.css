@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@700&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --heading-font: 'Space-Grotesk';
+    --alternative-font: 'Manrope'; /*400 for p, 600 navbar, 500 for h2*/
+    --nav-height: 65px; 
+    --primary-color: #DF5B2E;
+}
+
+
+body {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+
+ section.waitlist-section {
+
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        font-family: var(--alternative-font);
+        gap: 20px;
+        width: 1000px;
+        margin-bottom: 100px;
+        background-color: #F9F9F9;
+        padding: 60px;
+        border-radius: 20px;
+        
+
+        svg {
+            margin-bottom: 30px;
+        }
+
+        .section-heading {
+
+            h2 {
+                font-family: var(--heading-font);
+            }
+        }
+
+        form.waitlist-form{
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+
+            fieldset {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                border: none;
+                padding: 0;
+
+                legend {
+                    margin-bottom: 25px;
+                }
+
+                .form-group {
+                    display: flex;
+                    flex-direction: column;
+
+                    label {
+                        font-size: 14px;
+                        font-weight: 600;
+                        margin-bottom: 8px;
+                    }
+
+                    input, select, textarea {
+                        width: 100%;
+                        padding: 14px 16px;
+                        border-radius: 10px;
+                        border: 1px solid #D1D5DB;
+                        background-color: #FFFFFF;
+                        color: #111827;
+                        font-family: var(--alternative-font);
+                        font-size: 15px;
+                        outline: none;
+                        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+                    }
+
+                    input::placehoder, textarea::placeholder{
+                        color: #9CA3AF;
+                    }
+
+                    input:focus, textarea:focus, select:focus {
+                        border-color: var(--primary-color);
+                        box-shadow: 0 0 0 3px rgba(223, 91, 46, 0.18);
+                    }
+                }
+
+                #options {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+
+            button {
+        background: #DF5B2E;
+        color: #fff; 
+        padding: 12px 24px;
+        border-radius: 15px;
+        font-family: var(--alternative-font);
+        font-size: 15px;
+        font-weight: 400;
+        border: 1px solid var(--primary-color);
+        font-weight: bold;
+    }
+
+    /* button:hover {
+       
+    } */
+            
+        }
+        
+
+    }

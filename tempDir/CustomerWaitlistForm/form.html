@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheUrbanNet Waitlist</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Waitlist Form</title>
+    <link rel="stylesheet" href="form.css">
 </head>
 <body>
+    
+    <section id="customer-waitlist" class="waitlist-section">
 
-    <nav>
-        <div class="logo">
-            <svg
+        <svg
+          class="logo"
           width="230"
           height="45"
           viewBox="0 0 230 45"
@@ -54,85 +55,247 @@
             fill="black"
           />
         </svg>
+
+        <div class="section-heading">
+            <p class="eyebrow">Customer Waitlist</p>
+            <h1>
+                Be First to Discover TheUrbanNet
+            </h1>
+            <!-- <p>
+                Tell us what services you care about most so we can shape TheUrbanNet around real customer needs before launch.
+            </p> -->
+        </div>
+
+  <form action="#" method="post" class="waitlist-form">
+    
+    <!-- Personal Details -->
+    <fieldset>
+      <legend>Your Details</legend>
+
+      <div class="form-group">
+        <label for="full-name">Full Name</label>
+        <input
+          type="text"
+          id="full-name"
+          name="full_name"
+          placeholder="Enter your full name"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address <span aria-hidden="true">*</span></label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          required
+        >
+      </div>
+
+      
+
+      <div class="form-group">
+        <label for="postcode">Postcode</label>
+        <input
+          type="text"
+          id="postcode"
+          name="postcode"
+          placeholder="e.g. SW1A 1AA"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="age-range">Select your Age Range</label>
+        <select id="age-range" name="age_range">
+          <option value="">Select your age range</option>
+          <option value="18-24">18-24</option>
+          <option value="25-34">25-34</option>
+          <option value="35-44">35-44</option>
+          <option value="45+">45+</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <!-- Service Interests -->
+    <fieldset>
+      <legend>Your Service Interests</legend>
+
+      <p class="form-question">
+        Pick your Top 3 Categories: Which services do you use most?
+      </p>
+
+      <div class="checkbox-group" id="options">
+        <label>
+          <input type="checkbox" name="top_categories" value="hair-beauty">
+          Beauty & Grooming
+        </label>
+
+
+        <label>
+          <input type="checkbox" name="top_categories" value="catering-food">
+          Food & Catering 
+        </label>
+
+        <label>
+          <input type="checkbox" name="top_categories" value="events">
+          Fashion & Styling
+        </label>
+
+        <label>
+          <input type="checkbox" name="top_categories" value="decor">
+          Wellness & Fitness
+        </label>
+
+        <label>
+          <input type="checkbox" name="top_categories" value="photography-videography">
+          Home & Lifestyle
+        </label>
+      </div>
+
+      
+    </fieldset>
+
+    <!-- Current Discovery Behaviour -->
+    <fieldset>
+      <legend>How You Find Services Now</legend>
+
+      <div class="form-group">
+        <label for="current-service-search">
+          How do you currently find your services?
+        </label>
+
+        <select id="current-service-search" name="current_service_search">
+          <option value="">Select an option</option>
+          <option value="social-media">Social Media</option>
+          <option value="google">Google</option>
+          <option value="friends-family">Friends or Family</option>
+          <option value="existing-apps">Existing Apps</option>
+          <option value="word-of-mouth">Word of Mouth</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="current-service-search-other">
+          If other, please specify
+        </label>
+        <input
+          type="text"
+          id="current-service-search-other"
+          name="current_service_search_other"
+          placeholder="Tell us how you usually find services"
+        >
+      </div>
+    </fieldset>
+
+    <!-- Referral Source -->
+    <fieldset>
+      <legend>How You Found TheUrbanNet</legend>
+
+      <div class="form-group">
+        <label for="how-found-us">How did you find us?</label>
+
+        <select id="how-found-us" name="how_found_us">
+          <option value="">Select an option</option>
+          <option value="instagram">Instagram</option>
+          <option value="linkedin">LinkedIn</option>
+          <option value="tiktok">TikTok</option>
+          <option value="friend">Friend</option>
+          <option value="flyer">Flyer</option>
+          <option value="event">Event</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="how-found-us-other">
+          If other, please specify
+        </label>
+        <input
+          type="text"
+          id="how-found-us-other"
+          name="how_found_us_other"
+          placeholder="Tell us where you heard about TheUrbanNet"
+        >
+      </div>
+    </fieldset>
+
+    <!-- Decision Factors -->
+    <fieldset>
+      <legend>What Matters Most</legend>
+
+      <p class="form-question">
+        What matters most to you when choosing a service?
+      </p>
+
+      <div class="checkbox-group" id="options">
+        <label>
+          <input type="checkbox" name="decision_factors" value="price">
+          Price
+        </label>
+
+        <label>
+          <input type="checkbox" name="decision_factors" value="quality">
+          Quality of work
+        </label>
+
+        <label>
+          <input type="checkbox" name="decision_factors" value="reviews">
+          Reviews and ratings
+        </label>
+
+        <label>
+          <input type="checkbox" name="decision_factors" value="location">
+          Location
+        </label>
+
+        <label>
+          <input type="checkbox" name="decision_factors" value="availability">
+          Availability
+        </label>
+
+        <label>
+          <input type="checkbox" name="decision_factors" value="trust">
+          Trust and reliability
+        </label>
+
+        <label>
+          <input type="checkbox" name="decision_factors" value="portfolio">
+          Photos or portfolio of previous work
+        </label>
+
+        <label>
+          <input type="checkbox" name="decision_factors" value="communication">
+          Fast and clear communication
+        </label>
+
+        <label>
+          <input type="checkbox" name="decision_factors" value="other">
+          Other
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="decision-factor-other">
+          If other, please specify
+        </label>
+        <input
+          type="text"
+          id="decision-factor-other"
+          name="decision_factor_other"
+          placeholder="Tell us what else matters to you"
+        >
+      </div>
+    </fieldset>
+
+    <!-- Submit Button -->
+    <div class="form-actions">
+      <button class="cta-button" type="submit">Join the Waitlist</button>
     </div>
-        <ul>
-            <li><a href="#">Service Categories</a></li>
-            <li><a href="#">Mission</a></li>
-            <li><a href="#">UVP</a></li>
-            <li><a href="#">How it works?</a></li>
-            <li><a href="#">FAQs</a></li>
-        </ul>
-        <button id="joinWaitlistBtn">Join The Waitlist</button>
-    </nav>
 
-    <section class="hero">
-
-        <div class="hero-content">
-            <h1>Real <span>Services,</span> <br>Real <span>People,</span> Real <span>Easy.</span> </h1>
-            <p>Be first to discover trusted services and experiences near you.</p>
-        </div>
-
-        <div class="hero-image">
-             <img src="assets/hero-image.png" alt="Hero Image" >
-        </div>
+  </form>
 
     </section>
-
-    <!-- <section class="Mission">
-
-      <div class="missionHeading">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-minus-vertical"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5v14" /></svg>
-        <h2><span>Our</span> Mission</h2>
-      </div>
-
-      
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci, exercitationem debitis. Explicabo est recusandae quas eius necessitatibus, dignissimos velit aliquam quis illo alias? Quam incidunt non in quia, nemo perspiciatis.</p>
-    </section> -->
-
-     <section class="Services-preview">
-      
-      <div class="heading">
-        <h2> Explore Our Service Categories </h2>
-      </div> 
-
-      <div class="ServiceCategoryBoxes">
-
-        <div class="box" id="home&lifestyle">
-          <img src="assets/home.webp" alt="">
-        </div>
-
-        <div class="box" id="food&catering">
-          <img src="assets/catering.jpg" alt="">
-        </div>
-
-        <div class="box" id="fashion">
-          <img src="assets/Fashion.webp" alt="">
-        </div>
-
-      </div>
-
-      <div class="ServiceCategoryBoxes2">
-
-        <div class="box" id="fitness">
-          <img src="assets/Fitness.png" alt="">
-        </div>
-
-        <div class="box" id="beauty">
-          <img src="assets/Beauty.webp" alt="">
-        </div>
-
-      </div>
-      
-
-     </section>
-
-     <script>
-  const joinWaitlistBtn = document.getElementById("joinWaitlistBtn");
-
-  joinWaitlistBtn.addEventListener("click", function () {
-    window.location.href = "roles.html";
-  });
-</script>
-    
 </body>
 </html>

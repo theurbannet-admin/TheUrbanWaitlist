@@ -8,8 +8,8 @@
 }
 
 :root {
-    --heading-font: 'Space-Grotesk';
-    --alternative-font: 'Manrope'; /*400 for p, 600 navbar, 500 for h2*/
+    --heading-font: 'Space Grotesk', sans-serif;
+    --alternative-font: 'Manrope', serif; /*400 for p, 600 navbar, 500 for h2*/
     --nav-height: 65px; 
     --primary-color: #DF5B2E;
 }
@@ -33,6 +33,8 @@ nav{
     align-items: center;
     position: sticky;
     top: 0;
+    background-color: #fcfcfc;
+    z-index: 100;
 
 
     .logo{
@@ -128,3 +130,111 @@ nav{
     }
 
 }
+
+/* .Mission {
+     display: flex;
+     flex-direction: column;
+     margin-top: 100px;
+     gap: 50px;
+
+     .missionHeading{
+        display: flex;
+
+        gap:1px; 
+
+        .h2{
+        font-family: var(--heading-font);
+        font-size: 60px;
+        font-weight: 500;
+     }
+     }
+
+     .p {
+        display: flex;
+        justify-content: center;
+        font-family: var(--alternative-font);
+        font-size: 24px;
+     }
+} */
+
+.Services-preview {
+
+    margin-top: 10px;
+    padding-top: 50px;
+    background-color: #f9f9f9c8;
+    margin-bottom: 20px;
+    text-align: center;
+
+    .heading {
+        font-size: 30px;
+        font-weight: 500;
+        font-family: var(--heading-font);
+        margin-bottom: 30px;
+    }
+
+    .ServiceCategoryBoxes {
+        display: grid;
+        row-gap: 40px;
+        column-gap: 70px;
+        grid-template-columns: repeat(3, 300px);
+        justify-content: center;
+        justify-items: center;
+        /* grid-template-rows: 1fr 1fr; */
+        padding: 40px;
+        /* max-width: 1200px; */
+        margin: 0 auto;
+        
+
+        .box {
+            /* flex: 1; */
+            width: 300px;
+            height: 380px;               
+            overflow: hidden;            
+            border-radius: 12px;
+            box-shadow: 0px 15px 15px 0 rgba(208, 5, 171, 0.3);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;           
+                display: block;    
+            }
+        }
+
+    }
+
+    .ServiceCategoryBoxes2 {
+          display: grid;
+        row-gap: 40px;
+        column-gap: 70px;
+        grid-template-columns: repeat(2, 300px);
+        justify-content: center;
+        justify-items: center;
+        /* grid-template-rows: 1fr 1fr; */
+        padding: 40px;
+        /* max-width: 1200px; */
+        margin: 0 auto;
+ 
+        .box {
+            /* flex: 1; */
+            width: 300px;
+            height: 380px;               
+            overflow: hidden;            
+            border-radius: 12px;
+            box-shadow: 0px 15px 15px 0 rgba(0, 0, 0, 0.3);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;           
+                display: block;    
+            }
+        }
+
+    }
+}
+
+.box:hover {
+                transform: scale(1.3);
+                transition: 2s;
+            }
