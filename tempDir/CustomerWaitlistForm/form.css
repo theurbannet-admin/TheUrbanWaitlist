@@ -18,43 +18,59 @@
 
 
 body {
-    background-color: var(--primary-color);
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 16px;
    
 
 }
 
- section.waitlist-section {
+.main-content{
+     svg {
+            margin-top: 70px;
+        }
+}
 
-        margin-top: 100px;
+.waitlist-section {
+
+        margin-top: 30px;
         display: flex;
         flex-direction: column;
         font-family: var(--alternative-font);
         gap: 20px;
-        width: 1000px;
+        width: 800px;
         margin-bottom: 100px;
-        background-color: #F9F9F9;
-        padding: 60px;
+        padding: 60px 30px 40px 30px;
         border-radius: 20px;
+        border: 1px solid #DF5B2E;
+        position: relative;
         
-
-        svg {
-            margin-bottom: 30px;
-        }
 
         .section-heading {
 
-            h2 {
+            p.eyebrow {
+            position: absolute;
+            top: 15px;    
+            right: 20px;  
+            margin: 0;    
+            font-size: 14px;
+            color: #DF5B2E; 
+            font-weight: 600;
+            }
+
+            h1 {
                 font-family: var(--heading-font);
+                font-size: 45px;
             }
         }
 
         form.waitlist-form{
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 30px;
+            margin-top: 30px;
 
             fieldset {
                 display: flex;
@@ -64,12 +80,16 @@ body {
                 padding: 0;
 
                 legend {
-                    margin-bottom: 25px;
+                    margin-bottom: 20px;
+                    font-size: 19px;
+                    font-family: var(--heading-font);
+                    color:#422918;
                 }
 
                 .form-group {
                     display: flex;
                     flex-direction: column;
+                    font-family: var(--alternative-font);
 
                     label {
                         font-size: 14px;
@@ -90,7 +110,7 @@ body {
                         transition: border-color 0.2s ease, box-shadow 0.2s ease;
                     }
 
-                    input::placehoder, textarea::placeholder{
+                    input::placeholder, textarea::placeholder{
                         color: #9CA3AF;
                     }
 
@@ -104,6 +124,11 @@ body {
                     display: flex;
                     flex-direction: column;
                 }
+
+                hr {
+                    margin-top: 30px;
+                    margin-bottom: 15px;
+                }
             }
 
             button {
@@ -112,7 +137,7 @@ body {
         padding: 12px 24px;
         border-radius: 15px;
         font-family: var(--alternative-font);
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 400;
         border: 1px solid var(--primary-color);
         font-weight: bold;
@@ -126,3 +151,22 @@ body {
         
 
     }
+
+.form-row {
+  display: flex;
+  gap: 16px; 
+  width: 100%;
+}
+
+.form-row .form-group {
+  flex: 1;
+  font-family: var(--alternative-font);
+}
+
+/* Responsive adjustment for questions to stack vertically on mobile*/
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0; 
+  }
+}

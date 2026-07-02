@@ -1,122 +1,291 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@700&display=swap');
 
-
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 :root {
-    --heading-font: 'Space-Grotesk';
-    --alternative-font: 'Manrope'; /*400 for p, 600 navbar, 500 for h2*/
-    --nav-height: 65px; 
+    --heading-font: 'Space Grotesk', sans-serif;
+    --alternative-font: 'Manrope', sans-serif; 
     --primary-color: #DF5B2E;
+    --border-color: #E2E8F0;
+    --bg-light: #F9f9f9;
 }
 
-
-body{
-    background-color: #F9F9F9;
-    margin: 0; /* Removes default margin around the body to ensure the background color covers the entire viewport */
-    min-height: 100vh;
-    display: flex; 
-    flex-direction: column;;
+body {
+    background-color: rgba(0, 0, 0, 0.4);
+    font-family: var(--alternative-font);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
 }
-
 
 
 .main-content {
-    flex: 1;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .card {
+        background: #ffffff;
+        width: 100%;
+        max-width: 1100px;
+        min-height: 680px;
+        border-radius: 32px;
+        box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.5);
+        display: grid;
+        grid-template-columns: 45% 55%; 
+        overflow: hidden;
+        position: relative;
+        
+        .details {
+            padding: 0px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+
+
+            
+
+              .back-icon {
+            width: 40px;
+            height: 40px;
+            
+            /* border-radius: 50px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-bottom: 0px;
+            margin-top: 0px; 
+            position:absolute;
+            top: 50px;
+            left: 40px;
+            
+            .icon {
+                transition: all 0.2s ease;
+                width: 20px;
+                height: 20px;
+                fill: #64748B;
+                
+
+                &:hover {
+                    
+                    fill: var(--primary-color);
+                    transform: scale(1.05);
+                }
+            }
+
+            
+            
+
+            &::after {
+                content: attr(data-title); 
+                position: absolute;
+                bottom: -35px; 
+                left: 50%;
+                transform: translateX(-50%) scale(0.9);
+                font-family: var(--alternative-font);
+        
+        
+                background-color: var(--primary-color);
+                color: #fff;
+                padding: 6px 10px;
+                border-radius: 4px;
+                font-size: 12px;
+                white-space: nowrap;
+        
+        
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.2s ease;
+            }
+            
+            &:hover::after {
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+            }
+        }
+
+        /* .logo-header-wrapper {
+                margin-bottom: 30px;
+
+                .header-logo {
+                    height: 20px;
+                    width: auto;
+
+                }
+            } */
+        
+            .description {
+                
+
+                h1 {
+                    font-family: var(--heading-font);
+                    font-size: 40px;
+                    color: #0F172A;
+                    margin-bottom: 2px;
+                    
+                }
+    
+                p {
+                    font-size: 24px;
+                    
+                    color: #64748B;
+                    line-height: 1.6;
+                    margin-bottom: 40px;
+                }
+            }
+            .roles {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+                
+                
+                .role-btn {
+                    margin-bottom: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 15px;
+                    padding: 10px 0px;
+                    border: 2px solid var(--border-color);
+                    border-radius: 10px;
+                    background: #ffffff;
+                    cursor: pointer;
+                    text-align: center;
+                    color: #0F172A;
+                    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                    
+                    
+                    svg {
+                        color: #64748B;
+                        transition: color 0.2s ease;
+                    }
+                    
+                    span {
+                        font-family: var(--alternative-font);
+                        font-size: 20px;
+                        font-weight: 600;
+                        display: block;
+                        margin-top: auto;
+                    }
+    
+                    &:hover {
+                        border-color: var(--primary-color);
+                        background: #FFF8F6;
+                        
+                    }
+                    
+                    &:hover svg {
+                        color: var(--primary-color);
+                    }
+                    
+                    &.active {
+                        border-color: var(--primary-color);
+                        /* background: #FFF1EC; */
+                        color: var(--primary-color);
+                        box-shadow: 0 0 0 1px var(--primary-color);
+                    }
+                    
+                    &.active svg {
+                        color: var(--primary-color);
+                    }
+                }
+            }
+            .continue-btn {
+                font-family: var(--alternative-font);
+                width: 100%;
+                padding: 16px;
+                background-color: var(--primary-color);
+                color: #ffffff;
+                border: none;
+                border-radius: 14px;
+                font-size: 24px;
+                font-weight: medium;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            
+                &:hover {
+                    background-color: var(--primary-color);
+                    transform: translateY(-1px);
+                    box-shadow: 0px 8px 20px rgba(223, 91, 46, 0.25);
+                }
+            
+                &:disabled {
+                    background-color: #CBD5E1;
+                    color: #94A3B8;
+                    cursor: not-allowed;
+                    transform: none;
+                    box-shadow: none;
+                }
+            }
+        }
+
+      
+
+        
+        .image-panel {
+            width: 100%;
+            height: 100%;
+            background-color: #1E293B; 
+            position: relative;
+        
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: right center;
+                display: block;
+            }
+        }
+    }
 }
 
 
-/* Centers the card on the whole screen */
-.main-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #DF5B2E; 
-  padding: 20px;
- 
-}
 
-/* The actual box container */
-.role-card {
-  background: #ffffff;
-  max-width: 900px; 
-  width: 100%;
-  padding: 60px;   
-  border: 1px solid #ffccbc; /* Thin orange-tinted border */
-  border-radius: 40px;      
-  box-shadow: 0px 15px 15px 0 rgba(0, 0, 0, 0.3);  
-  position: relative;
-   
-  
-  
-}
 
-.back-icon {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s ease-in-out;
 
-    .icon {
-        fill: #000;
+
+
+
+
+
+
+
+
+
+
+/* Responsive Mobile View Layout Pipeline Rules */
+@media (max-width: 900px) {
+    .card {
+        grid-template-columns: 1fr; /* Switch to stack column format cards on tablets/phones */
+        max-width: 500px;
+        min-height: auto;
     }
     
-}
+    .image-panel {
+        display: none; /* Hide the graphical splash panel to preserve interaction on smaller mobile screens */
+    }
 
-.icon:hover {
-    transform: scale(1.15);
-    fill: #DF5B2E;
-}
+    .details {
+        padding: 40px 30px;
+    }
 
-.content h3 {
-    font-size: 50px;
-    font-weight: bold;
-    color: black;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    display:flex;
+    .logo-header-wrapper {
+        top: 30px;
+        left: 30px;
+    }
     
+    .back-icon {
+        margin-top: 45px;
+    }
 }
-
-.content p {
-    font-size: 18px;
-    color: grey;
-    margin-bottom: 30px;
-}
-
-
-/* Styling the role buttons inside */
-.role-options {
-  display: flex;
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.role-box {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 30px;
-  border: 1px solid #eee;
-  border-radius: 20px;
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.role-box:hover {
-  border-color: #DF5B2E; /* Your signature orange */
-  background-color: #fffaf9;
-  transform: scale(1.1);
-  transition: 2s;
-            
-}
-
