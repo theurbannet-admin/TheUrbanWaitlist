@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Customer Form</title>
+</head>
+<body>
+    <section class="main-content">
+
+        <div class="section-heading">
+          <div class="back-icon" id="backToRoleSelection" data-title="Go Back">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z"/></svg>
+            </div>
+
+            <h1>Be The First To Discover TheUrbanNet</h1>
+        </div>
+
+        <!-- Personal Details -->
+<form action="#" method="post" class="waitlist-form">
+    <fieldset class="personal-details">
+      <legend>Personal Details</legend>
+    
+      <div class="section-grid">
+    
+        <div class="row1">
+            <!-- Full Name -->
+            <div class="form-group input-group-icon">
+              <label class="sr-only" for="full-name">Full Name</label>
+              <input
+                type="text"
+                id="full-name"
+                name="full_name"
+                placeholder="Full Name"
+                autocomplete="name"
+                required
+              >
+              <span class="input-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path fill="currentColor" d="M20.37 21.25a.75.75 0 0 1-.75.75H4.38a.75.75 0 0 1-.75-.75c0-4.1 4.5-7.28 8.37-7.28s8.37 3.18 8.37 7.28M17.1 7.11A5.1 5.1 0 1 1 12 2a5.11 5.11 0 0 1 5.1 5.11" />
+                </svg>
+              </span>
+            </div>
+            <!-- Email -->
+            <div class="form-group input-group-icon">
+              <label class="sr-only" for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email Address"
+                autocomplete="email"
+                required
+              >
+              <span class="input-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <g fill="currentColor">
+                        <path d="M22 7.535V17a3 3 0 0 1-2.824 2.995L19 20H5a3 3 0 0 1-2.995-2.824L2 17V7.535l9.445 6.297l.116.066a1 1 0 0 0 .878 0l.116-.066z" />
+                        <path d="M19 4c1.08 0 2.027.57 2.555 1.427L12 11.797l-9.555-6.37a3 3 0 0 1 2.354-1.42L5 4z" />
+                    </g>
+                </svg>
+              </span>
+            </div>
+        </div>
+    
+        <!-- Age Range -->
+        <div class="form-group input-group-icon select-group">
+          <label class="sr-only" for="age-range">Select Your Age Range</label>
+    
+          <select id="age-range" name="age_range" required>
+            <option value="" selected disabled>Select Your Age Range</option>
+            <option value="18-24">18–24</option>
+            <option value="25-34">25–34</option>
+            <option value="35-44">35–44</option>
+            <option value="45-54">45–54</option>
+            <option value="55+">55+</option>
+          </select>
+
+        </div>
+        
+    
+        <!-- Postcode -->
+        <div class="form-group input-group-icon">
+          <label class="sr-only" for="postcode">Postcode</label>
+    
+          <input
+            type="text"
+            id="postcode"
+            name="postcode"
+            placeholder="Postcode"
+            autocomplete="postal-code"
+            required
+          >
+    
+          <span class="input-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 50 50">
+                <path d="M0 0h50v50H0z" fill="none" />
+                <path fill="currentColor" d="M25 0c-8.284 0-15 6.656-15 14.866s15 35.135 15 35.135s15-26.924 15-35.135S33.284 0 25 0m-.049 19.312c-2.557 0-4.629-2.055-4.629-4.588c0-2.535 2.072-4.589 4.629-4.589c2.559 0 4.631 2.054 4.631 4.589c0 2.533-2.072 4.588-4.631 4.588" />
+            </svg>
+          </span>
+
+        </div>
+    
+      </div>
+    </fieldset>
+
+    <!-- Service Preferences -->
+<fieldset class="service-preferences">
+  <legend>Which Services Do You Use Most?</legend>
+
+  <p class="service-helper-text">Pick Your Top 3 Categories</p>
+
+  <div class="service-pills">
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="beauty"
+        name="service_categories"
+        value="Beauty & Grooming"
+      >
+      <label class="category-pill" for="beauty">
+        Beauty &amp; Grooming
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="fashion"
+        name="service_categories"
+        value="Fashion & Styling"
+      >
+      <label class="category-pill" for="fashion">
+        Fashion &amp; Styling
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="wellness"
+        name="service_categories"
+        value="Wellness & Fitness"
+      >
+      <label class="category-pill" for="wellness">
+        Wellness &amp; Fitness
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="food"
+        name="service_categories"
+        value="Food & Catering"
+      >
+      <label class="category-pill" for="food">
+        Food &amp; Catering
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="home"
+        name="service_categories"
+        value="Home & Lifestyle"
+      >
+      <label class="category-pill" for="home">
+        Home &amp; Lifestyle
+      </label>
+    </div>
+
+  </div>
+</fieldset>
+
+<!--Current Service Discovery-->
+<fieldset class="current-service-discovery">
+  <legend>How do you currently find your services?</legend>
+
+  <div class="discovery-options">
+    <div class="option">
+        <input type="radio" id="social" name="discovery_method" value="social-media">
+        <label for="social">Social Media</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="google" name="discovery_method" value="google">
+        <label for="google">Google</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="friends" name="discovery_method" value="friends-family">
+        <label for="friends">Friends or Family</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="apps" name="discovery_method" value="existing-apps">
+        <label for="apps">Existing Apps</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="word-of-mouth" name="discovery_method" value="word-of-mouth">
+        <label for="word-of-mouth">Word of Mouth</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="other" name="discovery_method" value="other">
+        <label for="other">Other</label>
+    </div>
+  </div>
+
+    <div class="form-group">
+          <label class="sr-only" for="other">If other, please specify</label>
+    
+          <input
+            type="text"
+            id="otherServiceDiscovery"
+            name="Other"
+            placeholder="If other, please specify"
+          >
+        </div>
+
+</fieldset>
+
+<!--How they found TheUrbanNet-->
+<fieldset class="TheUrbanNet-discovery">
+  <legend>How did you find TheUrbanNet?</legend>
+
+  <div class="discovery-options">
+    <div class="option">
+        <input type="radio" id="social" name="discovery_method" value="social-media">
+        <label for="social">Social Media</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="google" name="discovery_method" value="google">
+        <label for="google">Google</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="friends" name="discovery_method" value="friends-family">
+        <label for="friends">Friends or Family</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="apps" name="discovery_method" value="existing-apps">
+        <label for="apps">Existing Apps</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="word-of-mouth" name="discovery_method" value="word-of-mouth">
+        <label for="word-of-mouth">Word of Mouth</label>
+    </div>
+
+    <div class="option">
+        <input type="radio" id="other" name="discovery_method" value="other">
+        <label for="other">Other</label>
+    </div>
+  </div>
+
+    <div class="form-group">
+          <label class="sr-only" for="other">If other, please specify</label>
+    
+          <input
+            type="text"
+            id="otherServiceDiscovery"
+            name="Other"
+            placeholder="If other, please specify"
+          >
+        </div>
+
+</fieldset>
+
+ <!-- What matters Most?-->
+<fieldset class="most-important">
+  <legend>What Matters Most</legend>
+
+  <p class="service-helper-text">What matters most to you when choosing a service?</p>
+
+  <div class="service-pills">
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="price"
+        name="service_categories"
+        value="price"
+      >
+      <label class="category-pill" for="price">
+        Price
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="qualityOfWork"
+        name="service_categories"
+        value="Quality of Work"
+      >
+      <label class="category-pill" for="qualityOfWork">
+        Quality of Work
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="ratings"
+        name="service_categories"
+        value="Reviews & ratings"
+      >
+      <label class="category-pill" for="ratings">
+        Reviews &amp; ratings
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="Location"
+        name="service_categories"
+        value="Location"
+      >
+      <label class="category-pill" for="Location">
+        Location
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="availability"
+        name="service_categories"
+        value="Availability"
+      >
+      <label class="category-pill" for="availability">
+        Availability
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="trust"
+        name="service_categories"
+        value="Trust & Reliability "
+      >
+      <label class="category-pill" for="trust">
+        Trust  &amp; Reliabity
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="portfolio"
+        name="service_categories"
+        value="Photos or portfolio of previous work"
+      >
+      <label class="category-pill" for="portfolio">
+        Photos or portfolio of previous work
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="communication"
+        name="service_categories"
+        value="fast & clear communication"
+      >
+      <label class="category-pill" for="communication">
+        Fast &amp; clear communication
+      </label>
+    </div>
+
+
+  </div>
+
+  <div class="form-group">
+          <label class="sr-only" for="other">If other, please specify</label>
+    
+          <input
+            
+            type="text"
+            id="otherServiceDiscovery"
+            name="Other"
+            placeholder="If other, please specify"
+          >
+        </div>
+</fieldset>
+
+<div class="form-actions">
+      <button class="cta-button" type="submit">Join the Waitlist</button>
+    </div>
+
+</form>
+    </section>
+</body>
+
+<script>
+  const backToRoleSelection = document.getElementById("backToRoleSelection");
+  
+  backToRoleSelection.addEventListener("click", function () {
+        window.location.href = "../RoleSelection/roles.html";
+    });
+
+  function limitCheckboxGroup(selector, maximumSelections) {
+    const inputs = document.querySelectorAll(selector);
+
+    inputs.forEach((input) => {
+      input.addEventListener("change", function () {
+        const selectedInputs = document.querySelectorAll(
+          `${selector}:checked`
+        );
+
+        if (selectedInputs.length > maximumSelections) {
+          this.checked = false;
+          alert(`Please select up to ${maximumSelections} options.`);
+        }
+      });
+    });
+  }
+
+  limitCheckboxGroup(".service-preferences .category-input", 3);
+  limitCheckboxGroup(".most-important .priority-input", 3);
+
+ 
+</script>
+
+</html>

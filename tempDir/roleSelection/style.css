@@ -8,7 +8,7 @@
 
 :root {
     --heading-font: 'Space Grotesk', sans-serif;
-    --alternative-font: 'Manrope', sans-serif; 
+    --alternative-font: 'Manrope', serif; 
     --primary-color: #DF5B2E;
     --border-color: #E2E8F0;
     --bg-light: #F9f9f9;
@@ -18,11 +18,11 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
     font-family: var(--alternative-font);
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    
+    background-image: url("../assets/roles_bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
 }
 
 
@@ -34,140 +34,133 @@ body {
     height: 100vh;
 
     .card {
-        background: #ffffff;
-        width: 100%;
-        max-width: 1100px;
-        min-height: 680px;
-        border-radius: 32px;
-        box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.5);
-        display: grid;
-        grid-template-columns: 45% 55%; 
-        overflow: hidden;
+        width: min(100%, 70rem);
+        min-height: 28.5rem;
+
         position: relative;
+        display: block;
+        overflow: visible;
+
+        background: #ffffff;
+        border-radius: 3rem;
+
+        box-shadow: 0 1.5rem 4rem rgba(78, 27, 8, 0.24);
+        }
         
         .details {
-            padding: 0px 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
 
+            position: relative;
+            min-height: 28.5rem;
+            padding: 7.25rem 4.75rem 4.75rem;
+            display: block;
 
             
 
               .back-icon {
-            width: 40px;
-            height: 40px;
-            
-            /* border-radius: 50px; */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            margin-bottom: 0px;
-            margin-top: 0px; 
-            position:absolute;
-            top: 50px;
-            left: 40px;
-            
-            .icon {
-                transition: all 0.2s ease;
-                width: 20px;
-                height: 20px;
-                fill: #64748B;
-                
-
-                &:hover {
-                    
-                    fill: var(--primary-color);
-                    transform: scale(1.05);
-                }
-            }
-
-            
-            
-
-            &::after {
-                content: attr(data-title); 
                 position: absolute;
-                bottom: -35px; 
-                left: 50%;
-                transform: translateX(-50%) scale(0.9);
-                font-family: var(--alternative-font);
-        
-        
-                background-color: var(--primary-color);
-                color: #fff;
-                padding: 6px 10px;
-                border-radius: 4px;
-                font-size: 12px;
-                white-space: nowrap;
-        
-        
-                opacity: 0;
-                pointer-events: none;
-                transition: all 0.2s ease;
-            }
-            
-            &:hover::after {
-                opacity: 1;
-                transform: translateX(-50%) scale(1);
+                top: 4.25rem;
+                left: 4.75rem;
+
+                width: 2rem;
+                height: 2rem;
+
+                display: grid;
+                place-items: center;
+
+                cursor: pointer;
+                margin: 0;  
+                
+                .icon {
+                    fill: #000;
+                    width: 1.8rem;
+                    height: 1.8rem;
+                    transition: transform 180ms ease, fill 180ms ease;
+
+                    &:hover{
+                        fill: var(--primary-color);
+                        transform: translateX(-0.25rem);
+                    }
+                }
             }
         }
 
         /* .logo-header-wrapper {
-                margin-bottom: 30px;
+                position: absolute;
+                top: -6rem;
+                left: 0.5rem;
+                z-index: 2;
 
                 .header-logo {
-                    height: 20px;
-                    width: auto;
+                    display: block;
+                    width: 18rem;
+                    height: auto;
 
+                    path {
+                        fill: #fff;
+                    }
                 }
             } */
         
             .description {
+                max-width: 43rem;
                 
-
                 h1 {
-                    font-family: var(--heading-font);
-                    font-size: 40px;
+                    margin: 0;
                     color: #0F172A;
-                    margin-bottom: 2px;
+                    font-family: var(--heading-font);
+                    font-size: 74px;
+                    line-height: 1.05;
+                    letter-spacing: -0.045em;
                     
                 }
     
                 p {
+                    margin: 1.25rem 0 0;
                     font-size: 24px;
-                    
                     color: #64748B;
-                    line-height: 1.6;
+                    line-height: 1.45;
                     margin-bottom: 40px;
                 }
             }
             .roles {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.65rem;
+                margin-top: 3rem;
                 
                 
                 .role-btn {
-                    margin-bottom: 50px;
+
+                    min-height: 4.85rem;
+                    margin: 0;
+                    padding: 1rem 1.5rem;
+
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    gap: 15px;
-                    padding: 10px 0px;
-                    border: 2px solid var(--border-color);
-                    border-radius: 10px;
-                    background: #ffffff;
+                    gap: 25px;
+
+                    border: 0;
+                    border-radius: 1.4rem;
+
+                    background-color: var(--primary-color);
+                    color: #ffffff;
+
+                    font-family: var(--heading-font);
+                    font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+                    font-weight: 700;
+
                     cursor: pointer;
-                    text-align: center;
-                    color: #0F172A;
-                    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+                    box-shadow: inset 0 -0.18rem 0 rgba(111, 37, 15, 0.14);
+                    transition:
+                        transform 180ms ease,
+                        background-color 180ms ease,
+                        box-shadow 180ms ease;
                     
                     
                     svg {
-                        color: #64748B;
+                        color: #fff;
                         transition: color 0.2s ease;
                     }
                     
@@ -175,92 +168,27 @@ body {
                         font-family: var(--alternative-font);
                         font-size: 20px;
                         font-weight: 600;
-                        display: block;
-                        margin-top: auto;
+                        margin: 0;
                     }
     
                     &:hover {
-                        border-color: var(--primary-color);
-                        background: #FFF8F6;
-                        
+                        background-color: #c9471e;
+                        transform: translateY(-0.22rem);
+                        box-shadow:
+                            inset 0 -0.18rem 0 rgba(85, 23, 7, 0.18),
+                            0 0.85rem 1.5rem rgba(201, 71, 30, 0.24);
                     }
                     
-                    &:hover svg {
-                        color: var(--primary-color);
-                    }
+                    
                     
                     &.active {
-                        border-color: var(--primary-color);
-                        /* background: #FFF1EC; */
-                        color: var(--primary-color);
-                        box-shadow: 0 0 0 1px var(--primary-color);
-                    }
-                    
-                    &.active svg {
-                        color: var(--primary-color);
+                        transform: translateY(0);
+                        background-color: #b8401a; 
                     }
                 }
             }
-            .continue-btn {
-                font-family: var(--alternative-font);
-                width: 100%;
-                padding: 16px;
-                background-color: var(--primary-color);
-                color: #ffffff;
-                border: none;
-                border-radius: 14px;
-                font-size: 24px;
-                font-weight: medium;
-                cursor: pointer;
-                transition: all 0.2s ease;
             
-                &:hover {
-                    background-color: var(--primary-color);
-                    transform: translateY(-1px);
-                    box-shadow: 0px 8px 20px rgba(223, 91, 46, 0.25);
-                }
-            
-                &:disabled {
-                    background-color: #CBD5E1;
-                    color: #94A3B8;
-                    cursor: not-allowed;
-                    transform: none;
-                    box-shadow: none;
-                }
-            }
         }
-
-      
-
-        
-        .image-panel {
-            width: 100%;
-            height: 100%;
-            background-color: #1E293B; 
-            position: relative;
-        
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: right center;
-                display: block;
-            }
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -280,10 +208,10 @@ body {
         padding: 40px 30px;
     }
 
-    .logo-header-wrapper {
+    /* .logo-header-wrapper {
         top: 30px;
         left: 30px;
-    }
+    } */
     
     .back-icon {
         margin-top: 45px;

@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --heading-font: 'Space Grotesk', sans-serif;
+    --alternative-font: 'Manrope', serif; /*400 for p, 600 navbar, 500 for h2*/
+    --primary-color: #DF5B2E;
+    --border-color: #e5e7eb;
+    --input-background: #fafafa;
+    --text-color: #121a26;
+    --placeholder-color: #9ca3af;
+}
+
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    
+
+    main{
+
+        .main-content{
+            background: #fff;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 400px;
+            width: auto;
+
+
+            
+        }
+    }
+} */
+
+
+
+
+body {
+  min-height: 100vh;
+  font-family: var(--alternative-font);
+}
+
+/* Darkened background behind the notification */
+.submission-overlay {
+  min-height: 100vh;
+  width: 100%;
+  padding: 1.5rem;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(18, 26, 38, 0.42);
+}
+
+/* White success card */
+.submission-modal {
+  width: min(100%, 34rem);
+  min-height: 32rem;
+  padding: 4.5rem 3rem 3.25rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #ffffff;
+  border-radius: 0.8rem;
+  box-shadow: 0 1.5rem 4rem rgba(18, 26, 38, 0.2);
+
+  text-align: center;
+  animation: modal-enter 350ms ease-out;
+}
+
+/* Orange success icon */
+.success-icon {
+  width: 5.5rem;
+  height: 5.5rem;
+  margin-bottom: 1.2rem;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  background-color: rgba(223, 91, 46, 0.12);
+  color: var(--primary-color);
+}
+
+.success-icon svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Small text above heading */
+.success-eyebrow {
+  margin-bottom: 0.85rem;
+
+  color: var(--primary-color);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+/* Main message */
+.success-text h1 {
+  max-width: 25rem;
+  margin: 0 auto 1rem;
+
+  color: var(--text-color);
+  font-family: var(--heading-font);
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  line-height: 1.1;
+
+  span {
+    color: var(--primary-color);
+  }
+}
+
+.success-text p {
+  max-width: 26rem;
+  margin: 0 auto;
+
+  color: var(--muted-text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .submission-overlay {
+    padding: 1rem;
+  }
+
+  .submission-modal {
+    min-height: auto;
+    padding: 3.5rem 1.5rem 2.5rem;
+  }
+
+  .success-icon {
+    width: 4.75rem;
+    height: 4.75rem;
+  }
+
+  .success-icon svg {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+}

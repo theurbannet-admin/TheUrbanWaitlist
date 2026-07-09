@@ -47,58 +47,29 @@
                     </button>
                 </div>
 
-                <button class="continue-btn" id="continueBtn" disabled>Continue</button>
             </div>
 
-            <div class="image-panel">
-                <img src="../assets/roles_bg.png" alt="">
-            </div>
+            
 
         </div>
     </div>
     
-    <script>
-        const backToWaitlist = document.getElementById("backToWaitlist");
-        const customerRole = document.getElementById("customerRole");
-        const businessRole = document.getElementById("businessRole");
-        const continueBtn = document.getElementById("continueBtn");
+   <script>
+  const backToWaitlist = document.getElementById("backToWaitlist");
+  const customerRole = document.getElementById("customerRole");
+  const businessRole = document.getElementById("businessRole");
 
-        let selectedRole = null;
+  backToWaitlist.addEventListener("click", function () {
+    window.location.href = "../LandingPage/waitlist.html";
+  });
 
-        // Navigation Back Button Action
-        backToWaitlist.addEventListener("click", function () {
-            window.location.href = "../LandingPage/waitlist.html";
-        });
+  customerRole.addEventListener("click", function () {
+    window.location.href = "../CustomerForm/customer.html";
+  });
 
-        // Role Toggles Behavior Logic
-        customerRole.addEventListener("click", function () {
-            setActiveRole(customerRole, 'customer');
-        });
-
-        businessRole.addEventListener("click", function () {
-            setActiveRole(businessRole, 'business');
-        });
-
-        function setActiveRole(buttonElement, roleType) {
-            // Remove active classes from all buttons
-            document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
-            
-            // Add active state to clicked button
-            buttonElement.classList.add('active');
-            selectedRole = roleType;
-            
-            // Enable the layout's Continue button
-            continueBtn.removeAttribute('disabled');
-        }
-
-        // Final Continue Submission Router Action
-        continueBtn.addEventListener("click", function() {
-            if (selectedRole === 'customer') {
-                window.location.href = "../CustomerWaitlistForm/form.html";
-            } else if (selectedRole === 'business') {
-                alert("Business waitlist form coming soon.");
-            }
-        });
-    </script>
+  businessRole.addEventListener("click", function () {
+    window.location.href = "../BusinessForm/business.html";  
+  });
+</script>
 </body>
 </html>

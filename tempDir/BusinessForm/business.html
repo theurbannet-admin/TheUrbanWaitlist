@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Business Form</title>
+</head>
+<body>
+    <section class="main-content">
+
+        <div class="section-heading">
+            <div class="back-icon" id="backToRoleSelection" data-title="Go Back">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z"/></svg>
+            </div>
+
+            <h1>Be The First To Discover <span>TheUrbanNet</span></h1>
+        </div>
+
+        <form action="#" method="post" class="waitlist-form">
+
+            <!-- Business Details -->
+            <fieldset class="business-details">
+                <legend>Business Details</legend>
+
+                <div class="section-grid">
+
+                    <div class="row1">
+
+                        <!-- Business Name -->
+                        <div class="form-group input-group-icon">
+                            <label for="business-name" class="sr-only">Business Name</label>
+                            <input 
+                            type="text"
+                            id="business-name"
+                            name="business_name"
+                            placeholder="Business Name"
+                            required
+                            >
+                            <span class="input-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path fill="currentColor" d="M20.37 21.25a.75.75 0 0 1-.75.75H4.38a.75.75 0 0 1-.75-.75c0-4.1 4.5-7.28 8.37-7.28s8.37 3.18 8.37 7.28M17.1 7.11A5.1 5.1 0 1 1 12 2a5.11 5.11 0 0 1 5.1 5.11" />
+                                </svg>
+                            </span>
+
+                        </div>
+                   
+
+                    <!-- Business Email -->
+                        <div class="form-group input-group-icon">
+                            <label for="business-email" class="sr-only">Business Email</label>
+                            <input 
+                            type="email"
+                            id="business-email"
+                            name="business_email"
+                            placeholder="Business Email"
+                            required
+                            >
+
+                            <span class="input-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <g fill="currentColor">
+                                        <path d="M22 7.535V17a3 3 0 0 1-2.824 2.995L19 20H5a3 3 0 0 1-2.995-2.824L2 17V7.535l9.445 6.297l.116.066a1 1 0 0 0 .878 0l.116-.066z" />
+                                        <path d="M19 4c1.08 0 2.027.57 2.555 1.427L12 11.797l-9.555-6.37a3 3 0 0 1 2.354-1.42L5 4z" />
+                                    </g>
+                                </svg>
+                            </span>
+
+                        </div>
+                    
+                    </div>
+
+                    <!-- Post Code -->
+                    <div class="form-group input-group-icon">
+                        <label for="postcode" class="sr-only">Postcode</label>
+                        <input 
+                        type="text"
+                        id="postcode"
+                        name="postcode"
+                        placeholder="Postcode"
+                        autocomplete="postal-code"
+                        required
+                        >
+                        <span class="input-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 50 50">
+                                <path d="M0 0h50v50H0z" fill="none" />
+                                <path fill="currentColor" d="M25 0c-8.284 0-15 6.656-15 14.866s15 35.135 15 35.135s15-26.924 15-35.135S33.284 0 25 0m-.049 19.312c-2.557 0-4.629-2.055-4.629-4.588c0-2.535 2.072-4.589 4.629-4.589c2.559 0 4.631 2.054 4.631 4.589c0 2.533-2.072 4.588-4.631 4.588" />
+                            </svg>
+                        </span>
+                        
+                    </div>
+
+                    
+
+                </div>
+
+            </fieldset>
+
+            <!-- Primary Business Category -->
+            <fieldset class="primary-category">
+                <legend>Primary Category</legend>
+                <p>Choose the service area that best represents what your business is known for</p>
+
+                <div class="section-grid">
+                    <!-- Primary Category -->
+                    <div class="form-group input-group-icon select-group">
+                    <label class="sr-only" for="primary-category">Select your main area of expertise</label>
+                    <select id="primary-category" name="primary_category" required>
+                        <option value="" selected disabled>Select your main area of expertise</option>
+                        <option value="Beauty & Grooming">Beauty &amp; Grooming</option>
+                        <option value="Fashion & Styling">Fashion &amp; Styling</option>
+                        <option value="Wellness & Fitness">Wellness &amp; Fitness</option>
+                        <option value="Food & Catering">Food &amp; Catering</option>
+                        <option value="Home & Lifestyle">Home &amp; Lifestyle</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    
+
+                    </div>
+
+                    <!--Specification, if other is selected-->
+                     <div class="form-group">
+                        <label class="sr-only" for="other">If other, please specify</label>
+                    
+                        <input
+                            type="text"
+                            id="otherServiceDiscovery"
+                            name="Other"
+                            placeholder="If other, please specify"
+                        >
+                    </div>
+                </div>
+
+            </fieldset>
+            
+            <!-- Certifications and Licenses -->
+             <fieldset class="certifications-section">
+                <legend>Certifications &amp; Licences</legend>
+
+                <p class="field-helper-text">
+                    List any relevant professional qualifications, training or licences you hold.
+                </p>
+
+                <div id="certification-list">
+                    <div class="certification-item">
+                    <input
+                        type="text"
+                        name="certifications[]"
+                        placeholder="e.g. Level 2 Food Hygiene and Safety"
+                    >
+                    <button type="button" class="remove-certification">
+                        Remove
+                    </button>
+                    </div>
+                </div>
+
+                <button type="button" id="add-certification">
+                    + Add another qualification
+                </button>
+            </fieldset>
+
+            <!-- What matters Most?-->
+            <fieldset class="most-important">
+            <legend>What matters most to you as a service provider?</legend>
+
+
+            <div class="service-pills">
+
+                <div class="service-option">
+                <input
+                    class="category-input"
+                    type="checkbox"
+                    id="clients"
+                    name="service_categories"
+                    value="clients"
+                >
+                <label class="category-pill" for="clients">
+                    Quality clients
+                </label>
+                </div>
+
+                <div class="service-option">
+                <input
+                    class="category-input"
+                    type="checkbox"
+                    id="payments"
+                    name="service_categories"
+                    value="payments"
+                >
+                <label class="category-pill" for="payments">
+                    Secure Payments
+                </label>
+                </div>
+
+                <div class="service-option">
+                <input
+                    class="category-input"
+                    type="checkbox"
+                    id="marketing"
+                    name="service_categories"
+                    value="marketing"
+                >
+                <label class="category-pill" for="marketing">
+                    Marketing
+                </label>
+                </div>
+
+                <div class="service-option">
+                <input
+                    class="category-input"
+                    type="checkbox"
+                    id="flexibility"
+                    name="service_categories"
+                    value="flexibility"
+                >
+                <label class="category-pill" for="flexibility">
+                    Flexibility
+                </label>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                    <label class="sr-only" for="other">If other, please specify</label>
+                
+                    <input
+                        
+                        type="text"
+                        id="otherServiceDiscovery"
+                        name="Other"
+                        placeholder="If other, please specify"
+                    >
+                    </div>
+            </fieldset>
+
+            <!--Portfolio Submission-->
+            <fieldset class="business-details portfolio-submission">
+                <legend class="heading">Social Media or Portfolio Link</legend>
+                <p>Please share a link to your active social media page, website or portfolio where we can view examples of your work and better understand your business.</p>
+
+                
+
+                    <div class="form-group input-group-icon">
+                            <label for="Tiktoklink" class="sr-only">Tiktok Link</label>
+                            <input
+                            type="url"
+                            id="TiktokLink"
+                            name="TiktokLink"
+                            placeholder="https://www.tiktok.com/@businessName"
+                            required
+                            >
+                            <span class="input-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path fill="currentColor" d="M20.357 7.75a.537.537 0 0 0-.495-.516a4.7 4.7 0 0 1-2.415-.938a4.85 4.85 0 0 1-1.887-3.3a.54.54 0 0 0-.517-.496h-2.108a.517.517 0 0 0-.517.527v12.59a2.794 2.794 0 0 1-2.974 2.762a2.815 2.815 0 0 1-2.51-3.711A2.836 2.836 0 0 1 9.93 12.78a.506.506 0 0 0 .558-.506V9.807s-.896-.063-1.202-.063a5.27 5.27 0 0 0-4.101 1.93a5.8 5.8 0 0 0-1.37 2.52a5.86 5.86 0 0 0 2.14 6.072A5.93 5.93 0 0 0 9.591 21.5q.451 0 .896-.063A5.95 5.95 0 0 0 13.8 19.78a5.84 5.84 0 0 0 1.75-4.133V8.71a7.84 7.84 0 0 0 4.218 1.613a.517.517 0 0 0 .548-.527V7.751z" />
+                                </svg>
+                            </span>
+                        </div>
+
+                     <div class="form-group input-group-icon">
+                            <label for="instagramLink" class="sr-only">InstagramLink</label>
+                            <input
+                            type="url"
+                            id="instagramLink"
+                            name="instagramLink"
+                            placeholder="https://www.instagram.com/businessName/"
+                            required
+                            >
+                            <span class="input-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path fill="currentColor" d="M17.34 5.46a1.2 1.2 0 1 0 1.2 1.2a1.2 1.2 0 0 0-1.2-1.2m4.6 2.42a7.6 7.6 0 0 0-.46-2.43a4.9 4.9 0 0 0-1.16-1.77a4.7 4.7 0 0 0-1.77-1.15a7.3 7.3 0 0 0-2.43-.47C15.06 2 14.72 2 12 2s-3.06 0-4.12.06a7.3 7.3 0 0 0-2.43.47a4.8 4.8 0 0 0-1.77 1.15a4.7 4.7 0 0 0-1.15 1.77a7.3 7.3 0 0 0-.47 2.43C2 8.94 2 9.28 2 12s0 3.06.06 4.12a7.3 7.3 0 0 0 .47 2.43a4.7 4.7 0 0 0 1.15 1.77a4.8 4.8 0 0 0 1.77 1.15a7.3 7.3 0 0 0 2.43.47C8.94 22 9.28 22 12 22s3.06 0 4.12-.06a7.3 7.3 0 0 0 2.43-.47a4.7 4.7 0 0 0 1.77-1.15a4.85 4.85 0 0 0 1.16-1.77a7.6 7.6 0 0 0 .46-2.43c0-1.06.06-1.4.06-4.12s0-3.06-.06-4.12M20.14 16a5.6 5.6 0 0 1-.34 1.86a3.06 3.06 0 0 1-.75 1.15a3.2 3.2 0 0 1-1.15.75a5.6 5.6 0 0 1-1.86.34c-1 .05-1.37.06-4 .06s-3 0-4-.06a5.7 5.7 0 0 1-1.94-.3a3.3 3.3 0 0 1-1.1-.75a3 3 0 0 1-.74-1.15a5.5 5.5 0 0 1-.4-1.9c0-1-.06-1.37-.06-4s0-3 .06-4a5.5 5.5 0 0 1 .35-1.9A3 3 0 0 1 5 5a3.1 3.1 0 0 1 1.1-.8A5.7 5.7 0 0 1 8 3.86c1 0 1.37-.06 4-.06s3 0 4 .06a5.6 5.6 0 0 1 1.86.34a3.06 3.06 0 0 1 1.19.8a3.1 3.1 0 0 1 .75 1.1a5.6 5.6 0 0 1 .34 1.9c.05 1 .06 1.37.06 4s-.01 3-.06 4M12 6.87A5.13 5.13 0 1 0 17.14 12A5.12 5.12 0 0 0 12 6.87m0 8.46A3.33 3.33 0 1 1 15.33 12A3.33 3.33 0 0 1 12 15.33" />
+                                </svg>
+                            </span>
+                        </div>
+
+                     <div class="form-group ">
+                            <label for="other" class="sr-only">Other</label>
+                            <input
+                            type="url"
+                            id="other"
+                            name="other"
+                            placeholder="e.g. Website, LinkedIn or portfolio link"
+                            required
+                            >
+                            
+                        </div>
+
+                
+
+            </fieldset>
+
+            <!--Current Booking Method-->
+            <fieldset class="TheUrbanNet-discovery booking-method">
+            <legend>Current Booking Method</legend>
+            <p>How do clients usually book or contact your business?</p>
+
+            <div class="discovery-options">
+                <div class="option">
+                    <input type="radio" id="social" name="discovery_method" value="social-media">
+                    <label for="social">Social Media</label>
+                </div>
+
+                <div class="option">
+                    <input type="radio" id="google" name="discovery_method" value="google">
+                    <label for="google">Professional Network</label>
+                </div>
+
+                <div class="option">
+                    <input type="radio" id="friends" name="discovery_method" value="friends-family">
+                    <label for="friends">Friends or Family</label>
+                </div>
+
+                <div class="option">
+                    <input type="radio" id="apps" name="discovery_method" value="existing-apps">
+                    <label for="apps">Advertisement</label>
+                </div>
+
+                <div class="option">
+                    <input type="radio" id="other" name="discovery_method" value="other">
+                    <label for="other">Other</label>
+                </div>
+            </div>
+
+                <div class="form-group">
+                    <label class="sr-only" for="other">If other, please specify</label>
+                
+                    <input
+                        type="text"
+                        id="otherServiceDiscovery"
+                        name="Other"
+                        placeholder="If other, please specify"
+                    >
+                    </div>
+
+            </fieldset>
+
+             <!--How they found TheUrbanNet-->
+            <fieldset class="TheUrbanNet-discovery">
+            <legend>How did you find TheUrbanNet?</legend>
+
+            <div class="discovery-options">
+                <div class="option">
+                    <input type="radio" id="social" name="discovery_method" value="social-media">
+                    <label for="social">Social Media</label>
+                </div>
+
+                <div class="option">
+                    <input type="radio" id="google" name="discovery_method" value="google">
+                    <label for="google">Professional Network</label>
+                </div>
+
+                <div class="option">
+                    <input type="radio" id="friends" name="discovery_method" value="friends-family">
+                    <label for="friends">Friends or Family</label>
+                </div>
+
+                <div class="option">
+                    <input type="radio" id="apps" name="discovery_method" value="existing-apps">
+                    <label for="apps">Advertisement</label>
+                </div>
+
+                <div class="option">
+                    <input type="radio" id="other" name="discovery_method" value="other">
+                    <label for="other">Other</label>
+                </div>
+            </div>
+
+                <div class="form-group">
+                    <label class="sr-only" for="other">If other, please specify</label>
+                
+                    <input
+                        type="text"
+                        id="otherServiceDiscovery"
+                        name="Other"
+                        placeholder="If other, please specify"
+                    >
+                    </div>
+
+            </fieldset>
+
+            <!-- Submit Button -->
+            <div class="form-actions">
+                <button class="cta-button" type="submit">Join the Waitlist</button>
+            </div>
+
+            
+        </form>
+
+    </section>
+</body>
+
+<script>
+  const addCertificationButton = document.getElementById("add-certification");
+  const certificationList = document.getElementById("certification-list");
+  const backToRoleSelection = document.getElementById("backToRoleSelection");
+
+
+  addCertificationButton.addEventListener("click", () => {
+    const newCertification = document.createElement("div");
+
+    newCertification.classList.add("certification-item");
+
+    newCertification.innerHTML = `
+      <input
+        type="text"
+        name="certifications[]"
+        placeholder="e.g. Certified Makeup Artist"
+      >
+
+      <button type="button" class="remove-certification">
+        Remove
+      </button>
+    `;
+
+    certificationList.appendChild(newCertification);
+  });
+
+  certificationList.addEventListener("click", (event) => {
+    if (!event.target.classList.contains("remove-certification")) {
+      return;
+    }
+
+    const certificationItems = certificationList.querySelectorAll(
+      ".certification-item"
+    );
+
+    if (certificationItems.length > 1) {
+      event.target.closest(".certification-item").remove();
+    }
+  });
+
+    backToRoleSelection.addEventListener("click", function () {
+        window.location.href = "../RoleSelection/roles.html";
+    });
+</script>
+</html>

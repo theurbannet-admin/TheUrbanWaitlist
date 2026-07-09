@@ -493,11 +493,7 @@ nav{
     overflow: hidden;
     z-index: 1;
 
-    .flowerSVG{
-        position: absolute;
-        right: -2%;
-        bottom: -18%;
-    }
+    
 
     .faq-blob {
         position: absolute;
@@ -529,16 +525,53 @@ nav{
             text-align: center;
             margin-bottom: 3rem;
 
+            .faq-label {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.35rem;
+                padding: 0.3rem 0.65rem;
+                margin-bottom: 1rem;
+
+                background: #ffffff;
+                border: 1px solid #e8e2d8;
+                border-radius: 999px;
+
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: #39342f;
+                line-height: 1;
+            }
+
+            .faq-label-icon {
+            display: grid;
+            place-items: center;
+            width: 0.8rem;
+            height: 0.8rem;
+
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #fffdf8;
+
+            font-size: 0.48rem;
+            }
+
             .faq-heading {
                 font-size: 2.5rem;
                 font-weight: 700;
-                color: #1a202c;
+                color: #121A26;
                 line-height: 1.2;
                 font-family: var(--heading-font);
 
                 span {
                     color: var(--primary-color);
                 }
+            }
+
+            .faq-description {
+                font-family: var(--alternative-font);
+                font-size: 1rem;
+                margin-top: 0.5rem;
+                color: #212121
             }
         }
 
@@ -587,7 +620,8 @@ nav{
     .faq-icon {
         width: 40px;
         height: 40px;
-        background-color: #ffffff;
+        background-color: #422918;
+        
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -605,11 +639,13 @@ nav{
         }
         
         &::before {
+            background: #fff;
             width: 12px;
             height: 2px;
         }
         
         &::after {
+            background: #fff;
             width: 2px;
             height: 12px;
         }
@@ -623,7 +659,7 @@ nav{
 
 .faq-item[open] .faq-icon::after {
     transform: rotate(90deg);
-    opacity: 0; /* Smooth fading step creates the clean 'x' switch */
+    opacity: 0; 
 }
 
 .faq-item[open] .faq-icon::before {
@@ -640,6 +676,120 @@ nav{
     p {
        margin: 0;
    }
+}
+
+/* CTA STYLING */
+.cta-section {
+        width: 100%;
+        padding: 4rem 1.5rem 8rem;
+        background-color: #fcfcfc;
+        overflow: hidden;
+        position: relative;
+
+    .main-content{
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: min(100%, 44rem);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .cta-heading {
+
+            display: flex;
+            gap: 1.5rem;
+
+            h2 {
+             margin: 0;
+            
+             color: #121A26;
+             font-family: var(--heading-font);
+             font-size: 3.5rem;
+             font-weight: 700;
+            }
+
+            svg {
+              width: 3.5rem;
+              height: 3.5rem;
+              /* margin-bottom: 1rem; */
+              margin-top: 5px;
+            
+              color: var(--primary-color);
+              stroke-width: 38;
+            
+              animation: rocketFloat 3s ease-in-out infinite;
+            }
+        }
+
+        .cta-description {
+          width: min(100%, 34rem);
+          margin: 1.2rem 0 2rem;
+        
+          color: #000;
+          font-family: var(--alternative-font);
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+
+        .ctaButton {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        
+          padding: 0.95rem 1.5rem;
+          border: 1px solid var(--primary-color);
+          border-radius: 999px;
+        
+          background-color: var(--primary-color);
+          color: #ffffff;
+        
+          font-family: var(--alternative-font);
+          font-size: 0.95rem;
+          font-weight: 600;
+          cursor: pointer;
+        
+          box-shadow: 0 0.75rem 1.8rem rgba(247, 127, 0, 0.24);
+        
+          transition:
+            transform 200ms ease,
+            background-color 200ms ease,
+            box-shadow 200ms ease;
+
+            &:hover {
+              transform: translateY(-0.25rem);
+              background-color: #C9471E;
+              box-shadow: 0 1rem 2rem rgba(247, 127, 0, 0.32);
+            }
+
+            &:active {
+              transform: translateY(0);
+              background-color: #B8401A;
+            }
+        }
+    }
+
+    .flowerSVG{
+        position: absolute;
+        right: -2%;
+        bottom: -30%;
+        z-index: 1;
+    }
+}
+
+@keyframes rocketFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translateY(-0.4rem) rotate(4deg);
+  }
 }
 
 
