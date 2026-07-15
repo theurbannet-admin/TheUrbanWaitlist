@@ -44,6 +44,8 @@ body {
           margin-bottom: 2.5rem;
           display: flex;
           flex-direction: column;
+          align-items: flex-start;
+          width: 100%;
           gap: 10px;
 
           .back-icon {
@@ -74,6 +76,10 @@ body {
             font-family: var(--heading-font);
             font-size: clamp(2rem, 5vw, 3.2rem);
             line-height: 1.1;
+
+              span {
+                color: var(--primary-color);
+            }
           }
         }
 
@@ -340,9 +346,7 @@ body {
             display: flex;
             gap: 8px;
 
-            input[type="radio"] {
-              accent-color: var(--primary-color);
-            }
+            
 
             label {
                 font-size: 0.95rem;
@@ -359,6 +363,11 @@ body {
     margin-top: 2.5rem;
     border: none;
     padding: 0;
+}
+
+/* Change color of checkboxes */
+input[type="checkbox"] {
+  accent-color: var(--primary-color); 
 }
 
 /* What matters Most*/
@@ -461,20 +470,136 @@ body {
     }
 }
 
+    /* From Uiverse.io by Creatlydev */ 
+.cta-button {
+  margin-top: 2rem;
+  line-height: 1;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.75em 1em;
+  padding-right: 1.25em;
+  color: #fff;
+  border: 1px solid transparent;
+  font-weight: 700;
+  border-radius: 2em;
+  font-size: 1rem;
+  box-shadow: 0 0.7em 1.5em -0.5em var(--primary-color);
+  transition: transform 0.3s;
 
-button {
-        background: #DF5B2E;
-        color: #fff; 
-        padding: 12px 24px;
-        border-radius: 15px;
-        font-family: var(--alternative-font);
-        font-size: 16px;
-        font-weight: 400;
-        border: 1px solid var(--primary-color);
-        font-weight: bold;
-        margin-top: 5rem;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color) 0%,
+    #E58B38 100%
+  );
+
+  /* &:hover {
+    border-color: #f4f5f2;
+  } */
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 0 0.5em 1.5em -0.5em var(--primary-color);
+  }
+}
+
+
+
+
+
+
+.hidden {
+  display: none!important;
+}
+
+
+.notification-body {
+      width: min(100%, 34rem);
+      min-height: 32rem;
+      padding: 4.5rem 3rem 3.25rem;
+    
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    
+      background-color: #ffffff;
+      border-radius: 0.8rem;
+      box-shadow: 0 1.5rem 4rem rgba(18, 26, 38, 0.2);
+    
+      text-align: center;
+      animation: modal-enter 350ms ease-out;
+
+      /* Success SVG Option */
+      .success-icon {
+        width: 10.5rem;
+        height: 10.5rem;
+        margin-bottom: 1.2rem;
+      
+        display: grid;
+        place-items: center;
+      
+        border-radius: 50%;
+        background-color: rgba(223, 91, 46, 0.12);
+        color: var(--primary-color);
+      
+        svg {
+         width: 8rem;
+         height: 8rem;
+        animation: ConfettiFloat 3s ease-in-out infinite;
+
+        }
+        }
+
+      .success-text h1 {
+        max-width: 25rem;
+        margin: 0 auto 1rem;
+      
+        color: var(--text-color);
+        font-family: var(--heading-font);
+        font-size: clamp(2rem, 5vw, 2.7rem);
+        line-height: 1.1;
+      }
+
+      .success-text p {
+        max-width: 26rem;
+        margin: 0 auto;
+        
+        color: var(--muted-text-color);
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.7;
+      
+        span {
+          color: var(--primary-color);
+        }
+      }
     }
 
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ConfettiFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translateY(-0.4rem) rotate(4deg);
+  }
+}
 
 
 /* Mobile layout */
@@ -502,5 +627,24 @@ button {
 
   .service-option {
     width: 100%;
+  }
+
+  .bg-overlay {
+    padding: 1rem;
+  }
+
+  .notification-body {
+    min-height: auto;
+    padding: 3.5rem 1.5rem 2.5rem;
+  }
+
+  .success-icon {
+    width: 4.75rem;
+    height: 4.75rem;
+  }
+
+  .success-icon svg {
+    width: 2.6rem;
+    height: 2.6rem;
   }
 }

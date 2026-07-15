@@ -42,6 +42,8 @@ body {
           margin-bottom: 2.5rem;
           display: flex;
           flex-direction: column;
+          align-items: flex-start;
+          width: 100%;
           gap: 10px;
 
           .back-icon {
@@ -250,6 +252,10 @@ body {
 
         
     }
+}
+
+.hidden {
+  display: none !important;
 }
 
 /* Certifications & Licenses */
@@ -540,9 +546,7 @@ body {
             display: flex;
             gap: 8px;
 
-            input[type="radio"] {
-              accent-color: var(--primary-color);
-            }
+            
 
             label {
                 font-size: 0.95rem;
@@ -554,6 +558,11 @@ body {
     .form-group {
         margin-top: 1.5rem;
     }
+}
+
+/* Change color of checkboxes */
+input[type="checkbox"] {
+  accent-color: var(--primary-color); 
 }
 
 /*Submit Button */
@@ -569,6 +578,96 @@ body {
         font-weight: bold;
         margin-top: 5rem;
     }
+
+.hidden {
+  display: none !important;
+} 
+
+.notification-body {
+      width: min(100%, 34rem);
+      min-height: 32rem;
+      padding: 4.5rem 3rem 3.25rem;
+    
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    
+      background-color: #ffffff;
+      border-radius: 0.8rem;
+      box-shadow: 0 1.5rem 4rem rgba(18, 26, 38, 0.2);
+    
+      text-align: center;
+      animation: modal-enter 350ms ease-out;
+
+      /* Success SVG Option */
+      .success-icon {
+        width: 10.5rem;
+        height: 10.5rem;
+        margin-bottom: 1.2rem;
+      
+        display: grid;
+        place-items: center;
+      
+        border-radius: 50%;
+        background-color: rgba(223, 91, 46, 0.12);
+        color: var(--primary-color);
+      
+        svg {
+         width: 8rem;
+         height: 8rem;
+        animation: ConfettiFloat 3s ease-in-out infinite;
+
+        }
+        }
+
+      .success-text h1 {
+        max-width: 25rem;
+        margin: 0 auto 1rem;
+      
+        color: var(--text-color);
+        font-family: var(--heading-font);
+        font-size: clamp(2rem, 5vw, 2.7rem);
+        line-height: 1.1;
+      }
+
+      .success-text p {
+        max-width: 26rem;
+        margin: 0 auto;
+        
+        color: var(--muted-text-color);
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.7;
+      
+        span {
+          color: var(--primary-color);
+        }
+      }
+    }
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ConfettiFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translateY(-0.4rem) rotate(4deg);
+  }
+}
 
 
 @media (max-width: 600px) {

@@ -32,19 +32,22 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-
+    
     .card {
         width: min(100%, 70rem);
         min-height: 28.5rem;
-
+        
         position: relative;
         display: block;
         overflow: visible;
-
+        
         background: #ffffff;
         border-radius: 3rem;
-
+        
         box-shadow: 0 1.5rem 4rem rgba(78, 27, 8, 0.24);
+        animation: modal-enter 350ms ease-out;
+
+        
         }
         
         .details {
@@ -125,20 +128,22 @@ body {
             .roles {
                 display: grid;
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 1.65rem;
+                gap: 0.5rem;
                 margin-top: 3rem;
+               
                 
                 
                 .role-btn {
 
                     min-height: 4.85rem;
+                    width: 400px;
                     margin: 0;
                     padding: 1rem 1.5rem;
 
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    gap: 25px;
+                    gap: 0.5rem;
 
                     border: 0;
                     border-radius: 1.4rem;
@@ -190,7 +195,17 @@ body {
             
         }
 
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.97);
+  }
 
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
 /* Responsive Mobile View Layout Pipeline Rules */
 @media (max-width: 900px) {

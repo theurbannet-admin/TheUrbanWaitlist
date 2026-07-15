@@ -14,11 +14,11 @@
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z"/></svg>
             </div>
 
-            <h1>Be The First To Discover TheUrbanNet</h1>
+            <h1>Join as a <span>Customer</span></h1>
         </div>
 
         <!-- Personal Details -->
-<form action="#" method="post" class="waitlist-form">
+<form action="#" method="post" class="waitlist-form" id="waitlistForm"> 
     <fieldset class="personal-details">
       <legend>Personal Details</legend>
     
@@ -108,7 +108,7 @@
     </fieldset>
 
     <!-- Service Preferences -->
-<fieldset class="service-preferences">
+<fieldset class="service-preferences checkbox-question" data-max="3">
   <legend>Which Services Do You Use Most?</legend>
 
   <p class="service-helper-text">Pick Your Top 3 Categories</p>
@@ -184,105 +184,118 @@
 </fieldset>
 
 <!--Current Service Discovery-->
-<fieldset class="current-service-discovery">
+<fieldset class="current-service-discovery checkbox-question" data-max="3">
   <legend>How do you currently find your services?</legend>
 
   <div class="discovery-options">
     <div class="option">
-        <input type="radio" id="social" name="discovery_method" value="social-media">
+        <input type="checkbox" id="social" name="discovery_method" value="social-media">
         <label for="social">Social Media</label>
     </div>
 
     <div class="option">
-        <input type="radio" id="google" name="discovery_method" value="google">
+        <input type="checkbox" id="google" name="discovery_method" value="google">
         <label for="google">Google</label>
     </div>
 
     <div class="option">
-        <input type="radio" id="friends" name="discovery_method" value="friends-family">
+        <input type="checkbox" id="friends" name="discovery_method" value="friends-family">
         <label for="friends">Friends or Family</label>
     </div>
 
     <div class="option">
-        <input type="radio" id="apps" name="discovery_method" value="existing-apps">
+        <input type="checkbox" id="apps" name="discovery_method" value="existing-apps">
         <label for="apps">Existing Apps</label>
     </div>
 
     <div class="option">
-        <input type="radio" id="word-of-mouth" name="discovery_method" value="word-of-mouth">
+        <input type="checkbox" id="word-of-mouth" name="discovery_method" value="word-of-mouth">
         <label for="word-of-mouth">Word of Mouth</label>
     </div>
+    
 
     <div class="option">
-        <input type="radio" id="other" name="discovery_method" value="other">
-        <label for="other">Other</label>
+        <input
+          class="other-option"
+          type="checkbox"
+          id="current-services-other"
+          name="current_service_discovery"
+          value="other"
+        >
+        <label for="current-services-other">Other</label>
     </div>
   </div>
 
-    <div class="form-group">
-          <label class="sr-only" for="other">If other, please specify</label>
-    
-          <input
-            type="text"
-            id="otherServiceDiscovery"
-            name="Other"
-            placeholder="If other, please specify"
-          >
-        </div>
+   <div class="form-group other-input-group hidden">
+    <label class="sr-only" for="current-services-other-text">If other, please specify</label>
+
+    <input
+      type="text"
+      id="current-services-other-text"
+      name="current_service_discovery_other"
+      placeholder="If other, please specify"
+    >
+  </div>
 
 </fieldset>
 
 <!--How they found TheUrbanNet-->
-<fieldset class="TheUrbanNet-discovery">
+<fieldset class="TheUrbanNet-discovery checkbox-question" data-max="3">
   <legend>How did you find TheUrbanNet?</legend>
 
   <div class="discovery-options">
     <div class="option">
-        <input type="radio" id="social" name="discovery_method" value="social-media">
+        <input type="checkbox" id="social" name="discovery_method" value="social-media">
         <label for="social">Social Media</label>
     </div>
 
     <div class="option">
-        <input type="radio" id="google" name="discovery_method" value="google">
+        <input type="checkbox" id="google" name="discovery_method" value="google">
         <label for="google">Google</label>
     </div>
 
     <div class="option">
-        <input type="radio" id="friends" name="discovery_method" value="friends-family">
+        <input type="checkbox" id="friends" name="discovery_method" value="friends-family">
         <label for="friends">Friends or Family</label>
     </div>
 
     <div class="option">
-        <input type="radio" id="apps" name="discovery_method" value="existing-apps">
+        <input type="checkbox" id="apps" name="discovery_method" value="existing-apps">
         <label for="apps">Existing Apps</label>
     </div>
 
     <div class="option">
-        <input type="radio" id="word-of-mouth" name="discovery_method" value="word-of-mouth">
+        <input type="checkbox" id="word-of-mouth" name="discovery_method" value="word-of-mouth">
         <label for="word-of-mouth">Word of Mouth</label>
     </div>
 
     <div class="option">
-        <input type="radio" id="other" name="discovery_method" value="other">
-        <label for="other">Other</label>
+        <input
+          class="other-option"
+          type="checkbox"
+          id="found-urbannet-other"
+          name="found_urbannet"
+          value="other"
+        >
+        <label for="found-urbannet-other">Other</label>
     </div>
   </div>
 
-    <div class="form-group">
-          <label class="sr-only" for="other">If other, please specify</label>
-    
-          <input
-            type="text"
-            id="otherServiceDiscovery"
-            name="Other"
-            placeholder="If other, please specify"
-          >
-        </div>
+   <div class="form-group other-input-group hidden">
+    <label class="sr-only" for="found-urbannet-other-text">If other, please specify</label>
+
+    <input
+      type="text"
+      id="found-urbannet-other-text"
+      name="found_urbannet_other"
+      placeholder="If other, please specify"
+    >
+  </div>
 
 </fieldset>
 
  <!-- What matters Most?-->
-<fieldset class="most-important">
+<fieldset class="most-important checkbox-question" data-max="5">
   <legend>What Matters Most</legend>
 
   <p class="service-helper-text">What matters most to you when choosing a service?</p>
@@ -393,29 +406,69 @@
       </label>
     </div>
 
+    <div class="service-option">
+      <input
+        class="category-input other-option"
+        type="checkbox"
+        id="what-matters-other"
+        name="what_matters_most"
+        value="other"
+      >
+      <label class="category-pill" for="what-matters-other">Other</label>
+    </div>
+
 
   </div>
 
-  <div class="form-group">
-          <label class="sr-only" for="other">If other, please specify</label>
-    
-          <input
-            
-            type="text"
-            id="otherServiceDiscovery"
-            name="Other"
-            placeholder="If other, please specify"
-          >
-        </div>
+  <div class="form-group other-input-group hidden">
+    <label class="sr-only" for="what-matters-other-text">If other, please specify</label>
+
+    <input
+      type="text"
+      id="what-matters-other-text"
+      name="what_matters_other"
+      placeholder="If other, please specify"
+    >
+  </div>
 </fieldset>
 
 <div class="form-actions">
-      <button class="cta-button" type="submit">Join the Waitlist</button>
+      <button class="cta-button" type="submit" id="submitBtn">Join the Waitlist</button>
     </div>
 
 </form>
     </section>
-</body>
+
+    <section id="successMessage" class="notification-body hidden" role="status"  tabindex="-1" aria-live="polite">
+
+   <!-- Success SVG OPTION -->
+  <div class="success-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+	<path d="M0 0h24v24H0z" fill="none" />
+	<g fill="none">
+		<path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="m13.306 18.298l-5.069 1.689c-2.765.922-4.148 1.383-4.878.653s-.269-2.113.653-4.878l1.69-5.069c.766-2.298 1.149-3.447 2.055-3.66c.906-.215 1.763.642 3.475 2.355l3.38 3.379c1.712 1.713 2.569 2.569 2.355 3.475" />
+		<path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M12.235 18.346s-.758-2.281-.758-3.79c0-1.51.758-3.792.758-3.792m-4.17 8.72s-.64-2.753-.758-4.55c-.195-2.969.758-7.581.758-7.581m6.445 2.653l.143-.72c.146-.727.67-1.32 1.373-1.554a2.07 2.07 0 0 0 1.372-1.555l.144-.72m.028 7.796l.212.123c.657.38 1.483.296 2.051-.207a1.76 1.76 0 0 1 1.876-.297L22 13M9.795 2.779A1.4 1.4 0 0 0 10 4.5l.098.098c.393.393.538.97.377 1.503" />
+		<path fill="currentColor" d="M6.928 3.94a.536.536 0 1 1 .758.76a.536.536 0 0 1-.758-.76m5.229 3.217a.536.536 0 1 1 .759.759a.536.536 0 0 1-.759-.759m5 3a.536.536 0 1 1 .759.759a.536.536 0 0 1-.759-.759m1.901 5.156a.536.536 0 1 1 .759.759a.536.536 0 0 1-.759-.759" />
+		<path stroke="currentColor" stroke-linejoin="round" d="M19.362 7.714c-.67.67-.19 2.614-.19 2.614s1.944.481 2.614-.19c.71-.71.308-1.64-.786-1.638c.003-1.094-.929-1.496-1.639-.786Z" />
+		<path stroke="currentColor" d="m15.188 3.417l-.027.098c-.03.106-.046.16-.038.212c.007.052.035.098.093.189l.052.082c.202.32.303.48.234.611s-.262.146-.648.176l-.1.008c-.11.009-.164.013-.212.038s-.083.068-.155.155l-.064.079c-.251.304-.376.456-.52.437c-.142-.02-.208-.198-.34-.555l-.034-.092c-.037-.102-.056-.152-.093-.19c-.037-.036-.087-.055-.189-.092l-.092-.034c-.357-.132-.535-.198-.555-.34c-.02-.144.133-.27.437-.52l.079-.065c.086-.07.13-.106.155-.154s.03-.103.038-.213l.008-.1c.03-.385.045-.578.176-.647c.13-.069.29.032.61.234l.083.052c.091.058.137.086.189.093s.106-.008.212-.038l.098-.027c.375-.107.563-.16.663-.06s.047.288-.06.663Z" />
+	</g>
+</svg>
+    </div>
+
+    <div class="success-text">
+      <h1 id="success-title">You're In!</h1>
+      <!-- <h1 id="success-title">One Step Away From <span>TheUrbanNet!</span></h1> -->
+
+      <p>
+        Check your email. We just sent a quick UrbanNet guide, with more on what we offer and what
+        happens next.
+        <span>Stay tuned for our upcoming launch.</span>
+       </p>
+    </div>
+
+    
+  </section>
+
 
 <script>
   const backToRoleSelection = document.getElementById("backToRoleSelection");
@@ -424,27 +477,82 @@
         window.location.href = "../RoleSelection/roles.html";
     });
 
-  function limitCheckboxGroup(selector, maximumSelections) {
-    const inputs = document.querySelectorAll(selector);
+  function setupCheckboxQuestion(sectionSelector) {
+  const sections = document.querySelectorAll(sectionSelector);
 
-    inputs.forEach((input) => {
-      input.addEventListener("change", function () {
-        const selectedInputs = document.querySelectorAll(
-          `${selector}:checked`
+  sections.forEach((section) => {
+    const maxSelections = Number(section.dataset.max);
+    const checkboxes = section.querySelectorAll('input[type="checkbox"]');
+
+    const otherCheckbox = section.querySelector(".other-option");
+    const otherInputGroup = section.querySelector(".other-input-group");
+    const otherInput = otherInputGroup?.querySelector("input");
+
+    function updateOtherInput() {
+      if (!otherCheckbox || !otherInputGroup || !otherInput) {
+        return;
+      }
+
+      const isOtherChecked = otherCheckbox.checked;
+
+      otherInputGroup.classList.toggle("hidden", !isOtherChecked);
+      otherInput.required = isOtherChecked;
+
+      if (!isOtherChecked) {
+        otherInput.value = "";
+      }
+    }
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", function () {
+        const selectedCheckboxes = section.querySelectorAll(
+          'input[type="checkbox"]:checked'
         );
 
-        if (selectedInputs.length > maximumSelections) {
+        if (selectedCheckboxes.length > maxSelections) {
           this.checked = false;
-          alert(`Please select up to ${maximumSelections} options.`);
+          alert(`Please select up to ${maxSelections} options.`);
         }
+
+        updateOtherInput();
       });
     });
-  }
 
-  limitCheckboxGroup(".service-preferences .category-input", 3);
-  limitCheckboxGroup(".most-important .priority-input", 3);
+    updateOtherInput();
+  });
+}
 
+setupCheckboxQuestion(".checkbox-question");
+
+  const mainContent = document.querySelector(".main-content");
+  const form = document.getElementById("waitlistForm");
+  const successMessage = document.getElementById("successMessage");
+  const submitBtn = document.getElementById("submitBtn");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    setTimeout(() => {
+      mainContent.classList.add("hidden");
+      successMessage.classList.remove("hidden");
+
+      successMessage.focus();
+
+      successMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }, 600);
+  });
  
 </script>
-
+</body>
 </html>

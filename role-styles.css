@@ -1,26 +1,20 @@
-/* Addition of custom fonts using @font-face */
-@font-face {
-    font-family: 'Manrope';
-    src: url('fonts/Manrope-Regular.ttf') format('truetype');
-    font-weight: 400; 
-    font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@700&display=swap');
 
-@font-face {
-    font-family: 'Manrope';
-    src: url('fonts/Manrope-Bold.ttf') format('truetype');
-    font-weight: 700; 
-    font-style: normal;
-}
 
-/* background: linear-gradient(90deg, #E87E44 0%, #DF5B2E 100%); */ 
 
-*{
-    margin: 0px;
-    padding: 0px;
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: Manrope, sans-serif;
+
 }
+
+:root {
+    --heading-font: 'Space-Grotesk';
+    --alternative-font: 'Manrope'; /*400 for p, 600 navbar, 500 for h2*/
+
+}
+
 
 body{
     background-color: #F9F9F9;

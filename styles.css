@@ -55,13 +55,13 @@ nav{
     background: #DF5B2E;
     color: #FFFFFF; 
     padding: 12px 24px;
-    border-radius: 10px;
+    border-radius: 9999px;
     font-size: 15px;
     border: none;
     font-weight: bold;
 }
 
-/* Remeber to style navigation links */
+/* Remember to style navigation links */
 
 .hero {
     text-align: center;
