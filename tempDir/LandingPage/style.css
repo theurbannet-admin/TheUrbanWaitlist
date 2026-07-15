@@ -93,27 +93,33 @@ nav{
     }
 
     button {
-        /* background: #DF5B2E; */
-        background: var(--primary-color);
-        color: #fff; 
-        padding: 12px 24px;
-        border-radius: 15px;
-        font-family: var(--alternative-font);
-        font-size: 15px;
-        font-weight: 400;
-        /* border: 1px solid var(--primary-color); */
-        border: none;
-        font-weight: bold;
+        padding:  1rem;
         cursor: pointer;
-        transition: transform 0.2s ease;
+        color: #fff; 
+        font-size: 1rem;
+        border-radius: 2rem;
+        font-family: var(--alternative-font);
+        font-weight: bold;
+        
+
+        border: 1px solid transparent;
+        background-color: transparent;
+        box-shadow: 0 0.7em 1.5em -0.5em var(--primary-color);
+        transition: transform 0.3s ease;
+
+        background: linear-gradient(
+            90deg,
+            var(--primary-color) 0%,
+            #E58B38 100%
+        );
 
         &:hover, &:focus {
-            box-shadow: 0 0.5em 0.5em -0.4em var(--shadow-color);
-            transform: translateY(-0.25em);
-        }
+                    transform: translateY(-0.25em);
+                }
 
         &:active {
-            transform: scale(0.96);
+            transform: scale(0.98);
+            box-shadow: 0 0.5em 1.5em -0.5em var(--primary-color);
         }
 
     }
@@ -1095,38 +1101,37 @@ nav{
         }
 
         .ctaButton {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         
-          padding: 0.95rem 1.5rem;
-          border: 1px solid var(--primary-color);
-          border-radius: 999px;
-        
-          background-color: var(--primary-color);
-          color: #ffffff;
-        
-          font-family: var(--alternative-font);
-          font-size: 0.95rem;
-          font-weight: 600;
-          cursor: pointer;
-        
-          box-shadow: 0 0.75rem 1.8rem rgba(247, 127, 0, 0.24);
-        
-          transition:
-            transform 200ms ease,
-            background-color 200ms ease,
-            box-shadow 200ms ease;
+            padding: 1rem;
+            cursor: pointer;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 2rem;
+            font-family: var(--alternative-font);
+            font-weight: bold;
 
-            &:hover {
-              transform: translateY(-0.25rem);
-              background-color: #C9471E;
-              box-shadow: 0 1rem 2rem rgba(247, 127, 0, 0.32);
-            }
+            
+            border: 1px solid transparent;
+            background-color: transparent;
+            box-shadow: 0 0.7em 1.5em -0.5em var(--primary-color);
+            transition: transform 0.3s ease;
+            
+            background: linear-gradient(
+                90deg,
+                var(--primary-color) 0%,
+                #E58B38 100%
+            );
+
+            &:hover, &:focus {
+                        transform: translateY(-0.25em);
+                    }
 
             &:active {
-              transform: translateY(0);
-              background-color: #B8401A;
+                transform: scale(0.98);
+                box-shadow: 0 0.5em 1.5em -0.5em var(--primary-color);
             }
         }
     }

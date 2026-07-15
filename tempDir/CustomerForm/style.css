@@ -470,44 +470,42 @@ input[type="checkbox"] {
     }
 }
 
-    /* From Uiverse.io by Creatlydev */ 
 .cta-button {
-  margin-top: 2rem;
-  line-height: 1;
-  background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.35em;
-  padding: 0.75em 1em;
-  padding-right: 1.25em;
-  color: #fff;
-  border: 1px solid transparent;
-  font-weight: 700;
-  border-radius: 2em;
-  font-size: 1rem;
-  box-shadow: 0 0.7em 1.5em -0.5em var(--primary-color);
-  transition: transform 0.3s;
+  
 
+  padding: 1rem;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 2rem;
+  font-family: var(--alternative-font);
+  font-weight: bold;
+
+  
+  border: 1px solid transparent;
+  background-color: transparent;
+  box-shadow: 0 0.7em 1.5em -0.5em var(--primary-color);
+  transition: transform 0.3s ease;
+  
   background: linear-gradient(
     90deg,
     var(--primary-color) 0%,
     #E58B38 100%
   );
 
-  /* &:hover {
-    border-color: #f4f5f2;
-  } */
+  &:hover, &:focus {
+            transform: translateY(-0.25em);
+        }
 
   &:active {
     transform: scale(0.98);
     box-shadow: 0 0.5em 1.5em -0.5em var(--primary-color);
   }
+
+   /* Case Specific */
+  margin-top: 2rem;
+  line-height: 1;
 }
-
-
-
-
 
 
 .hidden {
