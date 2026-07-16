@@ -609,7 +609,10 @@ input[type="checkbox"] {
   display: none !important;
 } 
 
-.notification-body {
+/*Success Notifcation*/
+    .notification-body {
+      display: grid;
+      place-items: center;
       width: min(100%, 34rem);
       min-height: 32rem;
       padding: 4.5rem 3rem 3.25rem;
@@ -625,6 +628,18 @@ input[type="checkbox"] {
     
       text-align: center;
       animation: modal-enter 350ms ease-out;
+      position: relative;
+
+      .logo{
+        position: absolute;
+        top: 5%;
+        left: 5%;
+
+        svg{
+          width: 100px;
+          height: auto;
+        }
+      }
 
       /* Success SVG Option */
       .success-icon {
@@ -647,30 +662,33 @@ input[type="checkbox"] {
         }
         }
 
-      .success-text h1 {
-        max-width: 25rem;
-        margin: 0 auto 1rem;
-      
-        color: var(--text-color);
-        font-family: var(--heading-font);
-        font-size: clamp(2rem, 5vw, 2.7rem);
-        line-height: 1.1;
-      }
-
-      .success-text p {
-        max-width: 26rem;
-        margin: 0 auto;
-        
-        color: var(--muted-text-color);
-        font-size: 1rem;
-        font-weight: 500;
-        line-height: 1.7;
-      
-        span {
-          color: var(--primary-color);
+        .success-text {
+          h1 {
+            max-width: 25rem;
+            margin: 0 auto 1rem;
+          
+            color: var(--text-color);
+            font-family: var(--heading-font);
+            font-size: clamp(2rem, 5vw, 2.7rem);
+            line-height: 1.1;
+          }
+  
+          p {
+           max-width: 26rem;
+           margin: 0 auto;
+           
+           color: var(--muted-text-color);
+           font-size: 1rem;
+           font-weight: 500;
+           line-height: 1.7;
+         
+           span {
+             color: var(--primary-color);
+           }
+         }
         }
       }
-    }
+    
 
 @keyframes modal-enter {
   from {
@@ -707,4 +725,26 @@ input[type="checkbox"] {
       width: 100%;
     }
   }
+
+   .bg-overlay {
+    padding: 1rem;
+
+    .notification-body {
+      min-height: auto;
+      padding: 3.5rem 1.5rem 2.5rem;
+
+      .success-icon {
+        width: 4.75rem;
+        height: 4.75rem;
+      }
+      
+      .success-icon svg {
+        width: 2.6rem;
+        height: 2.6rem;
+      }
+    }
+  }
+
+
+
 }

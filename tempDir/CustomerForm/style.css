@@ -530,6 +530,19 @@ input[type="checkbox"] {
       text-align: center;
       animation: modal-enter 350ms ease-out;
 
+      position: relative;
+
+       .logo{
+          position: absolute;
+          top: 5%;
+          left: 5%;
+
+          svg{
+            width: 100px;
+            height: auto;
+          }
+        }
+
       /* Success SVG Option */
       .success-icon {
         width: 10.5rem;

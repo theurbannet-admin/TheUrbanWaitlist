@@ -105,13 +105,13 @@ body {
             } */
         
             .description {
-                max-width: 43rem;
                 
-                h1 {
+                
+                h2 {
                     margin: 0;
                     color: #0F172A;
                     font-family: var(--heading-font);
-                    font-size: 74px;
+                    font-size: 4rem;
                     line-height: 1.05;
                     letter-spacing: -0.045em;
                     
@@ -119,10 +119,12 @@ body {
     
                 p {
                     margin: 1.25rem 0 0;
+                    font-family: var(--alternative-font);
                     font-size: 24px;
                     color: #64748B;
                     line-height: 1.45;
                     margin-bottom: 40px;
+                    
                 }
             }
             .roles {
