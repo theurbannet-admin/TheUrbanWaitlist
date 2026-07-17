@@ -487,8 +487,18 @@ nav{
         align-items: center;
         width: 1200px;
         height: 550px;
-        background-color: var(--primary-color);
+        /* background-color: var(--primary-color); */
         border-radius: 10px;
+
+        background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), 
+        url('../assets/UVP1.png');
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: scroll;
+        
 
         .chatConversation {
             width: min(100%, 520px);
@@ -517,6 +527,8 @@ nav{
                 line-height: 1.4;
 
                 box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.08);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
 
                 opacity: 0;
                 transform: translateY(0.8rem) scale(0.96);
@@ -574,6 +586,7 @@ nav{
                 max-width: 900px;
             }
         }
+
     }
 }
 
@@ -589,6 +602,7 @@ nav{
   border-top: 0.55rem solid rgba(255, 255, 255, 0.38);
 }
 
+/*UVP Syling #2*/
 .UVP2{
     width: 100%;
     min-height: 100vh;
@@ -618,8 +632,9 @@ nav{
 
         .grid-top-row {
             grid-template-columns: 2fr 1fr;
+            position: relative;
 
-        .heading, .customer-benefits{
+        .heading, .business-benefits{
                 height: 100%;
                 margin: 0;
                 border-radius: 2rem;
@@ -647,7 +662,7 @@ nav{
             grid-template-columns: 1fr 2fr;
             
 
-            .business-benefits,
+            .customer-benefits,
             .uvp-image {
                 min-width: 0;
                 height: 100%;
@@ -657,11 +672,19 @@ nav{
             }
 
             .uvp-image{
-                 background: var(--primary-color);
+                 /* background: var(--primary-color); */
+                 background-image:  
+        url('../assets/UVP-bg.png');
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: scroll;
+                
                 }
         }
 
-        .grid-top-row .customer-benefits, .grid-bottom-row .business-benefits {
+        .grid-top-row .business-benefits, .grid-bottom-row .customer-benefits {
             padding: clamp(1.5rem, 3vw, 2.5rem);
 
             display: flex;
@@ -696,9 +719,9 @@ nav{
     
     img{
         position:absolute;
-        width: 350px;
+        width: 700px;
         height: auto;
-        left: 50%;
+        left: 44%;
         bottom: 12.8%;
         
         z-index: 1;
