@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Business Form</title>
+    <script src="business.js" defer></script>
 </head>
 <body>
     <section class="main-content">
@@ -33,11 +34,14 @@
                         <!-- Business Name -->
                         <div class="form-group input-group-icon">
                             <label for="business-name" class="sr-only">Business Name</label>
-                            <input 
+                            <input
                             type="text"
                             id="business-name"
                             name="business_name"
                             placeholder="Business name"
+                            autocomplete="organization"
+                            minlength="2"
+                            maxlength="80"
                             required
                             >
                             <span class="input-icon" aria-hidden="true">
@@ -53,11 +57,14 @@
                     <!-- Business Email -->
                         <div class="form-group input-group-icon">
                             <label for="business-email" class="sr-only">Business Email</label>
-                            <input 
+                            <input
                             type="email"
                             id="business-email"
                             name="business_email"
                             placeholder="Business email"
+                            autocomplete="email"
+                            inputmode="email"
+                            maxlength="254"
                             required
                             >
 
@@ -78,12 +85,14 @@
                     <!-- Post Code -->
                     <div class="form-group input-group-icon">
                         <label for="postcode" class="sr-only">Postcode</label>
-                        <input 
+                        <input
                         type="text"
                         id="postcode"
                         name="postcode"
                         placeholder="Business postcode"
                         autocomplete="postal-code"
+                        maxlength="8"
+                        pattern="[A-Za-z]{1,2}[0-9][A-Za-z0-9]?\s?[0-9][A-Za-z]{2}"
                         required
                         >
                         <span class="input-icon" aria-hidden="true">
@@ -131,7 +140,8 @@
                             type="text"
                             id="otherCategory"
                             name="other_category"
-                            placeholder="If other, please specify"
+                            placeholder="Please specify your main service"
+                            maxlength="60"
                         >
                     </div>
                 </div>
@@ -151,6 +161,8 @@ Add any relevant professional qualifications, training or licences you hold     
                         type="text"
                         name="certifications[]"
                         placeholder="e.g. Level 2 Food Hygiene and Safety"
+                        maxlength="100"
+
                     >
                     <button type="button" class="remove-certification">
                         Remove
@@ -164,7 +176,7 @@ Add any relevant professional qualifications, training or licences you hold     
             </fieldset>
 
             <!-- What matters Most?-->
-            <fieldset class="most-important checkbox-question" data-max="4">
+            <fieldset class="most-important checkbox-question" data-min="1" data-max="4">
             <legend>What matters most to you as a service provider?</legend>
 
 
@@ -272,6 +284,7 @@ Add any relevant professional qualifications, training or licences you hold     
                         id="otherMostImportantInput"
                         name="other_most_important"
                         placeholder="If other, please specify"
+                        maxlength="60"
                     >
                     </div>
             </fieldset>
@@ -286,11 +299,12 @@ Add any relevant professional qualifications, training or licences you hold     
                     <div class="form-group input-group-icon">
                             <label for="tiktoklink" class="sr-only">Tiktok Link</label>
                             <input
+                            class="portfolio-link"
+                            maxlength="2048"
                             type="url"
                             id="tiktokLink"
                             name="tiktokLink"
                             placeholder="https://www.tiktok.com/@businessName"
-                            required
                             >
                             <span class="input-icon" aria-hidden="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -303,11 +317,13 @@ Add any relevant professional qualifications, training or licences you hold     
                         <div class="form-group input-group-icon">
                                <label for="instagramLink" class="sr-only">Instagram Link</label>
                                <input
+                               class="portfolio-link"
+                               maxlength="2048"
                                type="url"
                                id="instagramLink"
                                name="instagramLink"
                                placeholder="https://www.instagram.com/businessName/"
-                               required
+                               
                                >
                                <span class="input-icon" aria-hidden="true">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -320,11 +336,13 @@ Add any relevant professional qualifications, training or licences you hold     
                         <div class="form-group input-group-icon">
                                <label for="twitterLink" class="sr-only">Twitter Link</label>
                                <input
+                               class="portfolio-link"
+                               maxlength="2048"
                                type="url"
                                id="twitterLink"
-                               name="twittwerLink"
+                               name="twitterLink"
                                placeholder="https://x.com/businessName"
-                               required
+                               
                                >
                                <span class="input-icon" aria-hidden="true">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14">
@@ -346,11 +364,13 @@ Add any relevant professional qualifications, training or licences you hold     
                         <div class="form-group input-group-icon">
                                <label for="facebookLink" class="sr-only">Facebook Link</label>
                                <input
+                               class="portfolio-link"
+                               maxlength="2048"
                                type="url"
                                id="facebookLink"
                                name="facebookLink"
                                placeholder="https://www.facebook.com/businessName"
-                               required
+                               
                                >
                                <span class="input-icon" aria-hidden="true">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -364,11 +384,12 @@ Add any relevant professional qualifications, training or licences you hold     
                         <div class="form-group input-group-icon">
                                <label for="linkedInLink" class="sr-only">LinkedIn Link</label>
                                <input
+                               class="portfolio-link"
+                               maxlength="2048"
                                type="url"
                                id="linkedInLink"
-                               name="linkedInink"
+                               name="linkedInLink"
                                placeholder="https://www.linkedin.com/company/businessName"
-                               required
                                >
                                <span class="input-icon" aria-hidden="true">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -381,11 +402,13 @@ Add any relevant professional qualifications, training or licences you hold     
                         <div class="form-group input-group-icon">
                                <label for="youtubeLink" class="sr-only">YouTube Link</label>
                                <input
+                               class="portfolio-link"
+                               maxlength="2048"
                                type="url"
                                id="youtubeLink"
                                name="youtubeLink"
                                placeholder="https://www.youtube.com/@businessName"
-                               required
+                               
                                >
                                <span class="input-icon" aria-hidden="true">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
@@ -404,11 +427,13 @@ Add any relevant professional qualifications, training or licences you hold     
                      <div class="form-group ">
                             <label for="other" class="sr-only">Other</label>
                             <input
+                            class="portfolio-link"
+                            maxlength="2048"
                             type="url"
                             id="other"
-                            name="other"
+                            name="otherLink"
                             placeholder="Other links (Optional e.g. Website, behance, pinterest profile )"
-                            required
+                            
                             >
                             
                         </div>
@@ -418,7 +443,7 @@ Add any relevant professional qualifications, training or licences you hold     
             </fieldset>
 
             <!--Current Booking Method-->
-            <fieldset class="TheUrbanNet-discovery booking-method checkbox-question" data-max="3">
+            <fieldset class="TheUrbanNet-discovery booking-method checkbox-question"  data-min="1" data-max="3">
             <legend>Your Current Booking Method</legend>
             <p>How do clients usually book or contact your business?</p>
 
@@ -456,12 +481,13 @@ Add any relevant professional qualifications, training or licences you hold     
                 id="booking-other-text"
                 name="booking_method_other"
                 placeholder="If other, please specify"
+                maxlength="60"
                 >
             </div>
             </fieldset>
 
              <!--How they found TheUrbanNet-->
-            <fieldset class="TheUrbanNet-discovery checkbox-question" data-max="3">
+            <fieldset class="TheUrbanNet-discovery checkbox-question" data-min="1" data-max="3">
             <legend>How did you hear about TheUrbanNet?</legend>
 
             <div class="discovery-options">
@@ -498,6 +524,7 @@ Add any relevant professional qualifications, training or licences you hold     
                 id="foundUrbanNetOtherInput"
                 name="found_urbannet_other"
                 placeholder="If other, please specify"
+                maxlength="60"
                 >
             </div>
             </fieldset>
@@ -517,7 +544,8 @@ Add any relevant professional qualifications, training or licences you hold     
   
   <div class="notification-body">
 
-    <div class="logo"> <svg
+    <div class="logo"> 
+        <svg
           width="230"
           height="45"
           viewBox="0 0 230 45"
@@ -592,141 +620,5 @@ Add any relevant professional qualifications, training or licences you hold     
   
 </section>
 
-    
-  
-    
-    <script>
-        const addCertificationButton = document.getElementById("add-certification");
-        const certificationList = document.getElementById("certification-list");
-        const backToRoleSelection = document.getElementById("backToRoleSelection");
-        const submitBtn = document.getElementById("submitBtn");
-        
-        addCertificationButton.addEventListener("click", () => {
-            const newCertification = document.createElement("div");
-            
-            newCertification.classList.add("certification-item");
-            
-            newCertification.innerHTML = `
-            <input
-            type="text"
-            name="certifications[]"
-            placeholder="e.g. Certified Makeup Artist"
-            >
-            
-            <button type="button" class="remove-certification">
-                Remove
-                </button>
-                `;
-                
-                certificationList.appendChild(newCertification);
-            });
-            
-            certificationList.addEventListener("click", (event) => {
-                if (!event.target.classList.contains("remove-certification")) {
-                    return;
-                }
-                
-                const certificationItems = certificationList.querySelectorAll(
-                    ".certification-item"
-                );
-                
-                if (certificationItems.length > 1) {
-                    event.target.closest(".certification-item").remove();
-                }
-            });
-            
-            backToRoleSelection.addEventListener("click", function () {
-                window.location.href = "../RoleSelection/roles.html";
-            });
-
-  const mainContent = document.querySelector(".main-content");
-  const form = document.getElementById("waitlistForm");
-  const successMessage = document.getElementById("successMessage");
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Submitting...";
-
-    setTimeout(() => {
-      mainContent.classList.add("hidden");
-      successMessage.classList.remove("hidden");
-
-      successMessage.focus();
-
-      successMessage.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
-    }, 600);
-  });
-
-  const primaryCategorySelect = document.getElementById("primary-category");
-  const otherCategoryGroup = document.getElementById("otherCategoryGroup");
-  const otherCategoryInput = document.getElementById("otherCategory");
-
-  primaryCategorySelect.addEventListener("change", function () {
-    const isOtherSelected = primaryCategorySelect.value === "other";
-
-    otherCategoryGroup.classList.toggle("hidden", !isOtherSelected);
-    otherCategoryInput.required = isOtherSelected;
-
-    if (!isOtherSelected) {
-      otherCategoryInput.value = "";
-    }
-  });
-
- function setupCheckboxQuestion(selector) {
-  const sections = document.querySelectorAll(selector);
-
-  sections.forEach((section) => {
-    const maxSelections = Number(section.dataset.max);
-    const checkboxes = section.querySelectorAll('input[type="checkbox"]');
-    const otherCheckbox = section.querySelector(".other-option");
-    const otherInputGroup = section.querySelector(".other-input-group");
-    const otherInput = otherInputGroup?.querySelector("input");
-
-    function updateOtherInput() {
-      if (!otherCheckbox || !otherInputGroup || !otherInput) {
-        return;
-      }
-
-      const isOtherChecked = otherCheckbox.checked;
-
-      otherInputGroup.classList.toggle("hidden", !isOtherChecked);
-      otherInput.required = isOtherChecked;
-
-      if (!isOtherChecked) {
-        otherInput.value = "";
-      }
-    }
-
-    checkboxes.forEach((checkbox) => {
-      checkbox.addEventListener("change", function () {
-        const selectedCheckboxes = section.querySelectorAll(
-          'input[type="checkbox"]:checked'
-        );
-
-        if (selectedCheckboxes.length > maxSelections) {
-          this.checked = false;
-          alert(`Please select up to ${maxSelections} options.`);
-        }
-
-        updateOtherInput();
-      });
-    });
-
-    updateOtherInput();
-  });
-}
-
-setupCheckboxQuestion(".checkbox-question");
-        </script>
  </body>
 </html>

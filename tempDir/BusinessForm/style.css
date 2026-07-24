@@ -571,84 +571,110 @@ input[type="checkbox"] {
   display: none !important;
 } 
 
-/*Success Notifcation*/
-    .notification-body {
-      width: min(100%, 34rem);
-      min-height: 32rem;
-      padding: 4.5rem 3rem 3.25rem;
-    
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    
-      background-color: #ffffff;
-      border-radius: 0.8rem;
-      box-shadow: 0 1.5rem 4rem rgba(18, 26, 38, 0.2);
-    
-      text-align: center;
-      animation: modal-enter 350ms ease-out;
-      position: relative;
+/* Success notification */
 
-      .logo{
-        position: absolute;
-        top: 5%;
-        left: 5%;
+#successMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow-y: hidden;
+}
 
-        svg{
-          width: 100px;
-          height: auto;
-        }
-      }
+.notification-body {
+  width: min(100%, 34rem);
+  min-height: min(32rem, calc(100dvh - 2rem));
+  margin: 0;
 
-      /* Success SVG Option */
-      .success-icon {
-        width: 10.5rem;
-        height: 10.5rem;
-        margin-bottom: 1.2rem;
-      
-        display: grid;
-        place-items: center;
-      
-        border-radius: 50%;
-        background-color: rgba(223, 91, 46, 0.12);
-        color: var(--primary-color);
-      
-        svg {
-         width: 8rem;
-         height: 8rem;
-        animation: ConfettiFloat 3s ease-in-out infinite;
+  padding:
+    clamp(4rem, 8vw, 4.5rem)
+    clamp(1.25rem, 6vw, 3rem)
+    clamp(2.5rem, 6vw, 3.25rem);
 
-        }
-        }
+  position: relative;
 
-        .success-text {
-          h1 {
-            max-width: 25rem;
-            margin: 0 auto 1rem;
-          
-            color: var(--text-color);
-            font-family: var(--heading-font);
-            font-size: clamp(2rem, 5vw, 2.7rem);
-            line-height: 1.1;
-          }
-  
-          p {
-           max-width: 26rem;
-           margin: 0 auto;
-           
-           color: var(--muted-text-color);
-           font-size: 1rem;
-           font-weight: 500;
-           line-height: 1.7;
-         
-           span {
-             color: var(--primary-color);
-           }
-         }
-        }
-      }
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #ffffff;
+
+  border-radius: 0.8rem;
+
+  box-shadow:
+    0 1.5rem 4rem rgba(18, 26, 38, 0.2);
+
+  text-align: center;
+
+  animation: modal-enter 350ms ease-out;
+}
+
+/* Logo */
+
+.notification-body .logo {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+}
+
+.notification-body .logo svg {
+  width: clamp(5.5rem, 18vw, 6.25rem);
+  height: auto;
+}
+
+/* Success icon */
+
+.success-icon {
+  width: clamp(4.75rem, 18vw, 10.5rem);
+  aspect-ratio: 1;
+
+  margin-bottom: 1.2rem;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background-color: rgba(223, 91, 46, 0.12);
+  color: var(--primary-color);
+}
+
+.success-icon svg {
+  width: 65%;
+  height: 65%;
+
+  animation: confetti-float 3s ease-in-out infinite;
+}
+
+/* Success text */
+
+.success-text h1 {
+  max-width: 25rem;
+  margin: 0 auto 1rem;
+
+  color: var(--text-color);
+
+  font-family: var(--heading-font);
+  font-size: clamp(2rem, 8vw, 2.7rem);
+  line-height: 1.1;
+}
+
+.success-text p {
+  max-width: 26rem;
+  margin: 0 auto;
+
+  color: var(--muted-text-color);
+
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.success-text p span {
+  color: var(--primary-color);
+}
+
 
 @keyframes modal-enter {
   from {

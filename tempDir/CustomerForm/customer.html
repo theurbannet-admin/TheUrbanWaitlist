@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="customer.js" defer></script>
     <title>Customer Form</title>
 </head>
 <body>
@@ -35,6 +36,8 @@
                 name="full_name"
                 placeholder="Full Name"
                 autocomplete="name"
+                minlength="2"
+                maxlength="80"
                 required
               >
               <span class="input-icon" aria-hidden="true">
@@ -53,6 +56,8 @@
                 name="email"
                 placeholder="Email Address"
                 autocomplete="email"
+                inputmode="email"
+                maxlength="254"
                 required
               >
               <span class="input-icon" aria-hidden="true">
@@ -88,11 +93,14 @@
           <label class="sr-only" for="postcode">Postcode</label>
     
           <input
-            type="text"
+           type="text"
             id="postcode"
             name="postcode"
             placeholder="Enter Your Postcode"
             autocomplete="postal-code"
+            maxlength="8"
+            pattern="[A-Za-z]{1,2}[0-9][A-Za-z0-9]?\s?[0-9][A-Za-z]{2}"
+            title="Enter a valid UK postcode, for example EH14 3JJ"
             required
           >
     
@@ -109,7 +117,7 @@
     </fieldset>
 
     <!-- Service Preferences -->
-<fieldset class="service-preferences checkbox-question" data-max="3">
+<fieldset class="service-preferences checkbox-question" data-min="1" data-max="3">
   <legend>Which services are you most interested in?</legend>
 
   <p class="service-helper-text">Pick Your Top 3 Categories</p>
@@ -121,7 +129,7 @@
         class="category-input"
         type="checkbox"
         id="beauty"
-        name="service_categories"
+        name="service_interests"
         value="Beauty & Grooming"
       >
       <label class="category-pill" for="beauty">
@@ -134,7 +142,7 @@
         class="category-input"
         type="checkbox"
         id="fashion"
-        name="service_categories"
+        name="service_interests"
         value="Fashion & Styling"
       >
       <label class="category-pill" for="fashion">
@@ -147,7 +155,7 @@
         class="category-input"
         type="checkbox"
         id="wellness"
-        name="service_categories"
+        name="service_interests"
         value="Wellness & Fitness"
       >
       <label class="category-pill" for="wellness">
@@ -160,7 +168,7 @@
         class="category-input"
         type="checkbox"
         id="food"
-        name="service_categories"
+        name="service_interests"
         value="Food & Catering"
       >
       <label class="category-pill" for="food">
@@ -173,7 +181,7 @@
         class="category-input"
         type="checkbox"
         id="home"
-        name="service_categories"
+        name="service_interests"
         value="Home & Lifestyle"
       >
       <label class="category-pill" for="home">
@@ -185,34 +193,34 @@
 </fieldset>
 
 <!--Current Service Discovery-->
-<fieldset class="current-service-discovery checkbox-question" data-max="3">
+<fieldset class="current-service-discovery checkbox-question" data-min="1" data-max="3">
   <legend>How do you usually find services?</legend>
   
 
   <div class="discovery-options">
     <div class="option">
-        <input type="checkbox" id="social" name="discovery_method" value="social-media">
-        <label for="social">Social Media</label>
+        <input type="checkbox" id="service-social" name="discovery_method" value="social-media">
+        <label for="service-social">Social Media</label>
     </div>
 
     <div class="option">
-        <input type="checkbox" id="google" name="discovery_method" value="google">
-        <label for="google">Google or other search engines</label>
+        <input type="checkbox" id="service-google" name="discovery_method" value="google">
+        <label for="service-google">Google or other search engines</label>
     </div>
 
     <div class="option">
-        <input type="checkbox" id="friends" name="discovery_method" value="friends-family">
-        <label for="friends">Friends or Family</label>
+        <input type="checkbox" id="service-friends" name="discovery_method" value="friends-family">
+        <label for="service-friends">Friends or Family</label>
     </div>
 
     <div class="option">
-        <input type="checkbox" id="apps" name="discovery_method" value="existing-apps">
-        <label for="apps">Existing Apps</label>
+        <input type="checkbox" id="service-apps" name="discovery_method" value="existing-apps">
+        <label for="service-apps">Existing Apps</label>
     </div>
 
     <div class="option">
-        <input type="checkbox" id="word-of-mouth" name="discovery_method" value="word-of-mouth">
-        <label for="word-of-mouth">Word of Mouth</label>
+        <input type="checkbox" id="service-word-of-mouth" name="discovery_method" value="word-of-mouth">
+        <label for="service-word-of-mouth">Word of Mouth</label>
     </div>
     
 
@@ -220,11 +228,11 @@
         <input
           class="other-option"
           type="checkbox"
-          id="current-services-other"
-          name="current_service_discovery"
+          id="service-other"
+          name="discovery_method"
           value="other"
         >
-        <label for="current-services-other">Other</label>
+        <label for="service-other">Other</label>
     </div>
   </div>
 
@@ -236,50 +244,51 @@
       id="current-services-other-text"
       name="current_service_discovery_other"
       placeholder="If other, please specify"
+      maxlength="60"
     >
   </div>
 
 </fieldset>
 
 <!--How they found TheUrbanNet-->
-<fieldset class="TheUrbanNet-discovery checkbox-question" data-max="3">
+<fieldset class="TheUrbanNet-discovery checkbox-question" data-min="1" data-max="3">
   <legend>How did you hear about TheUrbanNet?</legend>
 
   <div class="discovery-options">
     <div class="option">
-        <input type="checkbox" id="social" name="discovery_method" value="social-media">
-        <label for="social">Social Media</label>
+        <input type="checkbox" id="heard-social" name="found_urbannet" value="social-media">
+        <label for="heard-social">Social Media</label>
     </div>
 
     <div class="option">
-        <input type="checkbox" id="google" name="discovery_method" value="google">
-        <label for="google">Google or other search engines</label>
+        <input type="checkbox" id="heard-google" name="found_urbannet" value="google">
+        <label for="heard-google">Google or other search engines</label>
     </div>
 
     <div class="option">
-        <input type="checkbox" id="friends" name="discovery_method" value="friends-family">
-        <label for="friends">Friends or Family</label>
+        <input type="checkbox" id="heard-friends" name="found_urbannet" value="friends-family">
+        <label for="heard-friends">Friends or Family</label>
     </div>
 
     <div class="option">
-        <input type="checkbox" id="apps" name="discovery_method" value="existing-apps">
-        <label for="apps">Existing Apps</label>
+        <input type="checkbox" id="heard-apps" name="found_urbannet" value="existing-apps">
+        <label for="heard-apps">Existing Apps</label>
     </div>
 
     <div class="option">
-        <input type="checkbox" id="word-of-mouth" name="discovery_method" value="word-of-mouth">
-        <label for="word-of-mouth">Word of Mouth</label>
+        <input type="checkbox" id="heard-word-of-mouth" name="found_urbannet" value="word-of-mouth">
+        <label for="heard-word-of-mouth">Word of Mouth</label>
     </div>
 
     <div class="option">
         <input
           class="other-option"
           type="checkbox"
-          id="found-urbannet-other"
+          id="heard-other"
           name="found_urbannet"
           value="other"
         >
-        <label for="found-urbannet-other">Other</label>
+        <label for="heard-other">Other</label>
     </div>
   </div>
 
@@ -291,13 +300,14 @@
       id="found-urbannet-other-text"
       name="found_urbannet_other"
       placeholder="Please tell us where you heard about us"
+      maxlength="60"
     >
   </div>
 
 </fieldset>
 
  <!-- What matters Most?-->
-<fieldset class="most-important checkbox-question" data-max="5">
+<fieldset class="most-important checkbox-question" data-min="1" data-max="5">
   <legend>What Matters Most</legend>
 
   <p class="service-helper-text">What matters most to you when choosing a service provider?</p>
@@ -309,7 +319,7 @@
         class="category-input"
         type="checkbox"
         id="price"
-        name="service_categories"
+        name="provider_priorities"
         value="price"
       >
       <label class="category-pill" for="price">
@@ -322,7 +332,7 @@
         class="category-input"
         type="checkbox"
         id="qualityOfWork"
-        name="service_categories"
+        name="provider_priorities"
         value="Quality of Work"
       >
       <label class="category-pill" for="qualityOfWork">
@@ -335,7 +345,7 @@
         class="category-input"
         type="checkbox"
         id="ratings"
-        name="service_categories"
+        name="provider_priorities"
         value="Reviews & ratings"
       >
       <label class="category-pill" for="ratings">
@@ -348,7 +358,7 @@
         class="category-input"
         type="checkbox"
         id="Location"
-        name="service_categories"
+        name="provider_priorities"
         value="Location"
       >
       <label class="category-pill" for="Location">
@@ -361,7 +371,7 @@
         class="category-input"
         type="checkbox"
         id="availability"
-        name="service_categories"
+        name="provider_priorities"
         value="Availability"
       >
       <label class="category-pill" for="availability">
@@ -374,7 +384,7 @@
         class="category-input"
         type="checkbox"
         id="trust"
-        name="service_categories"
+        name="provider_priorities"
         value="Trust & Reliability "
       >
       <label class="category-pill" for="trust">
@@ -387,7 +397,7 @@
         class="category-input"
         type="checkbox"
         id="portfolio"
-        name="service_categories"
+        name="provider_priorities"
         value="Photos or portfolio of previous work"
       >
       <label class="category-pill" for="portfolio">
@@ -400,7 +410,7 @@
         class="category-input"
         type="checkbox"
         id="communication"
-        name="service_categories"
+        name="provider_priorities"
         value="fast & clear communication"
       >
       <label class="category-pill" for="communication">
@@ -413,7 +423,7 @@
         class="category-input other-option"
         type="checkbox"
         id="what-matters-other"
-        name="what_matters_most"
+        name="provider_priorities"
         value="other"
       >
       <label class="category-pill" for="what-matters-other">Other</label>
@@ -428,8 +438,9 @@
     <input
       type="text"
       id="what-matters-other-text"
-      name="what_matters_other"
+      name="provider_priorities_other"
       placeholder="What else matters to you?"
+      maxlength="60"
     >
   </div>
 </fieldset>
@@ -518,89 +529,6 @@
   </section>
 
 
-<script>
-  const backToRoleSelection = document.getElementById("backToRoleSelection");
-  
-  backToRoleSelection.addEventListener("click", function () {
-        window.location.href = "../RoleSelection/roles.html";
-    });
 
-  function setupCheckboxQuestion(sectionSelector) {
-  const sections = document.querySelectorAll(sectionSelector);
-
-  sections.forEach((section) => {
-    const maxSelections = Number(section.dataset.max);
-    const checkboxes = section.querySelectorAll('input[type="checkbox"]');
-
-    const otherCheckbox = section.querySelector(".other-option");
-    const otherInputGroup = section.querySelector(".other-input-group");
-    const otherInput = otherInputGroup?.querySelector("input");
-
-    function updateOtherInput() {
-      if (!otherCheckbox || !otherInputGroup || !otherInput) {
-        return;
-      }
-
-      const isOtherChecked = otherCheckbox.checked;
-
-      otherInputGroup.classList.toggle("hidden", !isOtherChecked);
-      otherInput.required = isOtherChecked;
-
-      if (!isOtherChecked) {
-        otherInput.value = "";
-      }
-    }
-
-    checkboxes.forEach((checkbox) => {
-      checkbox.addEventListener("change", function () {
-        const selectedCheckboxes = section.querySelectorAll(
-          'input[type="checkbox"]:checked'
-        );
-
-        if (selectedCheckboxes.length > maxSelections) {
-          this.checked = false;
-          alert(`Please select up to ${maxSelections} options.`);
-        }
-
-        updateOtherInput();
-      });
-    });
-
-    updateOtherInput();
-  });
-}
-
-setupCheckboxQuestion(".checkbox-question");
-
-  const mainContent = document.querySelector(".main-content");
-  const form = document.getElementById("waitlistForm");
-  const successMessage = document.getElementById("successMessage");
-  const submitBtn = document.getElementById("submitBtn");
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Submitting...";
-
-    setTimeout(() => {
-      mainContent.classList.add("hidden");
-      successMessage.classList.remove("hidden");
-
-      successMessage.focus();
-
-      successMessage.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
-    }, 600);
-  });
- 
-</script>
 </body>
 </html>
