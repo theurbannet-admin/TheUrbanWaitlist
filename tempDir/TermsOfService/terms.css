@@ -83,7 +83,7 @@ body {
        color: var(--muted);
        text-decoration: none;
       
-       font-size:  clamp(1.1rem, 4vw, 1.4rem);
+       font-size:  clamp(0.9rem, 4vw, 1.2rem);
        font-weight: 600;
        line-height: 1.3;
        font-family: var(--heading-font);
@@ -110,22 +110,16 @@ body {
          color: black;
        } 
        
+       &.active {
+         color: black;
+   
+         &::after {
+           content: "↗";
+           color: white;
+           background: var(--primary-color);
+         }
+       }
     }
-
-    .active {
-      color: black;
-
-      span {
-       border-bottom: 1px solid currentColor;
-      }
-
-      &::after {
-        content: "↗";
-      
-        background: var(--primary-color);
-      }
-    }
-
     }
 
     /* Policy text */

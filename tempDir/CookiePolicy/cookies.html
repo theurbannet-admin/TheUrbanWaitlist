@@ -65,10 +65,6 @@
         <a href="#changes">
           <span>Changes to This Policy</span>
         </a>
-
-        <a href="#contact">
-          <span>Contact Us</span>
-        </a>
       </nav>
 
       <!-- Policy content -->
@@ -377,7 +373,7 @@
           <p>
             Where cookies collect personal data, that data will be processed
             in accordance with our
-            <a href="#" class="text-link">
+            <a href="../PrivacyPolicy/privacy.html" class="text-link">
               Privacy Policy
             </a>.
           </p>
@@ -394,18 +390,22 @@
         </section>
         <div class="faq-blob blob-left"></div>
 
-        <section id="contact">
-          <h2>Contact</h2>
-
-          <p>
-            For any questions about this Cookie Policy or how we use cookies,
-            please
-            <a href="#" class="text-link">contact us here.
-          </p>
-        </section>
-
       </article>
     </div>
   </main>
+
+  <script>
+    const navLinks = document.querySelectorAll("nav a");
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        link.classList.add("active");
+      });
+    });
+  </script>
 </body>
 </html>

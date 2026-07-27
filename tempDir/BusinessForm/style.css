@@ -577,8 +577,6 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  overflow-y: hidden;
 }
 
 .notification-body {

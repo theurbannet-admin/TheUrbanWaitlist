@@ -110,21 +110,20 @@ body {
          color: black;
        } 
        
+       &.active {
+         color: black;
+   
+         
+   
+         &::after {
+           content: "↗";
+           color: white;
+           background: var(--primary-color);
+         }
     }
 
-    .active {
-      color: black;
-
-      span {
-       border-bottom: 1px solid currentColor;
-      }
-
-      &::after {
-        content: "↗";
-      
-        background: var(--primary-color);
-      }
     }
+
 
     }
 
@@ -190,7 +189,7 @@ body {
     border-radius: 50%;
     filter: blur(100px); 
     opacity: 0.15;        
-    z-index: 1;          
+    z-index: -5;          
     pointer-events: none;
     width: 500px;
     height: 500px;

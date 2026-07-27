@@ -17,7 +17,6 @@
 
 body {
     background-color: #fcfcfc;
-    /* overflow: hidden; */
 }
 
 /* NAVBAR STYLE */
@@ -229,7 +228,7 @@ nav{
                 span.highlight{
                     color: #000;            
                     background-color: transparent; 
-                    background-image: linear-gradient(to top, #DF5B2E 60%, transparent 20%);
+                    background-image: linear-gradient(to top, var(--primary-color) 0%, #E58B38 100%);
                     display: inline;
                     padding: 0 2px;
 
@@ -517,7 +516,7 @@ nav{
             background-repeat: no-repeat;
             background-position: center;
 
-            filter: blur(3px);
+            filter: blur(2px);
             transform: scale(1.03);
             }
 
@@ -539,7 +538,7 @@ nav{
                 padding: 0.85rem 1rem;
 
                 border-radius: 0.8rem;
-                background-color: rgba(255, 255, 255, 0.38);
+                background-color: rgba(255, 255, 255, 0.50);
                 color: #000;
 
                 font-size: 0.95rem;
@@ -593,20 +592,43 @@ nav{
             max-width: 1100px;
             padding: 0 2rem;
             margin-top: 1rem;
+            position: relative;
+            z-index: 2;
 
             .heading {
                 font-size: 2.5rem;
-                font-weight: 700;
+                font-weight: 800;
                 line-height: 1.2;
                 font-family: var(--heading-font);
+                text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
             }
 
             .description {
                 font-family: var(--alternative-font);
                 font-size: 1rem;
                 margin-top: 0.5rem;
-                max-width: 900px;
+                max-width: 52rem;
+                text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
+
             }
+        }
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            inset: auto 0 0;
+            z-index: 1;
+
+            height: 45%;
+
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.78),
+                rgba(0, 0, 0, 0)
+            );
+
+            pointer-events: none;
         }
 
     }
@@ -621,7 +643,7 @@ nav{
   width: 0;
   height: 0;
 
-  border-top: 0.55rem solid rgba(255, 255, 255, 0.38);
+  border-top: 0.55rem solid rgba(255, 255, 255, 0.50);
 }
 
 /*UVP Syling #2*/
@@ -1430,4 +1452,20 @@ nav{
     width: 36rem;
   }
 }
+
+/*Technique for responsive design using media queries
+1.Mobile first 
+Base styles: 0px and up
+
+2.Tablet 
+@media (min-width: 48rem) {}
+
+3.Desktop 
+@media (min-width: 64rem) {}
+
+4.Large desktop, only when necessary 
+@media (min-width: 80rem) {}
+*/
+
+
 

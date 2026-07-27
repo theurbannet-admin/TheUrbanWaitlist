@@ -89,9 +89,6 @@
           <span>Changes to This Policy</span>
         </a>
 
-        <a href="#contact">
-          <span>Contact Us</span>
-        </a>
       </nav>
 
       <!-- Privacy Policy content -->
@@ -226,7 +223,7 @@
             technologies. More information is available in our
             <a
               class="text-link"
-              href="../CookiePolicy/cookie-policy.html"
+              href="../CookiePolicy/cookies.html"
             >
               Cookie Policy
             </a>.
@@ -533,7 +530,7 @@
             can manage your preferences is available in our
             <a
               class="text-link"
-              href="../CookiePolicy/cookie-policy.html"
+              href="../CookiePolicy/cookies.html"
             >
               Cookie Policy
             </a>.
@@ -556,21 +553,22 @@
           </p>
         </section>
 
-        <section id="contact">
-          <h2>Contact</h2>
-
-          <p>
-            For any questions about this Privacy Policy, your personal
-            data, or your data protection rights, please
-            <a class="text-link" href="#">
-              contact us here
-            </a>.
-          </p>
-        </section>
-
       </article>
     </div>
   </main>
 
+  <script>
+    const navLinks = document.querySelectorAll("nav a");
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        link.classList.add("active");
+      });
+    });
+  </script>
 </body>
 </html>
