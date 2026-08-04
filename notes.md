@@ -1,40 +1,124 @@
-1. Created a folder called src/ . 
-    - This follows a modern React structure
-    - Helps manage all the different files (that were once html files) better, as you break them down into react components.
-    - The following files were created:
-    a. index.html (root folder ,outside src/, which is the main entry point for the browser)
-    b. main.jsx (grabs React, my global styles, injects entire application into the empty #root div indie index.html)
-    c. App.jsx (file (main coordinator) where you import all individual sections & arrange them in preferred order that it should appear on the screen)
-    d. Navbar.jsx (modular, isolated component file handling only the navbar layout & logic)
-    e. Hero.jsx (modular component file handling hero section)
-    
+Learning about clip paths, inset, position relative absolute fixed
 
-2. Moved HTML into React component
-    - JSX: a component is just a JavaScript function that returns HTML layout code
-    - In each file I have to
-        a. import React (so that the file understands the component structure)
-        b. create a standard js function  & export it
-        c. Ensure the function returns my layout code using a "return" block & Insert my html code with some tweaks:
-            1. change class to className (because the word class is already a strictly reserved keyword in JavaScript (used for creating object-oriented classes))
-        
-*Environment Migration*
-- When you run a modern web framework like React, my browser cannot read .jsx files directly. 
-- It needs a local background engine to continuously translate my code into standard HTML and JavaScript.
+https://www.easings.dev/
 
-1. Ensured my system is equipped with Node.js (a runtime engine) to run JS programs
-    - Used the command node -v to check 
-2. Bypassed Windows built-in security feature designed to stop malicious background scripts from running automatically on my computer
-    - Used the command Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-    - This ensures that permission is restricted exclusively to the single, active terminal window 
-3. Initialized the project directory using NPM (Node Package Manager)
-    - This generated the file pacakage.json in the root folder
-    - package.json keeps track of the project's name, version, shortcuts, and every single third-party library or package my application needs to function.
-4. Installed the dependencies using "npm install vite react react-dom"
-    - brought about node_modules/ folder (this is where npm downloads and stores the actual code for Vite and React npm downloads and stores the actual code for Vite and React.)
-    - brought about package-lock.json (locks down the exact version numbers of the packages installed so that if i share with another developer, their computer downloads the exact same versions.)
-5. Set up a launch shortcut ("scripts")
-    - Added this shortcut in package.json by adding 
-    "dev": "vite" which means that Instead of typing out complex backend paths to find the Vite compiler engine every single time,i just type a clean, simple command npm run dev.
+https://emilkowal.ski/ui/the-magic-of-clip-path
 
 
-learnt about css masking
+23 June Class
+
+Wrapping up CSS
+
+2 libraries for animations: gsap and motion.dev
+
+*Functions
+
+function functionName (width, height){
+    return width * height;
+}
+
+1. is operator is a shorthand..it condenses
+
+:is (main, footer) :is (h1, p) {
+    color: green;
+}
+
+INSTEAD OF 
+
+main h1 {
+...
+}
+main p {
+...
+}
+footer h1 {
+..
+}
+footer p {
+...
+}
+
+2. Custom properties & var
+
+3. Attribute
+- it allows you to take attributes of that element
+- It allows us to pull in the content of our class to displayed.
+- FIND USE CASE
+
+Sidenote:
+- there is a differenec between button:hi & button .hi
+
+4. url
+
+5. Calc
+
+
+6. min() max()
+- works well when one of the items is dynamic and the other static
+- e.g width: min (20vw, 30rem);
+in this scenario 20vw is dynamic(this vw or vh is a percentage of the screen, it changes as the screen reduces and increases in size) and 30 rem is static.
+- min function, i give it a list of values and it takes the minimum value
+- Find out how to relate vw and vh to pixels. 20% of screen in width is 20vw
+- max function, it takes the maximum value
+
+7. clamp ()
+- takes min, ideal and max size
+- you can use this for font sizes (fluid) so that you do not have to manually use media queries
+
+**Animations
+
+1. ease-in-out most realistic 
+2. learn about all the animation shotrhands
+
+*Filters
+
+2. backdrop-filter: blur. It applies the filter to whatever is beneath it the actual image
+3. filter: blur(4px); it applies the filter blur to the element itself.
+3. brightness
+4. contrast
+5. grayscale
+6. invert
+7. opacity
+8. saturation
+9. sepia
+10. hue-rotate
+11. Diff between box-shadow (creates shadow that is Always rectangular (ignores transparent areas of the box)).and drop-shadow (shadow Follows the exact contours of your visible content (like transparent PNGs or SVGs).)
+12. Blend-mode (there are diff types of blend modes..its like photoshop)
+
+*Lists
+1. you can put text, bullet point, image, gif as a marker in a list
+2. pseudo-element ::marker (checkout its properties)
+
+*Counters
+
+*Transitions
+
+*View Transitions for SPAs
+
+*Overflow
+1. text overflow: ellipsis; if text if super long it changes from this jskskidjdkdojdnk to jskskidjdkdoj...
+2. logical properties for overflow
+3. You can style your scrollbar
+4. You can change scroll bar behaviour
+
+
+Sidenote: postcss transforms your css so that its compatible with all browsers
+
+*Container 
+1. container queries (respond to container size) VS Media queries(respond to screen size)
+2. Container query is more powerfulbecause you can specify what type of container
+
+1940pm to 22:40pm 3 hours
+READ CSS CONTENT!!
+
+
+24 June 2026
+
+Started at 2030pm to 2310pm
+
+- Use radix ui and base ui to build certain features
+- READ ON MIT License
+- Did practicals (built a marquee from supabase.com, built the live animation on instagram, built a mansory layout)
+
+
+

@@ -14,7 +14,7 @@ Static HTML, CSS and vanilla JS. **No build step, no framework, no dependencies.
 ## Running it locally
 
 Open `LandingPage/waitlist.html` with any static server — VS Code's Live Server extension
-is what the project was developed against. From this folder:
+is what the project was developed against. From the repo root:
 
 ```
 npx serve .      # or: python -m http.server, or Live Server
@@ -36,11 +36,15 @@ POST needs a real origin.
 ├── CustomerForm/    customer.html + customer.js
 ├── BusinessForm/    business.html + business.js
 ├── CookiePolicy/  PrivacyPolicy/  TermsOfService/
-└── assets/          images shared by every page
+├── assets/          images shared by every page
+└── additional images/   unused reference material, not linked by any page
 ```
 
 Each folder owns its own stylesheet. `LandingPage/style.css` is the largest and the only
 one with the full responsive system described below.
+
+Folder names are **case-sensitive on deployment** even though Windows ignores case. Pages
+link to `../RoleSelection/…` with a capital R, so the folder must stay spelled that way.
 
 ---
 
