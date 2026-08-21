@@ -211,7 +211,44 @@ function createSubmissionData() {
 
 /* Display success screen */
 
-function showSuccessMessage() {
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+);
+
+/*
+ * Waits for a CSS transition to finish, with a timer as a backstop so the
+ * swap still happens if the transition never fires (reduced motion, a
+ * backgrounded tab, or a browser that skips it).
+ */
+function afterTransition(element, fallbackDelay) {
+  return new Promise((resolve) => {
+    if (prefersReducedMotion.matches) {
+      resolve();
+      return;
+    }
+
+    let settled = false;
+
+    function finish() {
+      if (settled) {
+        return;
+      }
+
+      settled = true;
+      element.removeEventListener("transitionend", finish);
+      resolve();
+    }
+
+    element.addEventListener("transitionend", finish);
+    setTimeout(finish, fallbackDelay);
+  });
+}
+
+async function showSuccessMessage() {
+  /* Fade the form out first so it does not disappear in a single frame */
+  mainContent.classList.add("is-leaving");
+  await afterTransition(mainContent, 350);
+
   document.body.classList.add("showing-success");
   mainContent.classList.add("hidden");
   successMessage.classList.remove("hidden");
@@ -219,7 +256,7 @@ function showSuccessMessage() {
   successMessage.focus();
 
   successMessage.scrollIntoView({
-    behavior: "smooth",
+    behavior: prefersReducedMotion.matches ? "auto" : "smooth",
     block: "center"
   });
 }
@@ -229,6 +266,7 @@ function showSuccessMessage() {
 
 function resetSubmitButton() {
   submitButton.disabled = false;
+  submitButton.classList.remove("is-submitting");
   submitButton.textContent = "Join the Waitlist";
 }
 
@@ -247,6 +285,7 @@ form.addEventListener("submit", async (event) => {
   }
 
   submitButton.disabled = true;
+  submitButton.classList.add("is-submitting");
   submitButton.textContent = "Submitting...";
 
   const submissionData = createSubmissionData();
@@ -260,7 +299,7 @@ form.addEventListener("submit", async (event) => {
 
     form.reset();
 
-    showSuccessMessage();
+    await showSuccessMessage();
   } catch (error) {
     console.error("Customer waitlist submission failed:", error);
 

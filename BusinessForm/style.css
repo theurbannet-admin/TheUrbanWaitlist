@@ -544,23 +544,41 @@ input[type="checkbox"] {
     border: 1px solid transparent;
     background-color: transparent;
     box-shadow: 0 0.7em 1.5em -0.5em var(--primary-color);
-    transition: transform 0.3s ease;
-    
+    transition: transform 250ms cubic-bezier(0.22, 0.61, 0.36, 1),
+                box-shadow 250ms cubic-bezier(0.22, 0.61, 0.36, 1),
+                opacity 250ms ease;
+
     background: linear-gradient(
       90deg,
       var(--primary-color) 0%,
       #E58B38 100%
     );
-  
-    &:hover, &:focus {
-              transform: translateY(-0.25em);
-          }
-  
-    &:active {
-      transform: scale(0.98);
-      box-shadow: 0 0.5em 1.5em -0.5em var(--primary-color);
+
+    /* Keeps the lift off touch screens, where :hover sticks after the tap */
+    @media (hover: hover) {
+      &:hover {
+        transform: translateY(-0.25em);
+      }
     }
-  
+
+    /* :focus-visible, not :focus — with plain :focus the button stayed raised
+       after being tapped on a phone. */
+    &:focus-visible {
+      transform: translateY(-0.25em);
+    }
+
+    &:active {
+      transform: scale(0.97);
+      box-shadow: 0 0.5em 1.5em -0.5em var(--primary-color);
+      transition-duration: 100ms;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.75;
+      transform: none;
+    }
+
      /* Case Specific */
     margin-top: 2rem;
     line-height: 1;
@@ -569,7 +587,64 @@ input[type="checkbox"] {
 
 .hidden {
   display: none !important;
-} 
+}
+
+/* Submitting state
+ *
+ * The button only swapped its label to "Submitting…" — nothing moved while the
+ * request was in flight, so a slow connection read as a dead button.
+ */
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.cta-button.is-submitting {
+  cursor: progress;
+}
+
+.cta-button.is-submitting::before {
+  content: "";
+
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+
+  animation: buttonSpin 700ms linear infinite;
+}
+
+/* Form exit
+ *
+ * .hidden is display: none, so the form used to vanish in a single frame while
+ * the success panel animated in over the gap. The script now adds .is-leaving
+ * and waits for this transition before hiding it, so the two cross-fade.
+ */
+
+.main-content {
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.main-content.is-leaving {
+  opacity: 0;
+  transform: translateY(-0.75rem);
+  pointer-events: none;
+}
+
+/* "Other" text field reveal. Toggled by class, so only the entrance can be
+   animated — but that is the half the user is watching for. */
+
+.other-input-group:not(.hidden) {
+  animation: fieldReveal 260ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
 
 /* Success notification */
 
@@ -686,7 +761,9 @@ input[type="checkbox"] {
   }
 }
 
-@keyframes ConfettiFloat {
+/* Name must match the `animation:` on .success-icon svg exactly — keyframe
+   names are case sensitive, and as `ConfettiFloat` this never ran. */
+@keyframes confetti-float {
   0%,
   100% {
     transform: translateY(0) rotate(-8deg);
@@ -694,6 +771,35 @@ input[type="checkbox"] {
 
   50% {
     transform: translateY(-0.4rem) rotate(4deg);
+  }
+}
+
+@keyframes buttonSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fieldReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-0.4rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

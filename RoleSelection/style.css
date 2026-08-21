@@ -72,16 +72,14 @@ body {
 
         cursor: pointer; 
         
+        /* Hover/press states live on .back-icon further down: the arrow is
+           smaller than its 2.75rem button, so reacting to :hover on the svg
+           itself left most of the target inert. */
         .icon {
             fill: #000;
             width: 1.75rem;
             height: 1.75rem;
             transition: transform 180ms ease, fill 180ms ease;
-            &:hover{
-                fill: var(--primary-color);
-                transform: translateX(-0.25rem);
-            }
-
         }
     }
         
@@ -160,21 +158,51 @@ body {
                 line-height: 1.25;
             }
 
-            &:hover {
+            /* Kept off touch screens, where :hover sticks after the tap and
+               leaves the button raised while the next page loads */
+            @media (hover: hover) {
+                &:hover {
+                    background-color: #c9471e;
+                    transform: translateY(-0.22rem);
+                    box-shadow:
+                        inset 0 -0.18rem 0 rgba(85, 23, 7, 0.18),
+                        0 0.85rem 1.5rem rgba(201, 71, 30, 0.24);
+                }
+            }
+
+            &:focus-visible {
                 background-color: #c9471e;
                 transform: translateY(-0.22rem);
-                box-shadow:
-                    inset 0 -0.18rem 0 rgba(85, 23, 7, 0.18),
-                    0 0.85rem 1.5rem rgba(201, 71, 30, 0.24);
             }
-            
+
+            /* Press feedback, so a tap reads as registered even before the
+               next page has started painting */
+            &:active {
+                transform: scale(0.985);
+                background-color: #b8401a;
+                transition-duration: 90ms;
+            }
+
+            /* Set by the script on click and held until the browser leaves */
             &.active {
                 transform: translateY(0);
-                background-color: #b8401a; 
+                background-color: #b8401a;
             }
         }
     }
-            
+
+    .back-icon {
+        @media (hover: hover) {
+            &:hover .icon {
+                fill: var(--primary-color);
+                transform: translateX(-0.25rem);
+            }
+        }
+
+        &:active .icon {
+            transform: translateX(-0.4rem);
+        }
+    }
         }
 
 @keyframes modal-enter {
@@ -186,6 +214,16 @@ body {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

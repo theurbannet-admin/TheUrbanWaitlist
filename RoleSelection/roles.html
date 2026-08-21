@@ -40,17 +40,23 @@
   const customerRole = document.getElementById("customerRole");
   const businessRole = document.getElementById("businessRole");
 
+  /*
+   * Marks the chosen role so it stays visibly pressed while the next page
+   * loads, instead of springing back the moment the finger lifts.
+   */
+  function goTo(button, url) {
+    button.addEventListener("click", function () {
+      button.classList.add("active");
+      window.location.href = url;
+    });
+  }
+
   backToWaitlist.addEventListener("click", function () {
     window.location.href = "../LandingPage/waitlist.html";
   });
 
-  customerRole.addEventListener("click", function () {
-    window.location.href = "../CustomerForm/customer.html";
-  });
-
-  businessRole.addEventListener("click", function () {
-    window.location.href = "../BusinessForm/business.html";  
-  });
+  goTo(customerRole, "../CustomerForm/customer.html");
+  goTo(businessRole, "../BusinessForm/business.html");
 </script>
 </body>
 </html>
