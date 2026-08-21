@@ -220,3 +220,84 @@ body {
     top: 2rem;
   }
 }
+
+/* ============================== MOTION ================================== */
+/* Kept in step with LandingPage/style.css: taps register on the first press,
+   hover states stay off touch screens, and motion respects the OS setting. */
+
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* The contents list changed colour instantly on hover and on becoming active */
+.policy-page .policy-layout .contents a {
+  border-radius: 0.5rem;
+  transition:
+    color 200ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    background-color 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.policy-page .policy-layout .contents a::after {
+  transition:
+    color 200ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    background-color 200ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.policy-page .policy-layout .contents a:active::after {
+  transform: scale(0.88);
+}
+
+.policy-page .policy-layout .contents a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* On touch, :hover sticks after the tap — leaving the previous entry looking
+   current alongside the one actually selected. */
+@media (hover: none) {
+  .policy-page .policy-layout .contents a:hover {
+    color: var(--muted);
+  }
+
+  .policy-page .policy-layout .contents a.active:hover {
+    color: black;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ========================= CONTENTS-LIST MARKERS ======================== */
+/* The active marker used to be the text character "↗" (U+2197), which is not
+   in Space Grotesk — the browser dropped out of the webfont and drew it from
+   whatever symbol font the OS supplies (Segoe UI Symbol on Windows, Apple
+   Symbols on iOS, Noto on Android). Same CSS, different arrow per device.
+   Drawing it as an inline SVG instead pins the shape everywhere.
+   The "−" marker is left as text: that one IS in Space Grotesk. */
+
+.policy-page .policy-layout .contents a.active::after {
+  content: "";
+
+  background-color: var(--primary-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7'/%3E%3Cpath d='M8 7h9v9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.75rem 0.75rem;
+}

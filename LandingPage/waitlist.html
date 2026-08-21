@@ -549,12 +549,77 @@
     });
 
 
+  /* Cookie consent
+   *
+   * The banner is fixed to the bottom of the viewport, which puts it directly
+   * over the footer links on a phone. Two things keep them reachable:
+   *
+   *   1. --consent-banner-height reserves the banner's height at the foot of
+   *      the page, so the links are never underneath it.
+   *   2. The choice is remembered, so the banner does not come back on every
+   *      page load and re-cover them.
+   */
+  const CONSENT_STORAGE_KEY = "theurbannet-cookie-consent";
+
+  function readStoredConsent() {
+    try {
+      return localStorage.getItem(CONSENT_STORAGE_KEY);
+    } catch (error) {
+      /* Private browsing and blocked storage both throw here. The banner then
+         behaves as it did before: shown every visit, but no longer covering
+         anything, because the footer padding is driven by the same variable. */
+      return null;
+    }
+  }
+
+  function storeConsent(choice) {
+    try {
+      localStorage.setItem(CONSENT_STORAGE_KEY, choice);
+    } catch (error) {
+      /* Nothing to do — the banner still closes for this session. */
+    }
+  }
+
+  function updateBannerHeight() {
+    const height = banner.classList.contains("is-hidden")
+      ? 0
+      : banner.offsetHeight + 16; /* 16px == the banner's bottom offset */
+
+    document.documentElement.style.setProperty(
+      "--consent-banner-height",
+      `${height}px`
+    );
+  }
+
+  function dismissBanner(choice) {
+    storeConsent(choice);
+    banner.classList.add("is-hidden");
+    banner.setAttribute("aria-hidden", "true");
+    updateBannerHeight();
+  }
+
+  if (readStoredConsent()) {
+    /* Already answered: hide it without playing the slide-out */
+    banner.classList.add("is-static", "is-hidden");
+    banner.setAttribute("aria-hidden", "true");
+  }
+
+  updateBannerHeight();
+
+  /* Re-measure once webfonts land and whenever the banner rewraps */
+  window.addEventListener("load", updateBannerHeight);
+  window.addEventListener("resize", updateBannerHeight);
+
+  if (typeof ResizeObserver === "function") {
+    new ResizeObserver(updateBannerHeight).observe(banner);
+  }
+
   acceptButton.addEventListener("click", () => {
-    banner.style.display = "none";
+    dismissBanner("accepted");
   });
 
   declineButton.addEventListener("click", () => {
-    banner.style.display = "none";
+    dismissBanner("declined");
   });
 
   document.addEventListener("DOMContentLoaded", function () {
