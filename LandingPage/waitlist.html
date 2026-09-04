@@ -74,8 +74,8 @@
           <ul>
             <li><a href="#mission">Our Purpose</a></li>
             <li><a href="#categories">Explore Services</a></li>
-            <li><a href='#UVP'>Why TheUrbanNet</a></li>
-            <li><a href="#faqs">How it Works?</a></li>
+            <li><a href='#UVP'>Why TheUrbanNet?</a></li>
+            <li><a href="#faqs">How it Works</a></li>
           </ul>
           <button class="nav-cta" id="joinWaitlistBtn">Join The Waitlist</button>
         </div>
@@ -426,16 +426,10 @@
       
       <div class="social-links">
         <span>Follow us</span>
-          <a href="">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_7131_200)">
-            <path d="M14.8859 25.7793V14.021H18.8311L19.423 9.43722H14.8859V6.51116C14.8859 5.18446 15.2528 4.28034 17.1574 4.28034L19.5827 4.27934V0.179462C19.1633 0.124959 17.7236 0 16.0479 0C12.5489 0 10.1534 2.13577 10.1534 6.05718V9.43722H6.19629V14.021H10.1534V25.7793H14.8859Z" fill="white"/>
-            </g>
-            <defs>
-            <clipPath id="clip0_7131_200">
-            <rect width="25.7793" height="25.7793" fill="white"/>
-            </clipPath>
-            </defs>
+          <a href="https://www.tiktok.com/@TheUrbanNet">
+            <svg xmlns="http://www.w3.org/2000/svg" width="0.88em" height="1em" viewBox="0 0 448 512">
+              <path d="M0 0h448v512H0z" fill="none" />
+              <path fill="currentColor" d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a74.62 74.62 0 1 0 52.23 71.18V0h88a121 121 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14Z" />
             </svg>
           </a>
           <a href="https://www.instagram.com/theurbannet/">
@@ -706,6 +700,22 @@
   );
 
   observer.observe(uvpSection);
+});
+
+/* FAQ exclusive accordion — opening one panel collapses any other open
+   panel so that only a single FAQ item is ever visible at a time. */
+document.querySelectorAll(".faq-list .faq-item").forEach((item) => {
+  item.addEventListener("toggle", () => {
+    if (item.open) {
+      document
+        .querySelectorAll(".faq-list .faq-item")
+        .forEach((other) => {
+          if (other !== item) {
+            other.open = false;
+          }
+        });
+    }
+  });
 });
 </script>
     

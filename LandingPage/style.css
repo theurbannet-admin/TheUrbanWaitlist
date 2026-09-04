@@ -1280,9 +1280,9 @@ nav {
             transition: fill 0.3s ease;
         }
 
-        a:hover svg path {
-            fill: var(--primary-color);
-        }
+        a:hover svg path:not([fill="none"]) {
+        fill: var(--primary-color);
+    }
     }
 
     hr {
