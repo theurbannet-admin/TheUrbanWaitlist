@@ -151,7 +151,7 @@ body.showing-success {
 
   border: 1px solid var(--border-color);
   border-radius: 0.4rem;
-  outline: none;
+  outline: focus-visible;
 
   background-color: var(--input-background);
   color: var(--text-color);
