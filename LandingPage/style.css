@@ -1271,6 +1271,13 @@ nav {
             text-decoration: none;
         }
 
+        .social-link-unavailable {
+            display: flex;
+            color: #fff;
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
         svg {
             width: 23px;
             height: 23px;
