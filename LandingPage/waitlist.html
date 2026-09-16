@@ -77,7 +77,7 @@
             <li><a href='#UVP'>Why TheUrbanNet?</a></li>
             <li><a href="#faqs">How it Works</a></li>
           </ul>
-          <button class="nav-cta" id="joinWaitlistBtn">Join The Waitlist</button>
+          <a class="nav-cta" href="../RoleSelection/roles.html">Join The Waitlist</a>
         </div>
 
     </nav>
@@ -380,7 +380,7 @@
       </svg>
     </div>
     <p class="cta-description">Find trusted services, get your business discovered, and grow with TheUrbanNet from the start.</p>
-    <button class="ctaButton" id="ctaButton">Get Early Access</button>
+    <a class="ctaButton" href="../RoleSelection/roles.html">Get Early Access</a>
   </div>
 
   <div class="flowerSVG">
@@ -496,21 +496,11 @@
 
 <!--Scripts-->
      <script>
-  const joinWaitlistBtn = document.getElementById("joinWaitlistBtn");
-  const ctaButton = document.getElementById("ctaButton");
   const nav = document.querySelector("nav");
   const navToggle = document.getElementById("navToggle");
   const acceptButton = document.getElementById("acceptCookiesBtn");
   const declineButton = document.getElementById("declineCookiesBtn")
   const banner = document.querySelector(".consent-banner");
-
-  joinWaitlistBtn.addEventListener("click", function () {
-    window.location.href = "../RoleSelection/roles.html";
-  });
-
-  ctaButton.addEventListener("click", function () {
-    window.location.href = "../RoleSelection/roles.html";
-  });
 
   /* Burger menu */
   function setNavOpen(isOpen) {

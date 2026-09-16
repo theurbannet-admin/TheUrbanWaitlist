@@ -183,10 +183,14 @@ nav {
     }
 
     .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         padding: 1rem;
         cursor: pointer;
 
         color: #fff;
+        text-decoration: none;
         font-family: var(--alternative-font);
         font-size: 1rem;
         font-weight: bold;
@@ -1268,6 +1272,7 @@ nav {
         a {
             display: flex;
             color: #fff;
+            text-decoration: none;
             text-decoration: none;
         }
 
