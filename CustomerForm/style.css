@@ -395,7 +395,25 @@ input[type="checkbox"] {
 
 .form-actions {
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
+}
+
+.submission-error {
+  margin-top: 1.5rem;
+  padding: 0.85rem 1rem;
+
+  border: 1px solid #b42318;
+  border-radius: 0.5rem;
+
+  background: #fff1f0;
+  color: #8a1c13;
+  font-weight: 600;
+}
+
+.submission-error:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
 }
 
 .cta-button {

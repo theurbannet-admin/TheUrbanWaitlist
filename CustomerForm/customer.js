@@ -11,6 +11,8 @@ const postcodeInput = document.getElementById("postcode");
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbyLzcA1-lVa3OTawov1OS7U16qbYYRg6K03X8UOG8Ez2gf9FsbhLhVNl1iVOGwjVBi4fg/exec";
 
+let pendingSubmissionData = null;
+
   /* Back button */
 
 backButton.addEventListener("click", () => {
@@ -178,6 +180,10 @@ function createSubmissionData() {
   const submissionData = new URLSearchParams();
 
   submissionData.append("form_type", "customer");
+  submissionData.append(
+    "submission_id",
+    window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`
+  );
 
   const groupedFields = new Map();
 
@@ -206,6 +212,35 @@ function createSubmissionData() {
   }
 
   return submissionData;
+}
+
+
+/* The Apps Script must return CORS-enabled JSON: { "success": true }. */
+
+async function submitWaitlist(submissionData) {
+  const response = await fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+    },
+    body: submissionData
+  });
+
+  if (!response.ok) {
+    throw new Error(`The server returned ${response.status}.`);
+  }
+
+  let result;
+
+  try {
+    result = await response.json();
+  } catch {
+    throw new Error("The server did not return a valid confirmation.");
+  }
+
+  if (result?.success !== true) {
+    throw new Error("The server did not confirm the submission.");
+  }
 }
 
 
@@ -271,6 +306,30 @@ function resetSubmitButton() {
 }
 
 
+function showSubmissionError() {
+  const submissionError = document.getElementById("submissionError");
+
+  submissionError.classList.remove("hidden");
+  submitButton.textContent = "Try Again";
+  submissionError.focus();
+}
+
+function clearSubmissionError() {
+  document.getElementById("submissionError").classList.add("hidden");
+}
+
+/* A changed form is a new submission, so it gets a new idempotency key. */
+form.addEventListener("input", () => {
+  pendingSubmissionData = null;
+  clearSubmissionError();
+});
+
+form.addEventListener("change", () => {
+  pendingSubmissionData = null;
+  clearSubmissionError();
+});
+
+
 /* Form submission */
 
 form.addEventListener("submit", async (event) => {
@@ -288,25 +347,21 @@ form.addEventListener("submit", async (event) => {
   submitButton.classList.add("is-submitting");
   submitButton.textContent = "Submitting...";
 
-  const submissionData = createSubmissionData();
+  const submissionData = pendingSubmissionData || createSubmissionData();
+  pendingSubmissionData = submissionData;
+  clearSubmissionError();
 
   try {
-    await fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      body: submissionData
-    });
+    await submitWaitlist(submissionData);
 
     form.reset();
+    pendingSubmissionData = null;
 
     await showSuccessMessage();
   } catch (error) {
     console.error("Customer waitlist submission failed:", error);
 
-    alert(
-      "We could not submit your details. Please check your connection and try again."
-    );
-
     resetSubmitButton();
+    showSubmissionError();
   }
 });

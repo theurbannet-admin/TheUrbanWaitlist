@@ -74,7 +74,8 @@ On submit the client:
 3. Collapses repeated field names (multi-select checkboxes) into one comma-joined string,
    so `service_interests` arrives as `"Beauty, Catering, Fitness"` rather than three rows.
    Names ending in `[]` are normalised, e.g. `certifications[]` → `certifications`.
-4. `POST`s with `mode: "no-cors"`, then swaps the form for the success panel.
+4. `POST`s to a CORS-enabled endpoint. The success panel is only shown after an HTTP
+   success response containing `{ "success": true }`.
 
 ### Where the responses go
 
@@ -111,10 +112,14 @@ access alone is not enough to see submissions.** To point the forms somewhere el
 The Apps Script itself is not version-controlled in this repo — it is edited in the Apps
 Script editor. Worth exporting a copy (via `clasp` or by hand) if you need its history.
 
-> **Known limitation.** `mode: "no-cors"` makes the response opaque, so the client cannot
-> read the status code. The success screen shows whenever the request doesn't throw — a
-> server-side error still looks like success to the user. Moving to a CORS-enabled endpoint
-> would let this be handled properly.
+> **Submission response contract.** The Apps Script deployment must allow the site origin
+> through CORS and return JSON with an HTTP success status only after a row has been saved:
+> `{ "success": true }`. On validation or storage failure it must return a non-2xx status
+> and `{ "success": false }`. The form deliberately treats an unreadable, failed, or
+> malformed response as unconfirmed and keeps the user's values visible for retry.
+>
+> Each request includes a `submission_id`. The Apps Script should persist and deduplicate it,
+> so retrying after a lost response cannot create a second row.
 
 The endpoint is visible in client-side JS. That is unavoidable for a static site, so the
 Apps Script must treat every submission as untrusted and do its own validation.
