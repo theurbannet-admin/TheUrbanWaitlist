@@ -106,8 +106,10 @@ body {
          font-size: 0.85rem;
        }
 
-       &:hover {
-         color: black;
+       @media (hover: hover) {
+         &:hover {
+           color: black;
+         }
        } 
        
        &.active {
@@ -259,18 +261,6 @@ summary {
 .policy-page .policy-layout .contents a:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
-}
-
-/* On touch, :hover sticks after the tap — leaving the previous entry looking
-   current alongside the one actually selected. */
-@media (hover: none) {
-  .policy-page .policy-layout .contents a:hover {
-    color: var(--muted);
-  }
-
-  .policy-page .policy-layout .contents a.active:hover {
-    color: black;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

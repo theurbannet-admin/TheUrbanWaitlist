@@ -60,9 +60,11 @@ body {
                     height: 1.8rem;
                     transition: transform 180ms ease, fill 180ms ease;
 
-                    &:hover{
-                        fill: var(--primary-color);
-                        transform: translateX(-0.25rem);
+                    @media (hover: hover) {
+                        &:hover{
+                            fill: var(--primary-color);
+                            transform: translateX(-0.25rem);
+                        }
                     }
                 }
             }
@@ -301,9 +303,11 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  .remove-certification:hover {
-    background-color: var(--primary-color);
-    color: #ffffff;
+  @media (hover: hover) {
+    .remove-certification:hover {
+      background-color: var(--primary-color);
+      color: #ffffff;
+    }
   }
 
   
@@ -324,9 +328,11 @@ body {
     transition: color 0.2s ease, transform 0.2s ease;
   }
 
-  #add-certification:hover {
-    color: #b8441d;
-    transform: translateX(3px);
+  @media (hover: hover) {
+    #add-certification:hover {
+      color: #b8441d;
+      transform: translateX(3px);
+    }
   }
 
   #add-certification:focus-visible,
@@ -393,9 +399,11 @@ body {
             color 180ms ease,
             transform 180ms ease;
 
-            &:hover {
-              background-color: #ececec;
-              transform: translateY(-2px);
+            @media (hover: hover) {
+              &:hover {
+                background-color: #ececec;
+                transform: translateY(-2px);
+              }
             }
         }
         .category-input:checked + .category-pill {

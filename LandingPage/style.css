@@ -437,10 +437,15 @@ nav {
             }
         }
 
-        &:hover .marquee-track,
         &:focus .marquee-track,
         &:focus-within .marquee-track {
             animation-play-state: paused;
+        }
+
+        @media (hover: hover) {
+            &:hover .marquee-track {
+                animation-play-state: paused;
+            }
         }
 
         &:focus-visible {
@@ -1308,9 +1313,11 @@ nav {
             transition: fill 0.3s ease;
         }
 
-        a:hover svg path:not([fill="none"]) {
-        fill: var(--primary-color);
-    }
+        @media (hover: hover) {
+            a:hover svg path:not([fill="none"]) {
+                fill: var(--primary-color);
+            }
+        }
     }
 
     hr {

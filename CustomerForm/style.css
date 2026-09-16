@@ -86,9 +86,11 @@ body.showing-success {
     fill 180ms ease;
 }
 
-.back-icon:hover .icon {
-  fill: var(--primary-color);
-  transform: translateX(-0.25rem);
+@media (hover: hover) {
+  .back-icon:hover .icon {
+    fill: var(--primary-color);
+    transform: translateX(-0.25rem);
+  }
 }
 
 .section-heading h1 {
@@ -326,9 +328,11 @@ body.showing-success {
     transform 180ms ease;
 }
 
-.category-pill:hover {
-  background-color: #ececec;
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .category-pill:hover {
+    background-color: #ececec;
+    transform: translateY(-2px);
+  }
 }
 
 .category-input:checked + .category-pill {
@@ -453,9 +457,12 @@ input[type="checkbox"] {
     box-shadow 0.3s ease;
 }
 
-.cta-button:hover,
 .cta-button:focus-visible {
   transform: translateY(-0.25em);
+}
+
+@media (hover: hover) {
+  .cta-button:hover { transform: translateY(-0.25em); }
 }
 
 .cta-button:active {
