@@ -4,40 +4,29 @@ const mainContent = document.querySelector(".main-content");
 const successMessage = document.getElementById("successMessage");
 const postcodeInput = document.getElementById("postcode");
 
-
 const backButton = document.getElementById("backToRoleSelection");
 
-const addCertificationButton =
-  document.getElementById("add-certification");
+const addCertificationButton = document.getElementById("add-certification");
 
-const certificationList =
-  document.getElementById("certification-list");
+const certificationList = document.getElementById("certification-list");
 
-const primaryCategory =
-  document.getElementById("primary-category");
+const primaryCategory = document.getElementById("primary-category");
 
-const otherCategoryGroup =
-  document.getElementById("otherCategoryGroup");
+const otherCategoryGroup = document.getElementById("otherCategoryGroup");
 
-const otherCategoryInput =
-  document.getElementById("otherCategory");
+const otherCategoryInput = document.getElementById("otherCategory");
 
-const businessNameInput =
-  document.getElementById("business-name");
+const businessNameInput = document.getElementById("business-name");
 
-const businessEmailInput =
-  document.getElementById("business-email");
+const businessEmailInput = document.getElementById("business-email");
 
-const portfolioLinks =
-  document.querySelectorAll(".portfolio-link");
-
+const portfolioLinks = document.querySelectorAll(".portfolio-link");
 
 /* Back button */
 
 backButton.addEventListener("click", () => {
   window.location.href = "../RoleSelection/roles.html";
 });
-
 
 /* Certifications */
 
@@ -63,31 +52,27 @@ addCertificationButton.addEventListener("click", () => {
 });
 
 certificationList.addEventListener("click", (event) => {
-  const removeButton =
-    event.target.closest(".remove-certification");
+  const removeButton = event.target.closest(".remove-certification");
 
   if (!removeButton) {
     return;
   }
 
-  const certificationItems =
-    certificationList.querySelectorAll(".certification-item");
+  const certificationItems = certificationList.querySelectorAll(
+    ".certification-item",
+  );
 
   if (certificationItems.length > 1) {
     removeButton.closest(".certification-item").remove();
   }
 });
 
-
 /* Main service: Other */
 
 function updateOtherCategory() {
   const otherSelected = primaryCategory.value === "other";
 
-  otherCategoryGroup.classList.toggle(
-    "hidden",
-    !otherSelected
-  );
+  otherCategoryGroup.classList.toggle("hidden", !otherSelected);
 
   otherCategoryInput.required = otherSelected;
 
@@ -96,50 +81,39 @@ function updateOtherCategory() {
   }
 }
 
-primaryCategory.addEventListener(
-  "change",
-  updateOtherCategory
-);
+primaryCategory.addEventListener("change", updateOtherCategory);
 
 updateOtherCategory();
-
 
 /* Checkbox questions */
 
 function setupCheckboxQuestions() {
-  const questions =
-    document.querySelectorAll(".checkbox-question");
+  const questions = document.querySelectorAll(".checkbox-question");
 
   questions.forEach((question) => {
-    const checkboxes =
-      question.querySelectorAll('input[type="checkbox"]');
+    const checkboxes = question.querySelectorAll('input[type="checkbox"]');
 
-    const maximumSelections =
-      Number(question.dataset.max);
+    const maximumSelections = Number(question.dataset.max);
 
-    const minimumSelections =
-      Number(question.dataset.min || 0);
+    const minimumSelections = Number(question.dataset.min || 0);
 
     const validationTarget = checkboxes[0];
 
-    const otherCheckbox =
-      question.querySelector(".other-option");
+    const otherCheckbox = question.querySelector(".other-option");
 
-    const otherInputGroup =
-      question.querySelector(".other-input-group");
+    const otherInputGroup = question.querySelector(".other-input-group");
 
-    const otherInput =
-      otherInputGroup?.querySelector("input");
+    const otherInput = otherInputGroup?.querySelector("input");
 
     function updateSelectionValidity() {
       const selectedCount = question.querySelectorAll(
-        'input[type="checkbox"]:checked'
+        'input[type="checkbox"]:checked',
       ).length;
 
       validationTarget.setCustomValidity(
         selectedCount < minimumSelections
           ? "Please select at least one option."
-          : ""
+          : "",
       );
     }
 
@@ -150,10 +124,7 @@ function setupCheckboxQuestions() {
 
       const otherSelected = otherCheckbox.checked;
 
-      otherInputGroup.classList.toggle(
-        "hidden",
-        !otherSelected
-      );
+      otherInputGroup.classList.toggle("hidden", !otherSelected);
 
       otherInput.required = otherSelected;
 
@@ -165,15 +136,13 @@ function setupCheckboxQuestions() {
     checkboxes.forEach((checkbox) => {
       checkbox.addEventListener("change", () => {
         const selectedCount = question.querySelectorAll(
-          'input[type="checkbox"]:checked'
+          'input[type="checkbox"]:checked',
         ).length;
 
         if (selectedCount > maximumSelections) {
           checkbox.checked = false;
 
-          alert(
-            `Please select up to ${maximumSelections} options.`
-          );
+          alert(`Please select up to ${maximumSelections} options.`);
         }
 
         updateOtherInput();
@@ -196,11 +165,9 @@ function validateBusinessName() {
   if (!businessName) {
     errorMessage = "Please enter your business name.";
   } else if (businessName.length < 2) {
-    errorMessage =
-      "Business name must be at least 2 characters.";
+    errorMessage = "Business name must be at least 2 characters.";
   } else if (businessName.length > 80) {
-    errorMessage =
-      "Business name must be 80 characters or fewer.";
+    errorMessage = "Business name must be 80 characters or fewer.";
   }
 
   businessNameInput.setCustomValidity(errorMessage);
@@ -208,10 +175,7 @@ function validateBusinessName() {
   return !errorMessage;
 }
 
-businessNameInput.addEventListener(
-  "input",
-  validateBusinessName
-);
+businessNameInput.addEventListener("input", validateBusinessName);
 
 function validateBusinessEmail() {
   businessEmailInput.setCustomValidity("");
@@ -219,13 +183,9 @@ function validateBusinessEmail() {
   const email = businessEmailInput.value.trim();
 
   if (!email) {
-    businessEmailInput.setCustomValidity(
-      "Please enter your business email."
-    );
+    businessEmailInput.setCustomValidity("Please enter your business email.");
   } else if (businessEmailInput.validity.typeMismatch) {
-    businessEmailInput.setCustomValidity(
-      "Please enter a valid email address."
-    );
+    businessEmailInput.setCustomValidity("Please enter a valid email address.");
   }
 
   return businessEmailInput.checkValidity();
@@ -236,17 +196,13 @@ businessEmailInput.addEventListener("input", () => {
 });
 
 businessEmailInput.addEventListener("blur", () => {
-  businessEmailInput.value =
-    businessEmailInput.value.trim();
+  businessEmailInput.value = businessEmailInput.value.trim();
 
   validateBusinessEmail();
 });
 
 postcodeInput.addEventListener("blur", () => {
-  const postcode = postcodeInput.value
-    .trim()
-    .toUpperCase()
-    .replace(/\s+/g, "");
+  const postcode = postcodeInput.value.trim().toUpperCase().replace(/\s+/g, "");
 
   postcodeInput.value =
     postcode.length > 3
@@ -260,20 +216,17 @@ otherCategoryInput.addEventListener("input", () => {
   otherCategoryInput.setCustomValidity(
     primaryCategory.value === "other" && isEmpty
       ? "Please specify your main service."
-      : ""
+      : "",
   );
 });
 
-
 function validatePortfolioLinks() {
-  const hasLink = [...portfolioLinks].some(
-    (input) => input.value.trim()
-  );
+  const hasLink = [...portfolioLinks].some((input) => input.value.trim());
 
   portfolioLinks[0].setCustomValidity(
     hasLink
       ? ""
-      : "Please provide at least one portfolio or social media link."
+      : "Please provide at least one portfolio or social media link.",
   );
 }
 
@@ -292,7 +245,6 @@ const GOOGLE_SCRIPT_URL =
 
 let pendingSubmissionData = null;
 
-
 /* Prepare form data */
 
 function createSubmissionData() {
@@ -302,7 +254,7 @@ function createSubmissionData() {
   submissionData.append("form_type", "business");
   submissionData.append(
     "submission_id",
-    window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`
+    window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`,
   );
 
   /*
@@ -311,22 +263,20 @@ function createSubmissionData() {
    */
   const groupedFields = new Map();
 
- for (const [name, value] of formData.entries()) {
-  const cleanedValue = String(value).trim();
+  for (const [name, value] of formData.entries()) {
+    const cleanedValue = String(value).trim();
 
-  // Converts certifications[] into certifications
-  const normalisedName = name.endsWith("[]")
-    ? name.slice(0, -2)
-    : name;
+    // Converts certifications[] into certifications
+    const normalisedName = name.endsWith("[]") ? name.slice(0, -2) : name;
 
-  if (!groupedFields.has(normalisedName)) {
-    groupedFields.set(normalisedName, []);
+    if (!groupedFields.has(normalisedName)) {
+      groupedFields.set(normalisedName, []);
+    }
+
+    if (cleanedValue) {
+      groupedFields.get(normalisedName).push(cleanedValue);
+    }
   }
-
-  if (cleanedValue) {
-    groupedFields.get(normalisedName).push(cleanedValue);
-  }
-}
 
   for (const [name, values] of groupedFields.entries()) {
     submissionData.append(name, values.join(", "));
@@ -335,16 +285,15 @@ function createSubmissionData() {
   return submissionData;
 }
 
-
 /* The Apps Script must return CORS-enabled JSON: { "success": true }. */
 
 async function submitWaitlist(submissionData) {
   const response = await fetch(GOOGLE_SCRIPT_URL, {
     method: "POST",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
-    body: submissionData
+    body: submissionData,
   });
 
   if (!response.ok) {
@@ -364,11 +313,10 @@ async function submitWaitlist(submissionData) {
   }
 }
 
-
 /* Display success screen */
 
 const prefersReducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
+  "(prefers-reduced-motion: reduce)",
 );
 
 /*
@@ -412,10 +360,9 @@ async function showSuccessMessage() {
 
   successMessage.scrollIntoView({
     behavior: prefersReducedMotion.matches ? "auto" : "smooth",
-    block: "center"
+    block: "center",
   });
 }
-
 
 /* Restore submit button */
 
@@ -424,7 +371,6 @@ function resetSubmitButton() {
   submitButton.classList.remove("is-submitting");
   submitButton.textContent = "Join the Waitlist";
 }
-
 
 function showSubmissionError() {
   const submissionError = document.getElementById("submissionError");
@@ -448,7 +394,6 @@ form.addEventListener("change", () => {
   pendingSubmissionData = null;
   clearSubmissionError();
 });
-
 
 /* Form submission */
 
@@ -478,11 +423,7 @@ form.addEventListener("submit", async (event) => {
     form.reset();
     pendingSubmissionData = null;
 
-    /*
-     * Restore dynamic form sections after resetting.
-     */
     updateOtherCategory();
-    setupCheckboxQuestions();
     validatePortfolioLinks();
 
     await showSuccessMessage();
@@ -493,4 +434,3 @@ form.addEventListener("submit", async (event) => {
     showSubmissionError();
   }
 });
-
