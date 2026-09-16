@@ -526,6 +526,12 @@ input[type="checkbox"] {
   accent-color: var(--primary-color); 
 }
 
+.checkbox-error {
+  margin: 0.85rem 0 0;
+  color: #b42318;
+  font-weight: 600;
+}
+
 /*Submit Button */
 .form-actions {
   display: flex;

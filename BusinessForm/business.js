@@ -90,7 +90,7 @@ updateOtherCategory();
 function setupCheckboxQuestions() {
   const questions = document.querySelectorAll(".checkbox-question");
 
-  questions.forEach((question) => {
+  questions.forEach((question, questionIndex) => {
     const checkboxes = question.querySelectorAll('input[type="checkbox"]');
 
     const maximumSelections = Number(question.dataset.max);
@@ -98,6 +98,40 @@ function setupCheckboxQuestions() {
     const minimumSelections = Number(question.dataset.min || 0);
 
     const validationTarget = checkboxes[0];
+    const errorId = `checkbox-question-error-${questionIndex}`;
+    let selectionError = document.getElementById(errorId);
+
+    if (!selectionError) {
+      selectionError = document.createElement("p");
+      selectionError.id = errorId;
+      selectionError.className = "checkbox-error hidden";
+      selectionError.setAttribute("role", "alert");
+      question.appendChild(selectionError);
+    }
+
+    checkboxes.forEach((checkbox) => {
+      const describedBy = (
+        checkbox.getAttribute("aria-describedby") || ""
+      ).split(/\s+/).filter(Boolean);
+
+      if (!describedBy.includes(errorId)) {
+        checkbox.setAttribute(
+          "aria-describedby",
+          [...describedBy, errorId].join(" ")
+        );
+      }
+    });
+
+    function setSelectionError(message) {
+      const hasError = Boolean(message);
+
+      selectionError.textContent = message;
+      selectionError.classList.toggle("hidden", !hasError);
+
+      checkboxes.forEach((checkbox) => {
+        checkbox.setAttribute("aria-invalid", String(hasError));
+      });
+    }
 
     const otherCheckbox = question.querySelector(".other-option");
 
@@ -142,7 +176,11 @@ function setupCheckboxQuestions() {
         if (selectedCount > maximumSelections) {
           checkbox.checked = false;
 
-          alert(`Please select up to ${maximumSelections} options.`);
+          setSelectionError(
+            `Please select up to ${maximumSelections} options.`,
+          );
+        } else {
+          setSelectionError("");
         }
 
         updateOtherInput();

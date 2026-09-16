@@ -119,6 +119,12 @@ body.showing-success {
   margin-top: 2.5rem;
 }
 
+.checkbox-error {
+  margin: 0.85rem 0 0;
+  color: #b42318;
+  font-weight: 600;
+}
+
 .waitlist-form legend {
   margin-bottom: 1.25rem;
 
