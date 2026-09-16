@@ -30,14 +30,34 @@ backButton.addEventListener("click", () => {
 
 /* Certifications */
 
+function updateCertificationAccessibility() {
+  const certificationItems = certificationList.querySelectorAll(
+    ".certification-item",
+  );
+
+  certificationItems.forEach((item, index) => {
+    const number = index + 1;
+    const input = item.querySelector('input[name="certifications[]"]');
+    const label = item.querySelector("label");
+    const removeButton = item.querySelector(".remove-certification");
+
+    input.id = `certification-${number}`;
+    label.htmlFor = input.id;
+    label.textContent = `Certification ${number}`;
+    removeButton.setAttribute("aria-label", `Remove certification ${number}`);
+  });
+}
+
 addCertificationButton.addEventListener("click", () => {
   const certificationItem = document.createElement("div");
 
   certificationItem.className = "certification-item";
 
   certificationItem.innerHTML = `
+    <label class="sr-only" for="certification-new">Certification</label>
     <input
       type="text"
+      id="certification-new"
       name="certifications[]"
       placeholder="e.g. Certified Makeup Artist"
       maxlength="100"
@@ -49,6 +69,7 @@ addCertificationButton.addEventListener("click", () => {
   `;
 
   certificationList.appendChild(certificationItem);
+  updateCertificationAccessibility();
 });
 
 certificationList.addEventListener("click", (event) => {
@@ -64,8 +85,11 @@ certificationList.addEventListener("click", (event) => {
 
   if (certificationItems.length > 1) {
     removeButton.closest(".certification-item").remove();
+    updateCertificationAccessibility();
   }
 });
+
+updateCertificationAccessibility();
 
 /* Main service: Other */
 
