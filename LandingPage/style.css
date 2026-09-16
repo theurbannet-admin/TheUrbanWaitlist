@@ -414,9 +414,15 @@ nav {
         font-weight: 600;
 
         .marquee {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .marquee-track {
             display: flex;
-            flex-wrap: nowrap;
             width: max-content;
+            will-change: transform;
+            animation: marquee-scroll 22s linear infinite;
         }
 
         .marquee-slide {
@@ -425,11 +431,21 @@ nav {
             justify-content: space-around;
             white-space: nowrap;
             padding-right: 12px;
-            animation: slide-show 14s linear infinite;
 
             span {
                 padding: 0 5px;
             }
+        }
+
+        &:hover .marquee-track,
+        &:focus .marquee-track,
+        &:focus-within .marquee-track {
+            animation-play-state: paused;
+        }
+
+        &:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: -3px;
         }
     }
 
@@ -1511,9 +1527,9 @@ nav {
     100% { transform: translate(-25%, -50%) scale(1);   opacity: 1; }
 }
 
-@keyframes slide-show {
+@keyframes marquee-scroll {
     0%   { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    100% { transform: translateX(-50%); }
 }
 
 /* Front face most of the cycle, back face for roughly 2.5s.
@@ -1553,7 +1569,7 @@ nav {
     }
 
     .serviceCategories .image-wrapper,
-    .serviceCategories .comingSoon .marquee-slide,
+    .serviceCategories .comingSoon .marquee-track,
     .cta-section .main-content .cta-heading svg {
         animation: none !important;
     }
@@ -1567,6 +1583,26 @@ nav {
        reduced they simply appear rather than sliding up. */
     .OurUVP .UVPcontainer .chatConversation .chat-message {
         transform: none;
+    }
+}
+
+/* On small screens a static, shorter message is easier to read and does not
+   consume horizontal attention while the service cards are explored. */
+@media (max-width: 29.999rem) {
+    .serviceCategories .comingSoon .marquee-track {
+        width: 100%;
+        animation: none;
+    }
+
+    .serviceCategories .comingSoon .marquee-slide {
+        width: 100%;
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .serviceCategories .comingSoon .marquee-slide:nth-child(2),
+    .serviceCategories .comingSoon .marquee-slide span:nth-child(n + 6) {
+        display: none;
     }
 }
 
