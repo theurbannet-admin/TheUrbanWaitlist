@@ -133,7 +133,11 @@ const nav = document.querySelector("nav");
 
   const messageDelay = 1000;
   const replayDelay = 6000;
+  const reducedMotionQuery = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
 
+	  
   let messageTimers = [];
   let replayTimer = null;
   let conversationIsPlaying = false;
@@ -158,6 +162,20 @@ const nav = document.querySelector("nav");
     conversationIsPlaying = true;
     hideAllMessages();
     clearMessageTimers();
+
+    /* Reduced-motion users should see the complete conversation immediately. */
+    if (reducedMotionQuery.matches) {
+      clearTimeout(replayTimer);
+      replayTimer = null;
+
+      chatMessages.forEach((message) => {
+        message.classList.add("show");
+      });
+
+      conversationIsPlaying = false;
+      return;
+    }
+
 
     chatMessages.forEach((message, index) => {
       const timer = setTimeout(() => {
