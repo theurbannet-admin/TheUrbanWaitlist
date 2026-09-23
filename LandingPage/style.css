@@ -82,7 +82,7 @@ nav {
         flex-shrink: 0;
     }
 
-    .logo svg {
+    .logo img {
         height: clamp(1.5rem, 6vw, 1.875rem);
         width: auto;
         display: block;

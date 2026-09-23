@@ -22,11 +22,11 @@
   text-decoration: none;
 }
 
-.policy-brand-mark {
+.policy-brand-logo {
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  flex: 0 0 2rem;
+  width: 10.5rem;
+  height: auto;
+  flex: 0 0 auto;
   object-fit: contain;
   object-position: center;
 }
@@ -78,10 +78,10 @@
     font-size: 1.15rem;
   }
 
-  .policy-brand-mark {
-    width: 1.75rem;
-    height: 1.75rem;
-    flex-basis: 1.75rem;
+  .policy-brand-logo {
+    width: 8rem;
+    height: auto;
+    flex-basis: auto;
   }
 
   .back-to-waitlist {

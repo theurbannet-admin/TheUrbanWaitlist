@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@700&display=swap");
+
+:root {
+  --heading-font: "Space Grotesk", sans-serif;
+  --alternative-font: "Manrope", sans-serif;
+  --primary-color: #df5b2e;
+  --background: #fffaf5;
+  --menu-background: #eeeeee;
+  --heading-color: #121a26;
+  --text-color: #121a26;
+  --text: #000000;
+  --muted: #929292;
+  --border-color: #e5e7eb;
+  --input-background: #fafafa;
+  --muted-text-color: #4b5563;
+  --placeholder-color: #9ca3af;
+}

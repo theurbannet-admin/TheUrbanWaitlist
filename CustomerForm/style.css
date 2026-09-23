@@ -1,23 +1,7 @@
-@import url(
-  "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@700&display=swap"
-);
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-:root {
-  --heading-font: "Space Grotesk", serif;
-  --alternative-font: "Manrope", sans-serif;
-
-  --primary-color: #df5b2e;
-  --border-color: #e5e7eb;
-  --input-background: #fafafa;
-  --text-color: #121a26;
-  --muted-text-color: #4b5563;
-  --placeholder-color: #9ca3af;
 }
 
 html {
@@ -586,7 +570,7 @@ input[type="checkbox"] {
   left: 1.25rem;
 }
 
-.notification-body .logo svg {
+.notification-body .logo img {
   width: clamp(5.5rem, 18vw, 6.25rem);
   height: auto;
 }
