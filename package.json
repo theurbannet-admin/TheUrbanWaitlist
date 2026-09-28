@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A waitlist landing page for TheUrbanNet to collect early user interest and service demand data.",
   "private": true,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mbarure/TheUrbanWaitlist.git"
@@ -13,5 +14,12 @@
   "bugs": {
     "url": "https://github.com/mbarure/TheUrbanWaitlist/issues"
   },
-  "homepage": "https://github.com/mbarure/TheUrbanWaitlist#readme"
+  "homepage": "https://github.com/mbarure/TheUrbanWaitlist#readme",
+  "scripts": {
+    "migrate": "node --env-file=.env.development.local scripts/migrate.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "resend": "^6.28.1"
+  }
 }

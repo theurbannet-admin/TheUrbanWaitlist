@@ -4,26 +4,62 @@ Pre-launch waitlist site for **TheUrbanNet** — a marketplace connecting people
 independent service providers. The site explains the product, then collects early-interest
 signups from two audiences: customers looking for services, and providers offering them.
 
-Submissions land in a Google Sheet via Apps Script, and the same script keeps a Google
-Slides deck in sync so the team can read the results as a summary rather than raw rows.
+Submissions are stored in Postgres and trigger a confirmation email via
+[Resend](https://resend.com), through a small serverless API deployed alongside the static
+site on Vercel.
 
-Static HTML, CSS and vanilla JS. **No build step, no framework, no dependencies.**
+Static HTML, CSS and vanilla JS on the frontend — **no build step, no framework.** The
+backend is a couple of Vercel serverless functions under `api/`.
 
 ---
 
 ## Running it locally
 
-Open `LandingPage/waitlist.html` with any static server — VS Code's Live Server extension
-is what the project was developed against. From the repo root:
+The site now has a backend (`api/submit.js`), so a plain static server no longer exercises
+the form's submit path — use the Vercel CLI instead, which serves the static pages **and**
+runs the `api/` functions locally:
 
 ```
-npx serve .      # or: python -m http.server, or Live Server
+npm install
+npm install -g vercel     # if you don't have it already
+vercel link                # first time only, links this folder to the Vercel project
+vercel env pull .env.development.local
+vercel dev
 ```
 
-Do not open the files via `file://`. Asset paths are relative (`../assets/…`) and the form
-POST needs a real origin.
+`vercel dev` serves the whole site (static pages + `/api/submit`) on one local origin, which
+is what the forms need — the JS calls `/api/submit` as a relative path, so it only works
+when frontend and API share an origin.
 
-`package.json` carries no dependencies or scripts; it exists only for repo metadata.
+To just browse the static pages without exercising form submission, `npx serve .` (or Live
+Server) still works, but the forms will fail to submit — `/api/submit` doesn't exist on a
+plain static server. Do not open the files via `file://` either way; asset paths are
+relative (`../assets/…`) and the API call needs a real origin.
+
+### Database setup (one-time)
+
+The API expects a `signups` table. After the Vercel Postgres (Neon) integration is added to
+the project (Vercel dashboard → Storage → Create Database → Postgres):
+
+```
+vercel env pull .env.development.local
+npm run migrate
+```
+
+This runs `migrations/001_init.sql`, which is safe to re-run (`CREATE TABLE IF NOT EXISTS`).
+
+### Environment variables
+
+See `.env.example`. In summary:
+
+| Variable | Where it comes from |
+|---|---|
+| `DATABASE_URL` | Set automatically by Vercel once the Postgres integration is added |
+| `RESEND_API_KEY` | [resend.com](https://resend.com) → API Keys |
+| `RESEND_FROM_EMAIL` | Must be on a domain verified in Resend; `onboarding@resend.dev` works for testing but only delivers to the Resend account's own email address |
+
+Set `RESEND_API_KEY` and `RESEND_FROM_EMAIL` in the Vercel dashboard (Project → Settings →
+Environment Variables) for the deployed site, and in `.env.development.local` for `vercel dev`.
 
 ---
 
@@ -37,7 +73,10 @@ POST needs a real origin.
 ├── BusinessForm/    business.html + business.js
 ├── CookiePolicy/  PrivacyPolicy/  TermsOfService/
 ├── assets/          images shared by every page
-└── additional images/   unused reference material, not linked by any page
+├── additional images/   unused reference material, not linked by any page
+├── api/submit.js    serverless function both forms POST to
+├── lib/             validation, Postgres and Resend helpers used by api/submit.js
+└── migrations/      SQL schema for the `signups` table
 ```
 
 Each folder owns its own stylesheet. `LandingPage/style.css` is the largest and the only
@@ -59,65 +98,70 @@ waitlist.html  ──"Join The Waitlist"──▶  roles.html  ──▶  custom
 
 Navigation between them is plain `window.location.href` in inline `<script>` blocks.
 
-Both forms submit to **the same Google Apps Script web app**, which appends a row to a
-Google Sheet. The endpoint is hard-coded near the top of `customer.js` and `business.js`:
+Both forms submit to **the same serverless function**, `api/submit.js`, as a relative path
+so it only works when the frontend and API are served from the same origin (see
+"Running it locally" above):
 
 ```js
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby…/exec";
+const SUBMIT_URL = "/api/submit";
 ```
 
 On submit the client:
 
 1. Runs validation (`setCustomValidity` + native `checkValidity()`), bailing early on failure.
-2. Builds a `URLSearchParams` body from the form and adds a **`form_type`** field —
-   `"customer"` or `"business"`. This is how the Apps Script tells the two submissions apart.
+2. Builds a plain object from the form and adds a **`form_type`** field — `"customer"` or
+   `"business"`. This is how `api/submit.js` tells the two submissions apart.
 3. Collapses repeated field names (multi-select checkboxes) into one comma-joined string,
-   so `service_interests` arrives as `"Beauty, Catering, Fitness"` rather than three rows.
+   so `service_interests` arrives as `"Beauty, Catering, Fitness"` rather than three values.
    Names ending in `[]` are normalised, e.g. `certifications[]` → `certifications`.
-4. `POST`s with `mode: "no-cors"`, then swaps the form for the success panel.
+4. Adds a random **`submission_id`**, then `POST`s the object as JSON and waits for
+   `{ "success": true }` before showing the success panel. A changed form field clears the
+   stored `submission_id` and generates a new one on the next submit — so retrying a *lost
+   response* reuses the same id (letting the server recognise and ignore the duplicate),
+   while retrying with *different values* is treated as a new submission.
 
 ### Where the responses go
 
 ```
-customer.html ─┐                                      ┌─▶ Customers tab  ─┐
-               ├─▶ Apps Script doPost() ─▶ Sheet ──────┤                   ├─▶ Slides deck
-business.html ─┘                                      └─▶ Businesses tab ─┘
-                                                         every 5 min ─────┘
+customer.html ─┐                          ┌─▶ Postgres `signups` table (form_type = 'customer' | 'business')
+               ├─▶ POST /api/submit ───────┤
+business.html ─┘                          └─▶ Resend confirmation email to the signer
 ```
 
-`doPost()` routes on `form_type` and appends each row to a **separate tab per audience**,
-so customer and provider responses never share a sheet.
+`api/submit.js` (see `lib/validate.js`, `lib/db.js`, `lib/resend.js`,
+`lib/emails/confirmation.js`):
 
-The same Apps Script project also maintains a **Google Slides deck** summarising the
-responses, so the team can see signup trends and totals without reading the spreadsheet.
-A time-driven trigger runs `runFullWaitlistAutomation()` every five minutes to rebuild the
-deck from the Sheet — so the deck lags a new signup by up to five minutes.
+1. Re-validates the payload server-side — the client's checks are not a security boundary.
+2. Inserts one row into the `signups` table (`migrations/001_init.sql`). Form-specific
+   fields live in a `details` JSONB column rather than as separate columns, since the two
+   forms collect different fields and the columns would otherwise need a migration every
+   time a question is added or changed.
+3. In parallel, (a) forwards the submission to the existing **Google Apps Script**
+   (`lib/googleSheet.js`) so the Google Sheet — and the Slides deck built from it — keep
+   updating exactly as before, and (b) sends a confirmation email via Resend to the address
+   the person submitted. The Apps Script receives the same urlencoded fields the forms used
+   to send directly, so it needs no changes; its URL defaults to the original deployment and
+   can be overridden with `GOOGLE_SCRIPT_URL`. **Both steps are best-effort:** if the row is
+   saved but the Sheet forward or the email fails, the request still returns success — the
+   signup is not lost — and the failure is recorded on the row (`sheet_sync_error` /
+   `confirmation_email_error`) and logged for follow-up.
 
-That trigger is installed by running `updateWaitlistSlides()` once from the Apps Script
-editor. **A fresh deployment has no trigger until you do**, and the deck will silently
-never update.
+### Setting it up from scratch
 
-### What you need to change the destination
+1. Add the Vercel Postgres (Neon) integration to the Vercel project, then run the migration
+   (see "Database setup" above).
+2. Create a [Resend](https://resend.com) account, verify a sending domain (Dashboard →
+   Domains → Add Domain, then add the DNS records it gives you), and create an API key.
+3. Set `RESEND_API_KEY` and `RESEND_FROM_EMAIL` (using an address on the verified domain) in
+   the Vercel project's environment variables.
 
-The Apps Script, Sheet and Slides deck all live in TheUrbanNet's Google account — **repo
-access alone is not enough to see submissions.** To point the forms somewhere else:
+Until a domain is verified in Resend, submissions still save correctly, but confirmation
+emails will fail to send (or only deliver to the Resend account's own email, if using the
+`onboarding@resend.dev` sandbox sender) — see the best-effort behaviour above.
 
-1. Create a Sheet with one tab per audience, and a Slides deck for the summary.
-2. Deploy an Apps Script web app with `doPost(e)` reading `e.parameter` and routing on
-   `form_type`, executing as yourself, with access set to *Anyone*.
-3. Replace `GOOGLE_SCRIPT_URL` in **both** `customer.js` and `business.js`.
-4. Run `updateWaitlistSlides()` once to install the five-minute trigger.
-
-The Apps Script itself is not version-controlled in this repo — it is edited in the Apps
-Script editor. Worth exporting a copy (via `clasp` or by hand) if you need its history.
-
-> **Known limitation.** `mode: "no-cors"` makes the response opaque, so the client cannot
-> read the status code. The success screen shows whenever the request doesn't throw — a
-> server-side error still looks like success to the user. Moving to a CORS-enabled endpoint
-> would let this be handled properly.
-
-The endpoint is visible in client-side JS. That is unavoidable for a static site, so the
-Apps Script must treat every submission as untrusted and do its own validation.
+The API is reachable by anyone who can see the client-side JS, which is unavoidable for a
+public form — `api/submit.js` treats every request as untrusted and does its own
+validation, independent of what the browser already checked.
 
 ---
 

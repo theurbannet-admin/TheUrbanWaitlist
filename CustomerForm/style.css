@@ -370,7 +370,7 @@ body.showing-success {
 
 .discovery-options .option {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -382,7 +382,6 @@ body.showing-success {
 
 input[type="checkbox"] {
   flex-shrink: 0;
-  margin-top: 0.15rem;
 
   accent-color: var(--primary-color);
 }
@@ -395,7 +394,25 @@ input[type="checkbox"] {
 
 .form-actions {
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
+}
+
+.submission-error {
+  margin-top: 1.5rem;
+  padding: 0.85rem 1rem;
+
+  border: 1px solid #b42318;
+  border-radius: 0.5rem;
+
+  background: #fff1f0;
+  color: #8a1c13;
+  font-weight: 600;
+}
+
+.submission-error:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
 }
 
 .cta-button {

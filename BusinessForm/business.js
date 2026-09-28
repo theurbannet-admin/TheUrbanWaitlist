@@ -285,19 +285,15 @@ validatePortfolioLinks();
 
 /* Form submission */
 
-/* Google Apps Script web app URL */
+const SUBMIT_URL = "/api/submit";
 
-const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyLzcA1-lVa3OTawov1OS7U16qbYYRg6K03X8UOG8Ez2gf9FsbhLhVNl1iVOGwjVBi4fg/exec";
+let pendingSubmissionData = null;
 
 
 /* Prepare form data */
 
 function createSubmissionData() {
   const formData = new FormData(form);
-  const submissionData = new URLSearchParams();
-
-  submissionData.append("form_type", "business");
 
   /*
    * Group fields that can have multiple values,
@@ -305,26 +301,31 @@ function createSubmissionData() {
    */
   const groupedFields = new Map();
 
- for (const [name, value] of formData.entries()) {
-  const cleanedValue = String(value).trim();
+  for (const [name, value] of formData.entries()) {
+    const cleanedValue = String(value).trim();
 
-  // Converts certifications[] into certifications
-  const normalisedName = name.endsWith("[]")
-    ? name.slice(0, -2)
-    : name;
+    // Converts certifications[] into certifications
+    const normalisedName = name.endsWith("[]")
+      ? name.slice(0, -2)
+      : name;
 
-  if (!groupedFields.has(normalisedName)) {
-    groupedFields.set(normalisedName, []);
+    if (!groupedFields.has(normalisedName)) {
+      groupedFields.set(normalisedName, []);
+    }
+
+    if (cleanedValue) {
+      groupedFields.get(normalisedName).push(cleanedValue);
+    }
   }
 
-  if (cleanedValue) {
-    groupedFields.get(normalisedName).push(cleanedValue);
-  }
-}
+  const submissionData = { form_type: "business" };
 
   for (const [name, values] of groupedFields.entries()) {
-    submissionData.append(name, values.join(", "));
+    submissionData[name] = values.join(", ");
   }
+
+  submissionData.submission_id =
+    window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`;
 
   return submissionData;
 }
@@ -391,6 +392,51 @@ function resetSubmitButton() {
 }
 
 
+function showSubmissionError() {
+  const submissionError = document.getElementById("submissionError");
+
+  submissionError.classList.remove("hidden");
+  submitButton.textContent = "Try Again";
+  submissionError.focus();
+}
+
+function clearSubmissionError() {
+  document.getElementById("submissionError").classList.add("hidden");
+}
+
+/* A changed form is a new submission, so it gets a new idempotency key. */
+form.addEventListener("input", () => {
+  pendingSubmissionData = null;
+  clearSubmissionError();
+});
+
+form.addEventListener("change", () => {
+  pendingSubmissionData = null;
+  clearSubmissionError();
+});
+
+
+async function submitWaitlist(submissionData) {
+  const response = await fetch(SUBMIT_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(submissionData)
+  });
+
+  let result;
+
+  try {
+    result = await response.json();
+  } catch {
+    throw new Error("The server did not return a valid confirmation.");
+  }
+
+  if (!response.ok || result?.success !== true) {
+    throw new Error(result?.message || `The server returned ${response.status}.`);
+  }
+}
+
+
 /* Form submission */
 
 form.addEventListener("submit", async (event) => {
@@ -409,33 +455,28 @@ form.addEventListener("submit", async (event) => {
   submitButton.classList.add("is-submitting");
   submitButton.textContent = "Submitting...";
 
-  const submissionData = createSubmissionData();
+  const submissionData = pendingSubmissionData || createSubmissionData();
+  pendingSubmissionData = submissionData;
+  clearSubmissionError();
 
   try {
-    await fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      body: submissionData
-    });
+    await submitWaitlist(submissionData);
 
     form.reset();
+    pendingSubmissionData = null;
 
     /*
      * Restore dynamic form sections after resetting.
      */
     updateOtherCategory();
-    setupCheckboxQuestions();
     validatePortfolioLinks();
 
     await showSuccessMessage();
   } catch (error) {
     console.error("Waitlist submission failed:", error);
 
-    alert(
-      "We could not submit your details. Please check your connection and try again."
-    );
-
     resetSubmitButton();
+    showSubmissionError();
   }
 });
 
