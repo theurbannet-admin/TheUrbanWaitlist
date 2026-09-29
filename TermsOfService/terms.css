@@ -301,3 +301,27 @@ summary {
   background-position: center;
   background-size: 0.75rem 0.75rem;
 }
+
+/* ================= DESKTOP ACTIVE NAV STATE (>= 900px) ==================== */
+/* Official-site styling, desktop only — mobile keeps the base design
+   (plain active colour, ↗ badge). */
+
+@media (min-width: 900px) {
+  /* Non-active items: no underline, lighter neutral text (var(--muted)) */
+  .policy-page .policy-layout .contents a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* Active item: bold underlined text */
+  .policy-page .policy-layout .contents a.active {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+  }
+
+  /* Active badge: right-pointing arrow inside the orange circle (#DF5B2E) */
+  .policy-page .policy-layout .contents a.active::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E");
+  }
+}

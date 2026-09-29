@@ -558,17 +558,85 @@
   </main>
 
   <script>
-    const navLinks = document.querySelectorAll("nav a");
+    const navLinks = document.querySelectorAll(".contents a");
+    const sections = document.querySelectorAll(".policy-content section[id]");
 
+    const setActiveLink = (id) => {
+      navLinks.forEach((item) => {
+        item.classList.toggle(
+          "active",
+          item.getAttribute("href") === `#${id}`
+        );
+      });
+    };
+
+    /* Clicking a link moves the active state to that section */
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        navLinks.forEach((item) => {
-          item.classList.remove("active");
-        });
-
-        link.classList.add("active");
+        setActiveLink(link.hash.slice(1));
       });
     });
+
+    /* Hash detection: deep links and hash changes update the active item */
+    if (window.location.hash) {
+      setActiveLink(window.location.hash.slice(1));
+    }
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash) {
+        setActiveLink(window.location.hash.slice(1));
+      }
+    });
+
+    /* Scroll-sync — desktop only; the mobile design and behaviour are
+       unchanged. The active item follows whichever section header crosses
+       the marker line (top quarter of the viewport). */
+    const desktopQuery = window.matchMedia("(min-width: 900px)");
+
+    const syncActiveOnScroll = () => {
+      if (!desktopQuery.matches || sections.length === 0) {
+        return;
+      }
+
+      const markerLine = window.innerHeight * 0.25;
+      let currentId = sections[0].id;
+
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= markerLine) {
+          currentId = section.id;
+        }
+      });
+
+      /* At the bottom of the page the final section wins */
+      const pageBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+
+      if (pageBottom) {
+        currentId = sections[sections.length - 1].id;
+      }
+
+      setActiveLink(currentId);
+    };
+
+    let scrollTicking = false;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (scrollTicking) {
+          return;
+        }
+
+        scrollTicking = true;
+
+        requestAnimationFrame(() => {
+          syncActiveOnScroll();
+          scrollTicking = false;
+        });
+      },
+      { passive: true }
+    );
   </script>
 </body>
 </html>
