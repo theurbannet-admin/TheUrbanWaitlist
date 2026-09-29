@@ -105,7 +105,7 @@ access alone is not enough to see submissions.** To point the forms somewhere el
 
 1. Create a Sheet with one tab per audience, and a Slides deck for the summary.
 2. Deploy an Apps Script web app with `doPost(e)` reading `e.parameter` and routing on
-   `form_type`, executing as yourself, with access set to *Anyone*.
+   `form_type`, executing as yourself, with access set to _Anyone_.
 3. Replace `GOOGLE_SCRIPT_URL` in **both** `customer.js` and `business.js`.
 4. Run `updateWaitlistSlides()` once to install the five-minute trigger.
 
@@ -130,11 +130,11 @@ Apps Script must treat every submission as untrusted and do its own validation.
 
 Both forms share the same patterns, driven by markup rather than JS:
 
-| Pattern | How it works |
-|---|---|
-| Checkbox limits | `data-min` / `data-max` on `.checkbox-question` |
+| Pattern            | How it works                                                                |
+| ------------------ | --------------------------------------------------------------------------- |
+| Checkbox limits    | `data-min` / `data-max` on `.checkbox-question`                             |
 | "Other" text input | `.other-option` checkbox reveals `.other-input-group` and makes it required |
-| UK postcode | Reformatted on `blur` to `OUTWARD INWARD` (e.g. `sw1a1aa` → `SW1A 1AA`) |
+| UK postcode        | Reformatted on `blur` to `OUTWARD INWARD` (e.g. `sw1a1aa` → `SW1A 1AA`)     |
 
 Adding a question is usually markup-only — reuse `.checkbox-question` and the JS picks it up.
 
