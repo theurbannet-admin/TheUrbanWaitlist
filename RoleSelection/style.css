@@ -191,6 +191,9 @@ body {
         }
     }
 
+   
+    
+
     .back-icon {
         @media (hover: hover) {
             &:hover .icon {
@@ -236,7 +239,17 @@ body {
 
 /* Responsive Mobile View Layout Rules */
 
-/* Larger screens*/
+/* Responsive Layout Rules */
+
+/* Mobile screens (under 900px) */
+@media (max-width: 56.249rem) {
+    #businessRole {
+        justify-content: flex-start;
+        padding-left: 5.7rem; 
+    }
+}
+
+/* Larger screens (Desktop) */
 @media (min-width: 56.25rem) {
     .main-content .roles {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -244,17 +257,14 @@ body {
     }
 }
 
-/* Smaller screens */
+/* Extra small mobile screens */
 @media (max-width: 23.5rem) {
     .main-content {
         padding: 0.75rem;
     }
 
     .details {
-        padding:
-            4.75rem
-            1.15rem
-            1.5rem;
+        padding: 4.75rem 1.15rem 1.5rem;
     }
 
     .description h2 {
