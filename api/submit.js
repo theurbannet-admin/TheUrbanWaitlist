@@ -70,12 +70,18 @@ export default async function handler(req, res) {
       const template =
         formType === "customer" ? customerConfirmationEmail({ name }) : businessConfirmationEmail({ name });
 
-      await getResendClient().emails.send({
+      // Resend returns API errors (e.g. an unverified sender or recipient)
+      // instead of throwing them, so they have to be raised here to be recorded.
+      const { error } = await getResendClient().emails.send({
         from: getFromAddress(),
         to: email,
         subject: template.subject,
         html: template.html,
       });
+
+      if (error) {
+        throw new Error(`Resend rejected the email: ${error.message}`);
+      }
 
       await markConfirmationEmailSent(signupId);
     }),
