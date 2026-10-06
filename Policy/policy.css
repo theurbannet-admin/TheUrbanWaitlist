@@ -1,0 +1,92 @@
+/* Shared policy-page branding, kept in step with LandingPage/style.css. */
+
+.policy-brand-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.policy-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.policy-brand-logo {
+  display: inline-block;
+  width: 10.5rem;
+  height: auto;
+  flex: 0 0 auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.back-to-waitlist {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 2rem;
+  background: transparent;
+  color: var(--primary-color);
+  font-family: var(--alternative-font);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 200ms ease, background-color 200ms ease, transform 200ms ease;
+}
+
+.back-to-waitlist::before {
+  content: "←";
+  margin-right: 0.5rem;
+  font-size: 1.05rem;
+  line-height: 0.8;
+}
+
+@media (hover: hover) {
+  .back-to-waitlist:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-0.15rem);
+  }
+}
+
+.back-to-waitlist:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+@media (max-width: 30rem) {
+  .policy-brand-bar {
+    align-items: flex-start;
+  }
+
+  .policy-brand {
+    font-size: 1.15rem;
+  }
+
+  .policy-brand-logo {
+    width: 8rem;
+    height: auto;
+    flex-basis: auto;
+  }
+
+  .back-to-waitlist {
+    min-height: 2.5rem;
+    padding-inline: 0.8rem;
+    font-size: 0.78rem;
+  }
+}

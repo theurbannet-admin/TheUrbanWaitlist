@@ -1,669 +1,509 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../shared/design-tokens.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="../shared/form-utils.js" defer></script>
     <script src="customer.js" defer></script>
     <title>Customer Form</title>
-  </head>
-  <body>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@700&display=swap"></noscript>
+</head>
+<body>
     <section class="main-content">
-      <div class="section-heading">
-        <a
-          href="../RoleSelection/roles.html"
-          class="back-icon"
-          id="backToRoleSelection"
-          data-title="Go Back"
-        >
-          <svg
-            class="icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 640 640"
-          >
-            <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-            <path
-              d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z"
-            />
-          </svg>
-        </a>
 
-        <h1>Join the <span>Customer</span> Waitlist</h1>
-      </div>
+        <div class="section-heading">
+          <a href="../RoleSelection/roles.html" class="back-icon" id="backToRoleSelection" data-title="Go Back">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z"/></svg>
+            </a>
 
-      <!-- Personal Details -->
-      <form action="#" method="post" class="waitlist-form" id="waitlistForm">
-        <fieldset class="personal-details">
-          <legend>About You</legend>
+            <h1>Join the <span>Customer</span> Waitlist</h1>
+            
+        </div>
 
-          <div class="section-grid">
-            <div class="row1">
-              <!-- Full Name -->
-              <div class="form-group input-group-icon">
-                <label class="sr-only" for="full-name">Full Name</label>
-                <input
-                  type="text"
-                  id="full-name"
-                  name="full_name"
-                  placeholder="Full Name"
-                  autocomplete="name"
-                  minlength="2"
-                  maxlength="80"
-                  required
-                />
-                <span class="input-icon" aria-hidden="true">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path
-                      fill="currentColor"
-                      d="M20.37 21.25a.75.75 0 0 1-.75.75H4.38a.75.75 0 0 1-.75-.75c0-4.1 4.5-7.28 8.37-7.28s8.37 3.18 8.37 7.28M17.1 7.11A5.1 5.1 0 1 1 12 2a5.11 5.11 0 0 1 5.1 5.11"
-                    />
-                  </svg>
-                </span>
-              </div>
-              <!-- Email -->
-              <div class="form-group input-group-icon">
-                <label class="sr-only" for="email">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Email Address"
-                  autocomplete="email"
-                  inputmode="email"
-                  maxlength="254"
-                  required
-                />
-                <span class="input-icon" aria-hidden="true">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <g fill="currentColor">
-                      <path
-                        d="M22 7.535V17a3 3 0 0 1-2.824 2.995L19 20H5a3 3 0 0 1-2.995-2.824L2 17V7.535l9.445 6.297l.116.066a1 1 0 0 0 .878 0l.116-.066z"
-                      />
-                      <path
-                        d="M19 4c1.08 0 2.027.57 2.555 1.427L12 11.797l-9.555-6.37a3 3 0 0 1 2.354-1.42L5 4z"
-                      />
-                    </g>
-                  </svg>
-                </span>
-              </div>
-            </div>
-
-            <!-- Age Range -->
-            <div class="form-group input-group-icon select-group">
-              <label class="sr-only" for="age-range"
-                >Select Your Age Range</label
-              >
-
-              <select id="age-range" name="age_range" required>
-                <option value="" selected disabled>
-                  Select Your Age Range
-                </option>
-                <option value="18-24">18–24</option>
-                <option value="25-34">25–34</option>
-                <option value="35-44">35–44</option>
-                <option value="45-54">45–54</option>
-                <option value="55+">55+</option>
-              </select>
-            </div>
-
-            <!-- Postcode -->
+        <!-- Personal Details -->
+<form action="#" method="post" class="waitlist-form" id="waitlistForm"> 
+    <fieldset class="personal-details">
+      <legend>About You</legend>
+    
+      <div class="section-grid">
+    
+        <div class="row1">
+            <!-- Full Name -->
             <div class="form-group input-group-icon">
-              <label class="sr-only" for="postcode">Postcode</label>
-
+              <label class="sr-only" for="full-name">Full Name</label>
               <input
                 type="text"
-                id="postcode"
-                name="postcode"
-                placeholder="Enter Your Postcode"
-                autocomplete="postal-code"
-                maxlength="8"
-                pattern="[A-Za-z]{1,2}[0-9][A-Za-z0-9]?\s?[0-9][A-Za-z]{2}"
-                title="Enter a valid UK postcode, for example EH14 3JJ"
+                id="full-name"
+                name="full_name"
+                placeholder="Full Name"
+                autocomplete="name"
+                minlength="2"
+                maxlength="80"
                 required
-              />
-
+              >
               <span class="input-icon" aria-hidden="true">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 50 50"
-                >
-                  <path d="M0 0h50v50H0z" fill="none" />
-                  <path
-                    fill="currentColor"
-                    d="M25 0c-8.284 0-15 6.656-15 14.866s15 35.135 15 35.135s15-26.924 15-35.135S33.284 0 25 0m-.049 19.312c-2.557 0-4.629-2.055-4.629-4.588c0-2.535 2.072-4.589 4.629-4.589c2.559 0 4.631 2.054 4.631 4.589c0 2.533-2.072 4.588-4.631 4.588"
-                  />
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path fill="currentColor" d="M20.37 21.25a.75.75 0 0 1-.75.75H4.38a.75.75 0 0 1-.75-.75c0-4.1 4.5-7.28 8.37-7.28s8.37 3.18 8.37 7.28M17.1 7.11A5.1 5.1 0 1 1 12 2a5.11 5.11 0 0 1 5.1 5.11" />
                 </svg>
               </span>
             </div>
-          </div>
-        </fieldset>
-
-        <!-- Service Preferences -->
-        <fieldset
-          class="service-preferences checkbox-question"
-          data-min="1"
-          data-max="3"
-        >
-          <legend>Which services are you most interested in?</legend>
-
-          <p class="service-helper-text">Pick Your Top 3 Categories</p>
-
-          <div class="service-pills">
-            <div class="service-option">
+            <!-- Email -->
+            <div class="form-group input-group-icon">
+              <label class="sr-only" for="email">Email Address</label>
               <input
-                class="category-input"
-                type="checkbox"
-                id="beauty"
-                name="service_interests"
-                value="Beauty & Grooming"
-              />
-              <label class="category-pill" for="beauty">
-                Beauty &amp; Grooming
-              </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="fashion"
-                name="service_interests"
-                value="Fashion & Styling"
-              />
-              <label class="category-pill" for="fashion">
-                Fashion &amp; Styling
-              </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="wellness"
-                name="service_interests"
-                value="Wellness & Fitness"
-              />
-              <label class="category-pill" for="wellness">
-                Wellness &amp; Fitness
-              </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="food"
-                name="service_interests"
-                value="Food & Catering"
-              />
-              <label class="category-pill" for="food">
-                Food &amp; Catering
-              </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="home"
-                name="service_interests"
-                value="Home & Lifestyle"
-              />
-              <label class="category-pill" for="home">
-                Home &amp; Lifestyle
-              </label>
-            </div>
-          </div>
-        </fieldset>
-
-        <!--Current Service Discovery-->
-        <fieldset
-          class="current-service-discovery checkbox-question"
-          data-min="1"
-          data-max="3"
-        >
-          <legend>How do you usually find services?</legend>
-
-          <div class="discovery-options">
-            <div class="option">
-              <input
-                type="checkbox"
-                id="service-social"
-                name="discovery_method"
-                value="social-media"
-              />
-              <label for="service-social">Social Media</label>
-            </div>
-
-            <div class="option">
-              <input
-                type="checkbox"
-                id="service-google"
-                name="discovery_method"
-                value="google"
-              />
-              <label for="service-google">Google or other search engines</label>
-            </div>
-
-            <div class="option">
-              <input
-                type="checkbox"
-                id="service-friends"
-                name="discovery_method"
-                value="friends-family"
-              />
-              <label for="service-friends">Friends or Family</label>
-            </div>
-
-            <div class="option">
-              <input
-                type="checkbox"
-                id="service-apps"
-                name="discovery_method"
-                value="existing-apps"
-              />
-              <label for="service-apps">Existing Apps</label>
-            </div>
-
-            <div class="option">
-              <input
-                type="checkbox"
-                id="service-word-of-mouth"
-                name="discovery_method"
-                value="word-of-mouth"
-              />
-              <label for="service-word-of-mouth">Word of Mouth</label>
-            </div>
-
-            <div class="option">
-              <input
-                class="other-option"
-                type="checkbox"
-                id="service-other"
-                name="discovery_method"
-                value="other"
-              />
-              <label for="service-other">Other</label>
-            </div>
-          </div>
-
-          <div class="form-group other-input-group hidden">
-            <label class="sr-only" for="current-services-other-text"
-              >If other, please specify</label
-            >
-
-            <input
-              type="text"
-              id="current-services-other-text"
-              name="current_service_discovery_other"
-              placeholder="If other, please specify"
-              maxlength="60"
-            />
-          </div>
-        </fieldset>
-
-        <!--How they found TheUrbanNet-->
-        <fieldset
-          class="TheUrbanNet-discovery checkbox-question"
-          data-min="1"
-          data-max="3"
-        >
-          <legend>How did you hear about TheUrbanNet?</legend>
-
-          <div class="discovery-options">
-            <div class="option">
-              <input
-                type="checkbox"
-                id="heard-social"
-                name="found_urbannet"
-                value="social-media"
-              />
-              <label for="heard-social">Social Media</label>
-            </div>
-
-            <div class="option">
-              <input
-                type="checkbox"
-                id="heard-google"
-                name="found_urbannet"
-                value="google"
-              />
-              <label for="heard-google">Google or other search engines</label>
-            </div>
-
-            <div class="option">
-              <input
-                type="checkbox"
-                id="heard-friends"
-                name="found_urbannet"
-                value="friends-family"
-              />
-              <label for="heard-friends">Friends or Family</label>
-            </div>
-
-            <div class="option">
-              <input
-                type="checkbox"
-                id="heard-apps"
-                name="found_urbannet"
-                value="existing-apps"
-              />
-              <label for="heard-apps">Existing Apps</label>
-            </div>
-
-            <div class="option">
-              <input
-                type="checkbox"
-                id="heard-word-of-mouth"
-                name="found_urbannet"
-                value="word-of-mouth"
-              />
-              <label for="heard-word-of-mouth">Word of Mouth</label>
-            </div>
-
-            <div class="option">
-              <input
-                class="other-option"
-                type="checkbox"
-                id="heard-other"
-                name="found_urbannet"
-                value="other"
-              />
-              <label for="heard-other">Other</label>
-            </div>
-          </div>
-
-          <div class="form-group other-input-group hidden">
-            <label class="sr-only" for="found-urbannet-other-text"
-              >If other, please specify</label
-            >
-
-            <input
-              type="text"
-              id="found-urbannet-other-text"
-              name="found_urbannet_other"
-              placeholder="Please tell us where you heard about us"
-              maxlength="60"
-            />
-          </div>
-        </fieldset>
-
-        <!-- What matters Most?-->
-        <fieldset
-          class="most-important checkbox-question"
-          data-min="1"
-          data-max="5"
-        >
-          <legend>What Matters Most</legend>
-
-          <p class="service-helper-text">
-            What matters most to you when choosing a service provider?
-          </p>
-
-          <div class="service-pills">
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="price"
-                name="provider_priorities"
-                value="price"
-              />
-              <label class="category-pill" for="price"> Price </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="qualityOfWork"
-                name="provider_priorities"
-                value="Quality of Work"
-              />
-              <label class="category-pill" for="qualityOfWork">
-                Quality of Work
-              </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="ratings"
-                name="provider_priorities"
-                value="Reviews & ratings"
-              />
-              <label class="category-pill" for="ratings">
-                Reviews &amp; ratings
-              </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="Location"
-                name="provider_priorities"
-                value="Location"
-              />
-              <label class="category-pill" for="Location"> Location </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="availability"
-                name="provider_priorities"
-                value="Availability"
-              />
-              <label class="category-pill" for="availability">
-                Availability
-              </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="trust"
-                name="provider_priorities"
-                value="Trust & Reliability "
-              />
-              <label class="category-pill" for="trust">
-                Trust &amp; Reliability
-              </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="portfolio"
-                name="provider_priorities"
-                value="Photos or portfolio of previous work"
-              />
-              <label class="category-pill" for="portfolio">
-                Photos or portfolio of previous work
-              </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input"
-                type="checkbox"
-                id="communication"
-                name="provider_priorities"
-                value="fast & clear communication"
-              />
-              <label class="category-pill" for="communication">
-                Fast &amp; clear communication
-              </label>
-            </div>
-
-            <div class="service-option">
-              <input
-                class="category-input other-option"
-                type="checkbox"
-                id="what-matters-other"
-                name="provider_priorities"
-                value="other"
-              />
-              <label class="category-pill" for="what-matters-other"
-                >Other</label
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email Address"
+                autocomplete="email"
+                inputmode="email"
+                maxlength="254"
+                required
               >
+              <span class="input-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <g fill="currentColor">
+                        <path d="M22 7.535V17a3 3 0 0 1-2.824 2.995L19 20H5a3 3 0 0 1-2.995-2.824L2 17V7.535l9.445 6.297l.116.066a1 1 0 0 0 .878 0l.116-.066z" />
+                        <path d="M19 4c1.08 0 2.027.57 2.555 1.427L12 11.797l-9.555-6.37a3 3 0 0 1 2.354-1.42L5 4z" />
+                    </g>
+                </svg>
+              </span>
             </div>
-          </div>
-
-          <div class="form-group other-input-group hidden">
-            <label class="sr-only" for="what-matters-other-text"
-              >If other, please specify</label
-            >
-
-            <input
-              type="text"
-              id="what-matters-other-text"
-              name="provider_priorities_other"
-              placeholder="What else matters to you?"
-              maxlength="60"
-            />
-          </div>
-        </fieldset>
-
-        <div class="form-actions">
-          <div
-            id="submissionError"
-            class="submission-error hidden"
-            role="alert"
-            tabindex="-1"
-          >
-            We couldn't confirm your submission. Your details are still here —
-            please try again.
-          </div>
-          <button class="cta-button" type="submit" id="submitBtn">
-            Join the Waitlist
-          </button>
         </div>
-      </form>
-    </section>
+    
+        <!-- Age Range -->
+        <div class="form-group input-group-icon select-group">
+          <label class="sr-only" for="age-range">Select Your Age Range</label>
+    
+          <select id="age-range" name="age_range" required>
+            <option value="" selected disabled>Select Your Age Range</option>
+            <option value="18-24">18–24</option>
+            <option value="25-34">25–34</option>
+            <option value="35-44">35–44</option>
+            <option value="45-54">45–54</option>
+            <option value="55+">55+</option>
+          </select>
 
-    <section
-      id="successMessage"
-      class="notification-body hidden"
-      role="status"
-      tabindex="-1"
-      aria-live="polite"
+        </div>
+        
+    
+        <!-- Postcode -->
+        <div class="form-group input-group-icon">
+          <label class="sr-only" for="postcode">Postcode</label>
+    
+          <input
+           type="text"
+            id="postcode"
+            name="postcode"
+            placeholder="Enter Your Postcode"
+            autocomplete="postal-code"
+            maxlength="8"
+            pattern="[A-Za-z]{1,2}[0-9][A-Za-z0-9]?\s?[0-9][A-Za-z]{2}"
+            title="Enter a valid UK postcode, for example EH14 3JJ"
+            required
+          >
+    
+          <span class="input-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 50 50">
+                <path d="M0 0h50v50H0z" fill="none" />
+                <path fill="currentColor" d="M25 0c-8.284 0-15 6.656-15 14.866s15 35.135 15 35.135s15-26.924 15-35.135S33.284 0 25 0m-.049 19.312c-2.557 0-4.629-2.055-4.629-4.588c0-2.535 2.072-4.589 4.629-4.589c2.559 0 4.631 2.054 4.631 4.589c0 2.533-2.072 4.588-4.631 4.588" />
+            </svg>
+          </span>
+
+        </div>
+    
+      </div>
+    </fieldset>
+
+    <!-- Service Preferences -->
+<fieldset class="service-preferences checkbox-question" data-min="1" data-max="3">
+  <legend>Which services are you most interested in?</legend>
+
+  <p class="service-helper-text">Pick Your Top 3 Categories</p>
+
+  <div class="service-pills">
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="beauty"
+        name="service_interests"
+        value="Beauty & Grooming"
+      >
+      <label class="category-pill" for="beauty">
+        Beauty &amp; Grooming
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="fashion"
+        name="service_interests"
+        value="Fashion & Styling"
+      >
+      <label class="category-pill" for="fashion">
+        Fashion &amp; Styling
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="wellness"
+        name="service_interests"
+        value="Wellness & Fitness"
+      >
+      <label class="category-pill" for="wellness">
+        Wellness &amp; Fitness
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="food"
+        name="service_interests"
+        value="Food & Catering"
+      >
+      <label class="category-pill" for="food">
+        Food &amp; Catering
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="home"
+        name="service_interests"
+        value="Home & Lifestyle"
+      >
+      <label class="category-pill" for="home">
+        Home &amp; Lifestyle
+      </label>
+    </div>
+
+  </div>
+</fieldset>
+
+<!--Current Service Discovery-->
+<fieldset class="current-service-discovery checkbox-question" data-min="1" data-max="3">
+  <legend>How do you usually find services?</legend>
+  
+
+  <div class="discovery-options">
+    <div class="option">
+        <input type="checkbox" id="service-social" name="discovery_method" value="social-media">
+        <label for="service-social">Social Media</label>
+    </div>
+
+    <div class="option">
+        <input type="checkbox" id="service-google" name="discovery_method" value="google">
+        <label for="service-google">Google or other search engines</label>
+    </div>
+
+    <div class="option">
+        <input type="checkbox" id="service-friends" name="discovery_method" value="friends-family">
+        <label for="service-friends">Friends or Family</label>
+    </div>
+
+    <div class="option">
+        <input type="checkbox" id="service-apps" name="discovery_method" value="existing-apps">
+        <label for="service-apps">Existing Apps</label>
+    </div>
+
+    <div class="option">
+        <input type="checkbox" id="service-word-of-mouth" name="discovery_method" value="word-of-mouth">
+        <label for="service-word-of-mouth">Word of Mouth</label>
+    </div>
+    
+
+    <div class="option">
+        <input
+          class="other-option"
+          type="checkbox"
+          id="service-other"
+          name="discovery_method"
+          value="other"
+        >
+        <label for="service-other">Other</label>
+    </div>
+  </div>
+
+   <div class="form-group other-input-group hidden">
+    <label class="sr-only" for="current-services-other-text">If other, please specify</label>
+
+    <input
+      type="text"
+      id="current-services-other-text"
+      name="current_service_discovery_other"
+      placeholder="If other, please specify"
+      maxlength="60"
     >
-      <div class="logo">
-        <svg
-          width="230"
-          height="45"
-          viewBox="0 0 230 45"
-          fill="#DF5B2E;"
-          xmlns="http://www.w3.org/2000/svg"
+  </div>
+
+</fieldset>
+
+<!--How they found TheUrbanNet-->
+<fieldset class="TheUrbanNet-discovery checkbox-question" data-min="1" data-max="3">
+  <legend>How did you hear about TheUrbanNet?</legend>
+
+  <div class="discovery-options">
+    <div class="option">
+        <input type="checkbox" id="heard-social" name="found_urbannet" value="social-media">
+        <label for="heard-social">Social Media</label>
+    </div>
+
+    <div class="option">
+        <input type="checkbox" id="heard-google" name="found_urbannet" value="google">
+        <label for="heard-google">Google or other search engines</label>
+    </div>
+
+    <div class="option">
+        <input type="checkbox" id="heard-friends" name="found_urbannet" value="friends-family">
+        <label for="heard-friends">Friends or Family</label>
+    </div>
+
+    <div class="option">
+        <input type="checkbox" id="heard-apps" name="found_urbannet" value="existing-apps">
+        <label for="heard-apps">Existing Apps</label>
+    </div>
+
+    <div class="option">
+        <input type="checkbox" id="heard-word-of-mouth" name="found_urbannet" value="word-of-mouth">
+        <label for="heard-word-of-mouth">Word of Mouth</label>
+    </div>
+
+    <div class="option">
+        <input
+          class="other-option"
+          type="checkbox"
+          id="heard-other"
+          name="found_urbannet"
+          value="other"
         >
-          <path
-            d="M48.2733 30.4487V42.1678H38.234V14.141H48.2733V24.8179L48.2606 24.8687C48.4294 23.2333 48.6953 21.7589 49.0582 20.4455C49.4211 19.1236 49.9148 17.9966 50.5394 17.0644C51.164 16.1323 51.932 15.4121 52.8435 14.9037C53.7634 14.3952 54.8564 14.141 56.1224 14.141H58.1733V23.5595H53.5904C52.5186 23.5595 51.6408 23.6951 50.9572 23.9663C50.2735 24.2374 49.7292 24.6526 49.324 25.2119C48.9274 25.7712 48.6531 26.4872 48.5012 27.36C48.3492 28.2243 48.2733 29.2539 48.2733 30.4487Z"
-            fill="#DF5B2E"
-          />
-          <path
-            d="M69.983 4.54457V22.6444L69.9577 22.6952C70.2024 21.153 70.5654 19.8015 71.0464 18.6406C71.5359 17.4797 72.131 16.5094 72.8315 15.7298C73.5404 14.9503 74.3591 14.3656 75.2875 13.9758C76.2243 13.5775 77.2709 13.3784 78.4271 13.3784C79.4821 13.3784 80.4823 13.5394 81.4275 13.8614C82.3728 14.1834 83.2421 14.6494 84.0355 15.2596C84.8373 15.8612 85.5547 16.5984 86.1877 17.4712C86.8207 18.344 87.3566 19.3269 87.7955 20.42C88.2343 21.5131 88.5719 22.7079 88.8083 24.0044C89.0446 25.3009 89.1627 26.6821 89.1627 28.148C89.1627 29.614 89.0446 30.9952 88.8083 32.2917C88.5719 33.5882 88.2343 34.7872 87.7955 35.8888C87.3566 36.9819 86.8207 37.9648 86.1877 38.8376C85.5547 39.7104 84.8373 40.4518 84.0355 41.062C83.2421 41.6636 82.3728 42.1254 81.4275 42.4474C80.4823 42.7694 79.4821 42.9304 78.4271 42.9304C77.2793 42.9304 76.237 42.7313 75.3002 42.333C74.3633 41.9432 73.5404 41.3585 72.8315 40.5789C72.131 39.7994 71.5359 38.8291 71.0464 37.6682C70.5654 36.4989 70.2024 35.1431 69.9577 33.6009L69.983 33.6644V42.1678H59.9437V4.54457H69.983ZM69.983 28.148C69.983 28.8259 70.0252 29.453 70.1096 30.0292C70.194 30.6054 70.3206 31.1223 70.4894 31.5799C70.6582 32.0375 70.8692 32.44 71.1224 32.7874C71.384 33.1348 71.6836 33.4229 72.0212 33.6517C72.3588 33.8805 72.7344 34.0542 73.148 34.1728C73.57 34.2915 74.0257 34.3508 74.5152 34.3508C75.2748 34.3508 75.9332 34.2237 76.4902 33.9695C77.0557 33.7153 77.5241 33.3297 77.8954 32.8128C78.2668 32.2959 78.5453 31.6477 78.731 30.8681C78.9251 30.0885 79.0222 29.1818 79.0222 28.148C79.0222 27.1143 78.9293 26.2118 78.7436 25.4407C78.558 24.6611 78.2752 24.0129 77.8954 23.496C77.5241 22.9791 77.0557 22.5935 76.4902 22.3393C75.9332 22.0851 75.2748 21.958 74.5152 21.958C74.0257 21.958 73.57 22.0173 73.148 22.136C72.7344 22.2546 72.3588 22.4283 72.0212 22.6571C71.6836 22.8859 71.384 23.174 71.1224 23.5214C70.8692 23.8604 70.6582 24.2629 70.4894 24.7289C70.3206 25.1865 70.194 25.7034 70.1096 26.2796C70.0252 26.8473 69.983 27.4701 69.983 28.148Z"
-            fill="#DF5B2E"
-          />
-          <path
-            d="M90.8655 24.9196C90.8655 23.1316 91.1904 21.5259 91.8403 20.1023C92.4902 18.6787 93.4228 17.4712 94.6381 16.4798C95.8619 15.4799 97.3431 14.713 99.0818 14.1792C100.829 13.6453 102.795 13.3784 104.981 13.3784C107.184 13.3784 109.142 13.6538 110.855 14.2046C112.577 14.7469 114.029 15.5349 115.21 16.5687C116.4 17.6025 117.304 18.8778 117.92 20.3946C118.544 21.9029 118.856 23.6189 118.856 25.5424V42.1678H108.817V35.2024L108.855 35.1897C108.67 35.9862 108.412 36.7319 108.083 37.4267C107.762 38.1131 107.374 38.7444 106.918 39.3206C106.462 39.8883 105.943 40.3968 105.361 40.8459C104.787 41.295 104.163 41.6763 103.487 41.9898C102.812 42.2949 102.086 42.5279 101.31 42.6889C100.533 42.8499 99.7232 42.9304 98.8792 42.9304C97.5541 42.9304 96.3472 42.7355 95.2585 42.3457C94.1782 41.9559 93.2498 41.4094 92.4733 40.7061C91.7053 39.9943 91.106 39.1427 90.6756 38.1512C90.2536 37.1513 90.0426 36.0413 90.0426 34.8211C90.0426 33.4568 90.3169 32.2408 90.8655 31.1731C91.4141 30.097 92.2116 29.1903 93.2582 28.4531C94.3132 27.7159 95.6003 27.1566 97.1195 26.7753C98.6471 26.3855 100.39 26.1906 102.348 26.1906H109.007V31.1223H103.956C103.34 31.1223 102.791 31.1732 102.31 31.2748C101.837 31.3765 101.441 31.5333 101.12 31.7451C100.799 31.957 100.555 32.2197 100.386 32.5332C100.225 32.8382 100.145 33.1899 100.145 33.5882C100.145 33.9779 100.221 34.3296 100.373 34.6431C100.525 34.9482 100.744 35.2066 101.031 35.4185C101.318 35.6303 101.669 35.7955 102.082 35.9142C102.496 36.0243 102.964 36.0794 103.487 36.0794C103.985 36.0794 104.458 36.0328 104.905 35.9396C105.361 35.8464 105.787 35.7108 106.184 35.5329C106.581 35.3549 106.939 35.1431 107.26 34.8973C107.589 34.6431 107.868 34.3677 108.096 34.0712C108.323 33.7661 108.501 33.4399 108.627 33.0924C108.754 32.745 108.817 32.3849 108.817 32.012V25.5424C108.817 24.7713 108.729 24.0849 108.551 23.4833C108.383 22.8816 108.129 22.3775 107.792 21.9707C107.454 21.5555 107.028 21.242 106.513 21.0301C106.007 20.8183 105.412 20.7124 104.728 20.7124C104.061 20.7124 103.483 20.8056 102.994 20.992C102.504 21.1784 102.103 21.4538 101.791 21.8182C101.479 22.1741 101.242 22.6147 101.082 23.1401C100.93 23.657 100.854 24.2501 100.854 24.9196H90.8655Z"
-            fill="#DF5B2E"
-          />
-          <path
-            d="M131.205 27.9193V42.1678H121.166V14.141H131.205V23.0384L131.18 23.0892C131.416 21.4623 131.788 20.043 132.294 18.8312C132.809 17.6195 133.455 16.6111 134.231 15.8061C135.008 15.0011 135.915 14.3952 136.953 13.9885C137.991 13.5818 139.164 13.3784 140.472 13.3784C141.89 13.3784 143.123 13.6199 144.169 14.1029C145.216 14.5859 146.085 15.3231 146.777 16.3145C147.469 17.2975 147.984 18.5346 148.322 20.026C148.668 21.5089 148.841 23.2587 148.841 25.2755V42.1678H138.801V27.8176C138.801 26.8346 138.725 25.9788 138.573 25.25C138.422 24.5128 138.194 23.9027 137.89 23.4197C137.586 22.9367 137.202 22.5766 136.738 22.3393C136.274 22.1021 135.729 21.9834 135.105 21.9834C134.683 21.9834 134.29 22.0385 133.927 22.1487C133.573 22.2588 133.248 22.4241 132.952 22.6444C132.666 22.8647 132.412 23.1401 132.193 23.4706C131.973 23.801 131.792 24.1866 131.649 24.6272C131.505 25.0679 131.395 25.5636 131.319 26.1144C131.243 26.6567 131.205 27.2583 131.205 27.9193Z"
-            fill="#DF5B2E"
-          />
-          <path
-            d="M161.174 27.9193V42.1678H151.134V14.141H161.174V23.0384L161.148 23.0892C161.385 21.4623 161.756 20.043 162.262 18.8312C162.777 17.6195 163.423 16.6111 164.199 15.8061C164.976 15.0011 165.883 14.3952 166.921 13.9885C167.959 13.5818 169.133 13.3784 170.441 13.3784C171.859 13.3784 173.091 13.6199 174.137 14.1029C175.184 14.5859 176.053 15.3231 176.745 16.3145C177.437 17.2975 177.952 18.5346 178.29 20.026C178.636 21.5089 178.809 23.2587 178.809 25.2755V42.1678H168.77V27.8176C168.77 26.8346 168.694 25.9788 168.542 25.25C168.39 24.5128 168.162 23.9027 167.858 23.4197C167.554 22.9367 167.17 22.5766 166.706 22.3393C166.242 22.1021 165.698 21.9834 165.073 21.9834C164.651 21.9834 164.259 22.0385 163.896 22.1487C163.541 22.2588 163.216 22.4241 162.921 22.6444C162.634 22.8647 162.381 23.1401 162.161 23.4706C161.942 23.801 161.76 24.1866 161.617 24.6272C161.473 25.0679 161.364 25.5636 161.288 26.1144C161.212 26.6567 161.174 27.2583 161.174 27.9193Z"
-            fill="#DF5B2E"
-          />
-          <path
-            d="M189.927 29.0505C189.927 30.0589 190.045 30.9571 190.281 31.7451C190.526 32.5332 190.88 33.1984 191.345 33.7407C191.809 34.283 192.374 34.6982 193.041 34.9863C193.716 35.2659 194.488 35.4058 195.358 35.4058C195.906 35.4058 196.413 35.3464 196.877 35.2278C197.341 35.1007 197.763 34.9143 198.143 34.6685C198.523 34.4228 198.856 34.1178 199.143 33.7534C199.439 33.389 199.696 32.9611 199.915 32.4696H209.043C208.638 34.0881 208.009 35.5456 207.157 36.842C206.313 38.1385 205.287 39.2359 204.08 40.1341C202.874 41.0323 201.506 41.7229 199.979 42.2059C198.451 42.6889 196.809 42.9304 195.054 42.9304C192.902 42.9304 190.935 42.5745 189.154 41.8627C187.374 41.1424 185.846 40.1341 184.572 38.8376C183.306 37.5327 182.322 35.9735 181.622 34.1601C180.921 32.3468 180.571 30.3385 180.571 28.1353C180.571 25.9406 180.917 23.9366 181.609 22.1232C182.301 20.3099 183.276 18.7592 184.534 17.4712C185.791 16.1747 187.302 15.1706 189.066 14.4588C190.83 13.7385 192.779 13.3784 194.915 13.3784C197.042 13.3784 198.979 13.7343 200.726 14.4461C202.481 15.1579 203.979 16.162 205.22 17.4585C206.469 18.7465 207.435 20.2972 208.119 22.1105C208.811 23.9239 209.157 25.9364 209.157 28.148C209.157 28.4955 209.144 28.8556 209.119 29.2284C209.102 29.5928 209.077 29.9445 209.043 30.2834H185.914V25.3263H203.473L200.017 30.169C200.05 29.7877 200.072 29.4276 200.08 29.0886C200.097 28.7412 200.105 28.4107 200.105 28.0972C200.105 26.8431 200 25.7542 199.789 24.8306C199.578 23.907 199.257 23.1401 198.827 22.53C198.405 21.9114 197.873 21.4538 197.231 21.1572C196.59 20.8522 195.839 20.6997 194.978 20.6997C194.151 20.6997 193.421 20.8395 192.788 21.1191C192.155 21.3987 191.627 21.8097 191.205 22.352C190.783 22.8859 190.463 23.5553 190.243 24.3603C190.032 25.1653 189.927 26.0974 189.927 27.1566V29.0505Z"
-            fill="#DF5B2E"
-          />
-          <path
-            d="M230 41.9517C228.7 42.2822 227.493 42.5279 226.379 42.6889C225.274 42.8499 224.231 42.9304 223.252 42.9304C221.581 42.9304 220.113 42.6889 218.847 42.2059C217.581 41.7229 216.526 41.0026 215.682 40.0451C214.838 39.0791 214.205 37.8758 213.783 36.4353C213.361 34.9863 213.15 33.3043 213.15 31.3892V7.68407H223.189V31.4019C223.189 32.0798 223.248 32.6645 223.366 33.156C223.484 33.639 223.666 34.0373 223.911 34.3508C224.164 34.6558 224.485 34.8846 224.873 35.0372C225.261 35.1812 225.729 35.2532 226.278 35.2532C226.734 35.2532 227.257 35.2066 227.848 35.1134C228.447 35.0117 229.164 34.8592 230 34.6558V41.9517ZM230 21.9199H209.959V14.141H230V21.9199Z"
-            fill="#DF5B2E"
-          />
-          <path
-            d="M35.0892 8.02852V24.0856C35.0892 31.092 33.306 36.1671 29.7395 39.3038C26.173 42.4405 22.101 44.0124 17.5236 44.0124C14.2098 44.0124 11.0645 43.1454 8.08077 41.4114C5.09699 39.6774 3.01186 37.3936 1.80431 34.5529C0.603781 31.7123 0 27.9906 0 23.3807V8.02147C8.62838 8.02147 15.6209 15.042 15.6209 23.7049V24.4239C15.6209 26.1861 15.7754 27.2998 16.0843 27.765C16.3932 28.2302 16.8566 28.4628 17.4674 28.4628C18.3309 28.4628 18.8785 28.0399 19.1102 27.2011C19.3419 26.3552 19.4542 24.9385 19.4542 22.9437C19.4542 14.7037 26.1098 8.02852 34.3099 8.02852H35.0892Z"
-            fill="#DF5B2E"
-          />
-          <path
-            d="M17.5446 12.4622C20.9722 12.4622 23.7509 9.67242 23.7509 6.23109C23.7509 2.78975 20.9722 0 17.5446 0C14.117 0 11.3383 2.78975 11.3383 6.23109C11.3383 9.67242 14.117 12.4622 17.5446 12.4622Z"
-            fill="#DF5B2E"
-          />
-        </svg>
-      </div>
+        <label for="heard-other">Other</label>
+    </div>
+  </div>
 
-      <!-- Success SVG OPTION -->
-      <div class="success-icon" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="1em"
-          height="1em"
-          viewBox="0 0 24 24"
-        >
-          <path d="M0 0h24v24H0z" fill="none" />
-          <g fill="none">
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-width="1.5"
-              d="m13.306 18.298l-5.069 1.689c-2.765.922-4.148 1.383-4.878.653s-.269-2.113.653-4.878l1.69-5.069c.766-2.298 1.149-3.447 2.055-3.66c.906-.215 1.763.642 3.475 2.355l3.38 3.379c1.712 1.713 2.569 2.569 2.355 3.475"
-            />
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-width="1.5"
-              d="M12.235 18.346s-.758-2.281-.758-3.79c0-1.51.758-3.792.758-3.792m-4.17 8.72s-.64-2.753-.758-4.55c-.195-2.969.758-7.581.758-7.581m6.445 2.653l.143-.72c.146-.727.67-1.32 1.373-1.554a2.07 2.07 0 0 0 1.372-1.555l.144-.72m.028 7.796l.212.123c.657.38 1.483.296 2.051-.207a1.76 1.76 0 0 1 1.876-.297L22 13M9.795 2.779A1.4 1.4 0 0 0 10 4.5l.098.098c.393.393.538.97.377 1.503"
-            />
-            <path
-              fill="currentColor"
-              d="M6.928 3.94a.536.536 0 1 1 .758.76a.536.536 0 0 1-.758-.76m5.229 3.217a.536.536 0 1 1 .759.759a.536.536 0 0 1-.759-.759m5 3a.536.536 0 1 1 .759.759a.536.536 0 0 1-.759-.759m1.901 5.156a.536.536 0 1 1 .759.759a.536.536 0 0 1-.759-.759"
-            />
-            <path
-              stroke="currentColor"
-              stroke-linejoin="round"
-              d="M19.362 7.714c-.67.67-.19 2.614-.19 2.614s1.944.481 2.614-.19c.71-.71.308-1.64-.786-1.638c.003-1.094-.929-1.496-1.639-.786Z"
-            />
-            <path
-              stroke="currentColor"
-              d="m15.188 3.417l-.027.098c-.03.106-.046.16-.038.212c.007.052.035.098.093.189l.052.082c.202.32.303.48.234.611s-.262.146-.648.176l-.1.008c-.11.009-.164.013-.212.038s-.083.068-.155.155l-.064.079c-.251.304-.376.456-.52.437c-.142-.02-.208-.198-.34-.555l-.034-.092c-.037-.102-.056-.152-.093-.19c-.037-.036-.087-.055-.189-.092l-.092-.034c-.357-.132-.535-.198-.555-.34c-.02-.144.133-.27.437-.52l.079-.065c.086-.07.13-.106.155-.154s.03-.103.038-.213l.008-.1c.03-.385.045-.578.176-.647c.13-.069.29.032.61.234l.083.052c.091.058.137.086.189.093s.106-.008.212-.038l.098-.027c.375-.107.563-.16.663-.06s.047.288-.06.663Z"
-            />
-          </g>
-        </svg>
-      </div>
+   <div class="form-group other-input-group hidden">
+    <label class="sr-only" for="found-urbannet-other-text">If other, please specify</label>
 
-      <div class="success-text">
-        <h1 id="success-title">You're In!</h1>
-        <!-- <h1 id="success-title">One Step Away From <span>TheUrbanNet!</span></h1> -->
+    <input
+      type="text"
+      id="found-urbannet-other-text"
+      name="found_urbannet_other"
+      placeholder="Please tell us where you heard about us"
+      maxlength="60"
+    >
+  </div>
 
-        <p>
-          Check your email. We just sent a quick guide, with more on what we
-          offer and what happens next.
-          <span>Stay tuned for our upcoming launch.</span>
-        </p>
-      </div>
+</fieldset>
+
+ <!-- What matters Most?-->
+<fieldset class="most-important checkbox-question" data-min="1" data-max="5">
+  <legend>What Matters Most</legend>
+
+  <p class="service-helper-text">What matters most to you when choosing a service provider?</p>
+
+  <div class="service-pills">
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="price"
+        name="provider_priorities"
+        value="price"
+      >
+      <label class="category-pill" for="price">
+        Price
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="qualityOfWork"
+        name="provider_priorities"
+        value="Quality of Work"
+      >
+      <label class="category-pill" for="qualityOfWork">
+        Quality of Work
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="ratings"
+        name="provider_priorities"
+        value="Reviews & ratings"
+      >
+      <label class="category-pill" for="ratings">
+        Reviews &amp; ratings
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="Location"
+        name="provider_priorities"
+        value="Location"
+      >
+      <label class="category-pill" for="Location">
+        Location
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="availability"
+        name="provider_priorities"
+        value="Availability"
+      >
+      <label class="category-pill" for="availability">
+        Availability
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="trust"
+        name="provider_priorities"
+        value="Trust & Reliability "
+      >
+      <label class="category-pill" for="trust">
+        Trust  &amp; Reliability
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="portfolio"
+        name="provider_priorities"
+        value="Photos or portfolio of previous work"
+      >
+      <label class="category-pill" for="portfolio">
+        Photos or portfolio of previous work
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input"
+        type="checkbox"
+        id="communication"
+        name="provider_priorities"
+        value="fast & clear communication"
+      >
+      <label class="category-pill" for="communication">
+        Fast &amp; clear communication
+      </label>
+    </div>
+
+    <div class="service-option">
+      <input
+        class="category-input other-option"
+        type="checkbox"
+        id="what-matters-other"
+        name="provider_priorities"
+        value="other"
+      >
+      <label class="category-pill" for="what-matters-other">Other</label>
+    </div>
+
+
+  </div>
+
+  <div class="form-group other-input-group hidden">
+    <label class="sr-only" for="what-matters-other-text">If other, please specify</label>
+
+    <input
+      type="text"
+      id="what-matters-other-text"
+      name="provider_priorities_other"
+      placeholder="What else matters to you?"
+      maxlength="60"
+    >
+  </div>
+</fieldset>
+
+<div class="form-actions">
+      <button class="cta-button" type="submit" id="submitBtn">Join the Waitlist</button>
+    </div>
+
+<div
+    id="formStatus"
+    class="form-status"
+    aria-live="polite"
+    aria-atomic="true"
+></div>    
+
+</form>
     </section>
-  </body>
+
+    <section id="successMessage" class="notification-body hidden" role="status"  tabindex="-1" aria-live="polite">
+
+      <div class="logo">
+        <img
+          src="../assets/urbannet-wordmark-orange.svg"
+          alt="TheUrbanNet"
+        >
+      </div>
+
+   <!-- Success SVG OPTION -->
+  <div class="success-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+	<path d="M0 0h24v24H0z" fill="none" />
+	<g fill="none">
+		<path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="m13.306 18.298l-5.069 1.689c-2.765.922-4.148 1.383-4.878.653s-.269-2.113.653-4.878l1.69-5.069c.766-2.298 1.149-3.447 2.055-3.66c.906-.215 1.763.642 3.475 2.355l3.38 3.379c1.712 1.713 2.569 2.569 2.355 3.475" />
+		<path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M12.235 18.346s-.758-2.281-.758-3.79c0-1.51.758-3.792.758-3.792m-4.17 8.72s-.64-2.753-.758-4.55c-.195-2.969.758-7.581.758-7.581m6.445 2.653l.143-.72c.146-.727.67-1.32 1.373-1.554a2.07 2.07 0 0 0 1.372-1.555l.144-.72m.028 7.796l.212.123c.657.38 1.483.296 2.051-.207a1.76 1.76 0 0 1 1.876-.297L22 13M9.795 2.779A1.4 1.4 0 0 0 10 4.5l.098.098c.393.393.538.97.377 1.503" />
+		<path fill="currentColor" d="M6.928 3.94a.536.536 0 1 1 .758.76a.536.536 0 0 1-.758-.76m5.229 3.217a.536.536 0 1 1 .759.759a.536.536 0 0 1-.759-.759m5 3a.536.536 0 1 1 .759.759a.536.536 0 0 1-.759-.759m1.901 5.156a.536.536 0 1 1 .759.759a.536.536 0 0 1-.759-.759" />
+		<path stroke="currentColor" stroke-linejoin="round" d="M19.362 7.714c-.67.67-.19 2.614-.19 2.614s1.944.481 2.614-.19c.71-.71.308-1.64-.786-1.638c.003-1.094-.929-1.496-1.639-.786Z" />
+		<path stroke="currentColor" d="m15.188 3.417l-.027.098c-.03.106-.046.16-.038.212c.007.052.035.098.093.189l.052.082c.202.32.303.48.234.611s-.262.146-.648.176l-.1.008c-.11.009-.164.013-.212.038s-.083.068-.155.155l-.064.079c-.251.304-.376.456-.52.437c-.142-.02-.208-.198-.34-.555l-.034-.092c-.037-.102-.056-.152-.093-.19c-.037-.036-.087-.055-.189-.092l-.092-.034c-.357-.132-.535-.198-.555-.34c-.02-.144.133-.27.437-.52l.079-.065c.086-.07.13-.106.155-.154s.03-.103.038-.213l.008-.1c.03-.385.045-.578.176-.647c.13-.069.29.032.61.234l.083.052c.091.058.137.086.189.093s.106-.008.212-.038l.098-.027c.375-.107.563-.16.663-.06s.047.288-.06.663Z" />
+	</g>
+</svg>
+    </div>
+
+    <div class="success-text">
+      <h1 id="success-title">You're In!</h1>
+      <!-- <h1 id="success-title">One Step Away From <span>TheUrbanNet!</span></h1> -->
+
+      <p>
+        Check your email. We just sent a quick guide, with more on what we offer and what
+        happens next.
+        <span>Stay tuned for our upcoming launch.</span>
+       </p>
+    </div>
+
+    
+  </section>
+
+
+
+</body>
 </html>

@@ -2,6 +2,7 @@ const form = document.getElementById("waitlistForm");
 const submitButton = document.getElementById("submitBtn");
 const mainContent = document.querySelector(".main-content");
 const successMessage = document.getElementById("successMessage");
+const formStatus = document.getElementById("formStatus");
 
 const backButton = document.getElementById("backToRoleSelection");
 const fullNameInput = document.getElementById("full-name");
@@ -10,8 +11,6 @@ const postcodeInput = document.getElementById("postcode");
 
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbyLzcA1-lVa3OTawov1OS7U16qbYYRg6K03X8UOG8Ez2gf9FsbhLhVNl1iVOGwjVBi4fg/exec";
-
-let pendingSubmissionData = null;
 
   /* Back button */
 
@@ -78,131 +77,7 @@ postcodeInput.addEventListener("blur", () => {
 
 /* Checkbox questions */
 
-function setupCheckboxQuestions() {
-  const questions =
-    document.querySelectorAll(".checkbox-question");
-
-  questions.forEach((question, questionIndex) => {
-    const checkboxes = [
-      ...question.querySelectorAll('input[type="checkbox"]')
-    ];
-
-    if (!checkboxes.length) {
-      return;
-    }
-
-    const minimumSelections =
-      Number(question.dataset.min || 0);
-
-    const maximumSelections =
-      Number(question.dataset.max || checkboxes.length);
-
-    const validationTarget = checkboxes[0];
-    const errorId = `checkbox-question-error-${questionIndex}`;
-    let selectionError = document.getElementById(errorId);
-
-    if (!selectionError) {
-      selectionError = document.createElement("p");
-      selectionError.id = errorId;
-      selectionError.className = "checkbox-error hidden";
-      selectionError.setAttribute("role", "alert");
-      question.appendChild(selectionError);
-    }
-
-    checkboxes.forEach((checkbox) => {
-      const describedBy = (
-        checkbox.getAttribute("aria-describedby") || ""
-      ).split(/\s+/).filter(Boolean);
-
-      if (!describedBy.includes(errorId)) {
-        checkbox.setAttribute(
-          "aria-describedby",
-          [...describedBy, errorId].join(" ")
-        );
-      }
-    });
-
-    function setSelectionError(message) {
-      const hasError = Boolean(message);
-
-      selectionError.textContent = message;
-      selectionError.classList.toggle("hidden", !hasError);
-
-      checkboxes.forEach((checkbox) => {
-        checkbox.setAttribute("aria-invalid", String(hasError));
-      });
-    }
-
-    const otherCheckbox =
-      question.querySelector(".other-option");
-
-    const otherGroup =
-      question.querySelector(".other-input-group");
-
-    const otherInput =
-      otherGroup?.querySelector("input");
-
-    function updateQuestion() {
-      const selectedCount =
-        checkboxes.filter((checkbox) => checkbox.checked).length;
-
-      validationTarget.setCustomValidity(
-        selectedCount < minimumSelections
-          ? "Please select at least one option."
-          : ""
-      );
-
-      if (!otherCheckbox || !otherGroup || !otherInput) {
-        return;
-      }
-
-      const otherSelected = otherCheckbox.checked;
-
-      otherGroup.classList.toggle(
-        "hidden",
-        !otherSelected
-      );
-
-      otherInput.required = otherSelected;
-
-      if (!otherSelected) {
-        otherInput.value = "";
-        otherInput.setCustomValidity("");
-      } else {
-        otherInput.setCustomValidity(
-          otherInput.value.trim()
-            ? ""
-            : "Please provide an answer."
-        );
-      }
-    }
-
-    checkboxes.forEach((checkbox) => {
-      checkbox.addEventListener("change", () => {
-        const selectedCount =
-          checkboxes.filter(
-            (option) => option.checked
-          ).length;
-
-        if (selectedCount > maximumSelections) {
-          checkbox.checked = false;
-
-          setSelectionError(
-            `Please select up to ${maximumSelections} options.`
-          );
-        } else {
-          setSelectionError("");
-        }
-
-        updateQuestion();
-      });
-    });
-
-    otherInput?.addEventListener("input", updateQuestion);
-
-    updateQuestion();
-  });
-}
+const setupCheckboxQuestions = () => UrbanFormUtils.setupCheckboxQuestions({ validateOther: true });
 
 setupCheckboxQuestions();
 
@@ -211,74 +86,7 @@ setupCheckboxQuestions();
 
 /* Prepare form data */
 
-function createSubmissionData() {
-  const formData = new FormData(form);
-  const submissionData = new URLSearchParams();
-
-  submissionData.append("form_type", "customer");
-  submissionData.append(
-    "submission_id",
-    window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`
-  );
-
-  const groupedFields = new Map();
-
-  for (const [name, value] of formData.entries()) {
-    const cleanedValue = String(value).trim();
-
-    /*
-     * Converts names such as certifications[]
-     * into certifications if brackets are ever used.
-     */
-    const normalisedName = name.endsWith("[]")
-      ? name.slice(0, -2)
-      : name;
-
-    if (!groupedFields.has(normalisedName)) {
-      groupedFields.set(normalisedName, []);
-    }
-
-    if (cleanedValue) {
-      groupedFields.get(normalisedName).push(cleanedValue);
-    }
-  }
-
-  for (const [name, values] of groupedFields.entries()) {
-    submissionData.append(name, values.join(", "));
-  }
-
-  return submissionData;
-}
-
-
-/* The Apps Script must return CORS-enabled JSON: { "success": true }. */
-
-async function submitWaitlist(submissionData) {
-  const response = await fetch(GOOGLE_SCRIPT_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-    },
-    body: submissionData
-  });
-
-  if (!response.ok) {
-    throw new Error(`The server returned ${response.status}.`);
-  }
-
-  let result;
-
-  try {
-    result = await response.json();
-  } catch {
-    throw new Error("The server did not return a valid confirmation.");
-  }
-
-  if (result?.success !== true) {
-    throw new Error("The server did not confirm the submission.");
-  }
-}
-
+const createSubmissionData = () => UrbanFormUtils.createSubmissionData(form, "customer");
 
 /* Display success screen */
 
@@ -291,29 +99,8 @@ const prefersReducedMotion = window.matchMedia(
  * swap still happens if the transition never fires (reduced motion, a
  * backgrounded tab, or a browser that skips it).
  */
-function afterTransition(element, fallbackDelay) {
-  return new Promise((resolve) => {
-    if (prefersReducedMotion.matches) {
-      resolve();
-      return;
-    }
-
-    let settled = false;
-
-    function finish() {
-      if (settled) {
-        return;
-      }
-
-      settled = true;
-      element.removeEventListener("transitionend", finish);
-      resolve();
-    }
-
-    element.addEventListener("transitionend", finish);
-    setTimeout(finish, fallbackDelay);
-  });
-}
+const afterTransition = (element, fallbackDelay) =>
+  UrbanFormUtils.afterTransition(element, fallbackDelay, prefersReducedMotion);
 
 async function showSuccessMessage() {
   /* Fade the form out first so it does not disappear in a single frame */
@@ -342,30 +129,6 @@ function resetSubmitButton() {
 }
 
 
-function showSubmissionError() {
-  const submissionError = document.getElementById("submissionError");
-
-  submissionError.classList.remove("hidden");
-  submitButton.textContent = "Try Again";
-  submissionError.focus();
-}
-
-function clearSubmissionError() {
-  document.getElementById("submissionError").classList.add("hidden");
-}
-
-/* A changed form is a new submission, so it gets a new idempotency key. */
-form.addEventListener("input", () => {
-  pendingSubmissionData = null;
-  clearSubmissionError();
-});
-
-form.addEventListener("change", () => {
-  pendingSubmissionData = null;
-  clearSubmissionError();
-});
-
-
 /* Form submission */
 
 form.addEventListener("submit", async (event) => {
@@ -382,22 +145,32 @@ form.addEventListener("submit", async (event) => {
   submitButton.disabled = true;
   submitButton.classList.add("is-submitting");
   submitButton.textContent = "Submitting...";
+  formStatus.textContent = "Submitting your details...";
 
-  const submissionData = pendingSubmissionData || createSubmissionData();
-  pendingSubmissionData = submissionData;
-  clearSubmissionError();
+  const submissionData = createSubmissionData();
 
   try {
-    await submitWaitlist(submissionData);
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: submissionData
+    });
 
-    form.reset();
-    pendingSubmissionData = null;
+    formStatus.textContent=
+      "Your details have been submitted successfully.";
 
     await showSuccessMessage();
+    form.reset();
   } catch (error) {
     console.error("Customer waitlist submission failed:", error);
 
+    formStatus.textContent =
+      "We could not submit your details. Please check your connection and try again.";
+
+    alert(
+      "We could not submit your details. Please check your connection and try again."
+    );
+
     resetSubmitButton();
-    showSubmissionError();
   }
 });
